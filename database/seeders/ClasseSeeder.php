@@ -2,17 +2,22 @@
 
 namespace Database\Seeders;
 
+use App\Models\Classe;
 use Illuminate\Database\Seeder;
 
 class ClasseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    static $classes = [
+        [
+            'id_instituicao' => 1,
+            'classe' => '10ª',
+            'estado' => 'on',
+        ]
+    ];
     public function run()
     {
-        //
+        foreach (Self::$classes as $classes) {
+            Classe::create($classes);
+        }
     }
 }

@@ -2,17 +2,40 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
-        //
+        User::create(
+            [
+                'id_instituicao' => null,
+                'id_pessoa' => 1,
+                'name' => 'admin.inscritor',
+                'password' => Hash::make('welwitchia2023'),
+                'nivel_acesso' => 'manager',
+                'estado' => 'on',
+            ],
+            [
+                'id_instituicao' => 1,
+                'id_pessoa' => 2,
+                'name' => 'liceu.welwitchia0',
+                'password' => Hash::make('welwitchia2023'),
+                'nivel_acesso' => 'admin',
+                'estado' => 'on',
+            ],
+            [
+                'id_instituicao' => 1,
+                'id_pessoa' => 3,
+                'name' => 'liceu.welwitchia1',
+                'password' => Hash::make('welwitchia2023'),
+                'nivel_acesso' => 'user',
+                'estado' => 'on',
+            ],
+        );
     }
 }
