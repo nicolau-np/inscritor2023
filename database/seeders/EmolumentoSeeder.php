@@ -11,6 +11,7 @@ class EmolumentoSeeder extends Seeder
         [
             'id_instituicao' => 1,
             'id_ano_lectivo' => 1,
+            'emolumento' => 'Inscrição',
             'valor' => 2000,
             'estado' => 'on',
         ]

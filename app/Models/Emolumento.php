@@ -14,6 +14,7 @@ class Emolumento extends Model
     protected $fillable = [
         'id_instituicao',
         'id_ano_lectivo',
+        'emolumento',
         'valor',
         'estado',
     ];

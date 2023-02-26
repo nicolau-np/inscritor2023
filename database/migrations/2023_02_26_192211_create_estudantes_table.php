@@ -16,7 +16,7 @@ class CreateEstudantesTable extends Migration
         Schema::create('estudantes', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->string('id_pessoa')->unsigned()->index();
+            $table->bigInteger('id_pessoa')->unsigned()->index();
             $table->bigInteger('id_instituicao')->unsigned()->index();
             $table->bigInteger('id_classe')->unsigned()->index();
             $table->bigInteger('id_ano_lectivo')->unsigned()->index();
