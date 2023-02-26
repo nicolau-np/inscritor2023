@@ -16,11 +16,11 @@ class CreatePessoasTable extends Migration
         Schema::create('pessoas', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->bigIncrements('id');
+            $table->string('id_municipio')->nullable()->unsigned()->index();
             $table->string('nome');
             $table->date('data_nascimento')->nullable();
             $table->string('genero');
             $table->string('email')->nullable();
-            $table->string('id_municipio')->nullable()->unsigned()->index();
             $table->string('estado_civil')->nullable();
             $table->string('naturalidade')->nullable();
             $table->bigInteger('telefone')->nullable();
