@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CursoResource extends JsonResource
@@ -14,6 +15,12 @@ class CursoResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'instituicao' => new InstituicaoResource($this->instituicaos),
+            'curso' => $this->curso,
+            'sigla' => $this->sigla,
+            'estado' => $this->estado,
+        ];
     }
 }

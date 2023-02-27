@@ -14,6 +14,13 @@ class EmolumentoResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'instituicao' => new InstituicaoResource($this->instituicaos),
+            'ano_lectivo' => new AnoLectivoResource($this->ano_lectivos),
+            'emolumento' => $this->emolumento,
+            'valor' => $this->valor,
+            'estado' => $this->estado,
+        ];
     }
 }

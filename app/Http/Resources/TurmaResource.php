@@ -14,6 +14,13 @@ class TurmaResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'curso' => new CursoResource($this->cursos),
+            'classe' => new ClasseResource($this->classes),
+            'ano_lectivo' => new AnoLectivoResource($this->ano_lectivos),
+            'turma' => $this->turma,
+            'estado' => $this->estado,
+        ];
     }
 }

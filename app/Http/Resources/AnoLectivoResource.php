@@ -14,6 +14,11 @@ class AnoLectivoResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'instituicao' => new InstituicaoResource($this->instituicaos),
+            'ano' => $this->ano,
+            'estado' => $this->estado,
+        ];
     }
 }

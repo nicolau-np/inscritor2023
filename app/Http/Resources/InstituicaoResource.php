@@ -14,6 +14,14 @@ class InstituicaoResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'municipio' => new MunicipioResource($this->municipios),
+            'instituicao' => $this->instituicao,
+            'sigla' => $this->sigla,
+            'endereco' => $this->endereco,
+            'telefone' => $this->telefone,
+            'estado' => $this->estado,
+        ];
     }
 }

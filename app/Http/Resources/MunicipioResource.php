@@ -14,6 +14,10 @@ class MunicipioResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'provincia' => new ProvinciaResource($this->provincias),
+            'municipio' => $this->municipio,
+        ];
     }
 }

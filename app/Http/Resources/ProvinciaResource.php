@@ -14,6 +14,11 @@ class ProvinciaResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'pais' => new PaisResource($this->pais),
+            'provincia' => $this->provincia,
+            'cidade_cede' => $this->cidade_cede,
+        ];
     }
 }

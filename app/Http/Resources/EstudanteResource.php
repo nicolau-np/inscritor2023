@@ -14,6 +14,13 @@ class EstudanteResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'=>$this->id,
+            'instituicao'=>new InstituicaoResource($this->instituicaos),
+            'classe'=>new ClasseResource($this->classes),
+            'ano_lectivo'=>new AnoLectivoResource($this->ano_lectivos),
+            'estado_classificacao'=>$this->estado_classificacao,
+            'estado'=>$this->estado,
+        ];
     }
 }

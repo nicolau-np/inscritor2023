@@ -14,6 +14,12 @@ class PaisResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'=>$this->id,
+            'pais'=>$this->pais,
+            'capital'=>$this->capital,
+            'indicativo'=>$this->indicativo,
+            'img_bandeira'=>$this->img_bandeira,
+        ];
     }
 }
