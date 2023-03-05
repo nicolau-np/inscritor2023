@@ -26,7 +26,7 @@ class CreateEstudantesTable extends Migration
         });
 
         Schema::table('estudantes', function (Blueprint $table) {
-            $table->foreign('id_pessoa')->references('id')->on('pessoas')->onUpdate('cascade');
+            $table->foreign('id_pessoa')->references('id')->on('pessoas')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_instituicao')->references('id')->on('instituicaos')->onUpdate('cascade');
             $table->foreign('id_classe')->references('id')->on('classes')->onUpdate('cascade');
             $table->foreign('id_ano_lectivo')->references('id')->on('ano_lectivos')->onUpdate('cascade');
