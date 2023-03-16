@@ -19,7 +19,22 @@ class EstudanteController extends Controller
     public function index()
     {
         $estudantes = Estudante::paginate(10);
-        return EstudanteResource::collection($estudantes);
+
+        $title = 'Estudantes - Listar';
+        $type = 'estudantes';
+        $menu = 'Estudantes';
+        $submenu = 'Listar';
+
+        return view('estudantes.index', compact('title', 'type', 'menu', 'submenu', 'estudantes'));
+    }
+
+    public function create()
+    {
+        $title = 'Estudantes - Novo';
+        $type = 'estudantes';
+        $menu = 'Estudantes';
+        $submenu = 'Novo';
+        return view('estudantes.create', compact('title', 'type', 'menu', 'submenu'));
     }
 
     /**
@@ -82,8 +97,27 @@ class EstudanteController extends Controller
     {
         $estudante = Estudante::find($id);
         if (!$estudante)
-            return response(['errors' => "Nao encontrou"], 400);
-        return new EstudanteResource($estudante);
+            return back()->with('errors', "Nao encontrou");
+
+        $title = 'Estudantes - Detalhes';
+        $type = 'estudantes';
+        $menu = 'Estudantes';
+        $submenu = 'Detalhes';
+
+        return view('estudantes.show', compact('title', 'type', 'menu', 'submenu', 'estudante'));
+    }
+
+    public function edit($id){
+        $estudante = Estudante::find($id);
+        if (!$estudante)
+            return back()->with('errors', "Nao encontrou");
+
+        $title = 'Estudantes - Editar';
+        $type = 'estudantes';
+        $menu = 'Estudantes';
+        $submenu = 'Editar';
+
+        return view('estudantes.edit', compact('title', 'type', 'menu', 'submenu', 'estudante'));
     }
 
     /**
@@ -95,7 +129,6 @@ class EstudanteController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $estudante = Estudante::find($id);
         if (!$estudante)
             return response(['errors' => "Nao encontrou"], 400);
@@ -133,7 +166,7 @@ class EstudanteController extends Controller
             $pessoa = Pessoa::find($estudante->id_pessoa)->update($data['person']);
             Estudante::find($estudante->id)->update($data['student']);
             DB::commit();
-            return new EstudanteResource($estudante);
+            return back()->with('success', "Feito com sucesso!");
         } catch (\Exception $e) {
             DB::rollBack();
             return response(['error' => $e->getMessage()], 500);
@@ -150,10 +183,11 @@ class EstudanteController extends Controller
     {
         $estudante = Estudante::find($id);
         if (!$estudante)
-            return response(['errors' => "Nao encontrou"], 400);
+            return response('errors', "Nao encontrou");
 
         Pessoa::find($estudante->id_pessoa)->delete();
 
-        return response(['success' => "Feito com sucesso"], 200);
-    }
+        return back()->with('success', "Feito com sucesso!");
+
+   }
 }

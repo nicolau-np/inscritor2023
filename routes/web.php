@@ -29,7 +29,7 @@ Route::prefix('user')->group(function () {
 
 Route::prefix('estudantes')->group(function () {
     Route::get('/create', [EstudanteController::class, 'create']);
-    Route::pos('/', [EstudanteController::class, 'store']);
+    Route::post('/', [EstudanteController::class, 'store']);
     Route::get('edit/{id}', [EstudanteController::class, 'edit']);
     Route::put('/{id}', [EstudanteController::class, 'update']);
     Route::get('delete/{id}', [EstudanteController::class, 'delete']);
