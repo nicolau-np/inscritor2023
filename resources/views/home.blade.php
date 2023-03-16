@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <div class="content">
     <div class="panel-header bg-primary-gradient">
         <div class="page-inner py-5">
@@ -514,3 +516,5 @@
         </div>
     </div>
 </div>
+@endsection
+

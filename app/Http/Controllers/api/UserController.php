@@ -3,48 +3,47 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function login(Request $request)
+    public function login()
     {
-        $this->validate($request, [
-            'username'=>'required|string|exists:usuarios,username',
-            'password'=>'required|string|min:6'
-        ]);
-
-        $data = [
-            'username' => $request->username,
-            'password' => $request->password,
-        ];
-
-        if (Auth::attempt($data)) {
-            $user = Auth::user();
-            $token = $user->createToken('token_name');
-            return response()->json(['message' => ['token' => $token->plainTextToken]], 200);
-        }
-
-        return response(['message' => "Palavra-Passe Incorrecta"], 401);
+        $title = '[INSCRITOR] - Iniciar Sessão';
+        $type = 'login';
+        $menu = 'Login';
+        $submenu = null;
+        return view('user.login', compact('title', 'type', 'menu', 'submenu'));
     }
 
-    public function logout(Request $request)
+    public function logar(Request $request)
     {
-        $this->validate($request, [
-            'allDevice' => 'required|boolean'
-        ]);
+        $this->validate(
+            $request,
+            [
+                'username' => 'required|string|exists:usuarios,name',
+                'password' => 'required|string|min:6',
+            ]
+        );
 
-        $user = Auth::user();
+        $user = User::where(['name' => $request->username])->first();
 
-        if ($request->allDevice) {
-            $user->tokens->each(function ($token) {
-                $token->delete();
-            });
-            return response(['message' => "Terminou sessao em todos os dispositivos"], 200);
+        if ($user->estado == "off") {
+            return back()->with(['error' => "Usuário bloqueado, sem permissão."]);
         }
-        $user->currentAccessToken()->delete();
-        return response(['message' => "Terminou sessao em um dispositivo"], 200);
 
+        if (Auth::attempt(['name' => $request->username, 'password' => $request->password])) {
+            return redirect('/home');
+        } else {
+            return back()->with(['error' => "Palavra passe incorrectas"]);
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
