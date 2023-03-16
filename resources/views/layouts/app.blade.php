@@ -5,13 +5,13 @@
 	<title>{{$title}}</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
-
+    <link rel="stylesheet" href="{{asset('assets/neutro/css/style.css')}}">
 	<!-- Fonts and icons -->
 	<script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
 	<script>
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['{{asset('assets/css/fonts.min.css']},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
 			active: function() {
 				sessionStorage.fonts = true;
 			}
@@ -24,8 +24,14 @@
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
+
+    @livewireStyles
+    @livewireScripts
 </head>
 <body>
+    @if($type=="login")
+    @yield('content')
+    @else
 	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
@@ -268,16 +274,17 @@
 											</div>
 										</div>
 									</li>
-									<li>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">My Profile</a>
-										<a class="dropdown-item" href="#">My Balance</a>
-										<a class="dropdown-item" href="#">Inbox</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Account Setting</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Logout</a>
-									</li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Meu Perfil</a>
+                                        <a class="dropdown-item" href="#">Meu Balanço</a>
+                                        <a class="dropdown-item" href="#">Caixa de Entrada</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Configuração de Conta</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="/user/logout">Terminar
+                                          Sessão</a>
+                                      </li>
 								</div>
 							</ul>
 						</li>
@@ -295,298 +302,149 @@
 						<div class="avatar-sm float-left mr-2">
 							<img src="{{asset('assets/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
 						</div>
-						<div class="info">
-							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-								<span>
-									Hizrian
-									<span class="user-level">Administrator</span>
-									<span class="caret"></span>
-								</span>
-							</a>
-							<div class="clearfix"></div>
+                        <div class="info">
+                            <a data-toggle="collapse" href="#collapseExample"
+                              aria-expanded="true">
+                              <span>
+                                Hizrian
+                                <span class="user-level">Administrator</span>
+                                <span class="caret"></span>
+                              </span>
+                            </a>
+                            <div class="clearfix"></div>
 
-							<div class="collapse in" id="collapseExample">
-								<ul class="nav">
-									<li>
-										<a href="#profile">
-											<span class="link-collapse">My Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#edit">
-											<span class="link-collapse">Edit Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#settings">
-											<span class="link-collapse">Settings</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
+                            <div class="collapse in" id="collapseExample">
+                              <ul class="nav">
+                                <li>
+                                  <a href="#profile">
+                                    <span class="link-collapse">Meu Perfil</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#edit">
+                                    <span class="link-collapse">Editar Perfil</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#settings">
+                                    <span class="link-collapse">Configurações</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
 					</div>
 					<ul class="nav nav-primary">
-						<li class="nav-item active">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-								<i class="fas fa-home"></i>
-								<p>Dashboard</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="dashboard">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="../demo1/index.html">
-											<span class="sub-item">Dashboard 1</span>
-										</a>
-									</li>
-									<li>
-										<a href="../demo2/index.html">
-											<span class="sub-item">Dashboard 2</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-section">
-							<span class="sidebar-mini-icon">
-								<i class="fa fa-ellipsis-h"></i>
-							</span>
-							<h4 class="text-section">Components</h4>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
-								<i class="fas fa-layer-group"></i>
-								<p>Base</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="base">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="components/avatars.html">
-											<span class="sub-item">Avatars</span>
-										</a>
-									</li>
-									<li>
-										<a href="components/buttons.html">
-											<span class="sub-item">Buttons</span>
-										</a>
-									</li>
-									<li>
-										<a href="components/gridsystem.html">
-											<span class="sub-item">Grid System</span>
-										</a>
-									</li>
-									<li>
-										<a href="components/panels.html">
-											<span class="sub-item">Panels</span>
-										</a>
-									</li>
-									<li>
-										<a href="components/notifications.html">
-											<span class="sub-item">Notifications</span>
-										</a>
-									</li>
-									<li>
-										<a href="components/sweetalert.html">
-											<span class="sub-item">Sweet Alert</span>
-										</a>
-									</li>
-									<li>
-										<a href="components/font-awesome-icons.html">
-											<span class="sub-item">Font Awesome Icons</span>
-										</a>
-									</li>
-									<li>
-										<a href="components/simple-line-icons.html">
-											<span class="sub-item">Simple Line Icons</span>
-										</a>
-									</li>
-									<li>
-										<a href="components/flaticons.html">
-											<span class="sub-item">Flaticons</span>
-										</a>
-									</li>
-									<li>
-										<a href="components/typography.html">
-											<span class="sub-item">Typography</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#sidebarLayouts">
-								<i class="fas fa-th-list"></i>
-								<p>Sidebar Layouts</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="sidebarLayouts">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="sidebar-style-1.html">
-											<span class="sub-item">Sidebar Style 1</span>
-										</a>
-									</li>
-									<li>
-										<a href="overlay-sidebar.html">
-											<span class="sub-item">Overlay Sidebar</span>
-										</a>
-									</li>
-									<li>
-										<a href="compact-sidebar.html">
-											<span class="sub-item">Compact Sidebar</span>
-										</a>
-									</li>
-									<li>
-										<a href="static-sidebar.html">
-											<span class="sub-item">Static Sidebar</span>
-										</a>
-									</li>
-									<li>
-										<a href="icon-menu.html">
-											<span class="sub-item">Icon Menu</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#forms">
-								<i class="fas fa-pen-square"></i>
-								<p>Forms</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="forms">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="forms/forms.html">
-											<span class="sub-item">Basic Form</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
-								<p>Tables</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="tables">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="tables/tables.html">
-											<span class="sub-item">Basic Table</span>
-										</a>
-									</li>
-									<li>
-										<a href="tables/datatables.html">
-											<span class="sub-item">Datatables</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#maps">
-								<i class="fas fa-map-marker-alt"></i>
-								<p>Maps</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="maps">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="maps/jqvmap.html">
-											<span class="sub-item">JQVMap</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#charts">
-								<i class="far fa-chart-bar"></i>
-								<p>Charts</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="charts">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="charts/charts.html">
-											<span class="sub-item">Chart Js</span>
-										</a>
-									</li>
-									<li>
-										<a href="charts/sparkline.html">
-											<span class="sub-item">Sparkline</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a href="widgets.html">
-								<i class="fas fa-desktop"></i>
-								<p>Widgets</p>
-								<span class="badge badge-success">4</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#submenu">
-								<i class="fas fa-bars"></i>
-								<p>Menu Levels</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="submenu">
-								<ul class="nav nav-collapse">
-									<li>
-										<a data-toggle="collapse" href="#subnav1">
-											<span class="sub-item">Level 1</span>
-											<span class="caret"></span>
-										</a>
-										<div class="collapse" id="subnav1">
-											<ul class="nav nav-collapse subnav">
-												<li>
-													<a href="#">
-														<span class="sub-item">Level 2</span>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="sub-item">Level 2</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</li>
-									<li>
-										<a data-toggle="collapse" href="#subnav2">
-											<span class="sub-item">Level 1</span>
-											<span class="caret"></span>
-										</a>
-										<div class="collapse" id="subnav2">
-											<ul class="nav nav-collapse subnav">
-												<li>
-													<a href="#">
-														<span class="sub-item">Level 2</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</li>
-									<li>
-										<a href="#">
-											<span class="sub-item">Level 1</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="mx-4 mt-2">
-							<a href="http://themekita.com/atlantis-bootstrap-dashboard.html" class="btn btn-primary btn-block"><span class="btn-label mr-2"> <i class="fa fa-heart"></i> </span>Buy Pro</a>
-						</li>
-					</ul>
+                        <li class="nav-item {{$type=='home'?'active':''}}">
+                          <a href="/">
+                            <i class="fas fa-home"></i>
+                            <p>Principal</p>
+                          </a>
+                        </li>
+                        <li class="nav-item {{$type=='estudantes'?'active':''}}">
+                          <a href="/estudantes/create">
+                            <i class="fas fa-users"></i>
+                            <p>Estudantes</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a data-toggle="collapse" href="#sidebarLayouts">
+                            <i class="fas fa-th-list"></i>
+                            <p>Listas</p>
+                            <span class="caret"></span>
+                          </a>
+                          <div class="collapse" id="sidebarLayouts">
+                            <ul class="nav nav-collapse">
+                              <li>
+                                <a href="sidebar-style-1.html">
+                                  <span class="sub-item">Estudantes Admitidos</span>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="overlay-sidebar.html">
+                                  <span class="sub-item">Estudantes N/Admitidos</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="nav-item">
+                          <a data-toggle="collapse" href="#base">
+                            <i class="fas fa-cogs"></i>
+                            <p>Extras</p>
+                            <span class="caret"></span>
+                          </a>
+                          <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                              <li>
+                                <a href="components/avatars.html">
+                                  <span class="sub-item">Cursos</span>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="components/buttons.html">
+                                  <span class="sub-item">Classes</span>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="components/gridsystem.html">
+                                  <span class="sub-item">Turmas</span>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="components/panels.html">
+                                  <span class="sub-item">Condições</span>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="components/notifications.html">
+                                  <span class="sub-item">Emolumentos</span>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="components/sweetalert.html">
+                                  <span class="sub-item">Ano Lectivo</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="widgets.html">
+                            <i class="fas fa-desktop"></i>
+                            <p>Instituições</p>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a data-toggle="collapse" href="#sidebarSobre">
+                            <i class="fas fa-file"></i>
+                            <p>Sobre</p>
+                            <span class="caret"></span>
+                          </a>
+                          <div class="collapse" id="sidebarSobre">
+                            <ul class="nav nav-collapse">
+                              <li>
+                                <a href="sidebar-style-1.html">
+                                  <span class="sub-item">Sistema</span>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="overlay-sidebar.html">
+                                  <span class="sub-item">FAQ's</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+
+                        <li class="mx-4 mt-2">
+                          <a href="http://themekita.com/atlantis-bootstrap-dashboard.html"
+                            class="btn btn-primary btn-block"><span class="btn-label mr-2"> <i
+                                class="fa fa-heart"></i> </span>Buy Pro</a>
+                        </li>
+                      </ul>
 				</div>
 			</div>
 		</div>
@@ -694,6 +552,7 @@
 		</div>
 		<!-- End Custom template -->
 	</div>
+    @endif
 	<!--   Core JS Files   -->
 	<script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}"></script>
 	<script src="{{asset('assets/js/core/popper.min.js')}}"></script>

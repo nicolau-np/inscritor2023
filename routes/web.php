@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\api\EstudanteController;
+use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +20,19 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('home', [HomeController::class, 'home']);
+Route::get('home', [HomeController::class, 'home'])->name('home');
+
+Route::prefix('user')->group(function () {
+    Route::get('login', [UserController::class, 'login'])->name('login')->middleware('guest');
+    Route::get('logout', [UserController::class, 'logout'])->middleware('auth');
+});
+
+Route::prefix('estudantes')->group(function () {
+    Route::get('/create', [EstudanteController::class, 'create']);
+    Route::pos('/', [EstudanteController::class, 'store']);
+    Route::get('edit/{id}', [EstudanteController::class, 'edit']);
+    Route::put('/{id}', [EstudanteController::class, 'update']);
+    Route::get('delete/{id}', [EstudanteController::class, 'delete']);
+    Route::get('/', [EstudanteController::class, 'index']);
+    Route::get('/{id}', [EstudanteController::class, 'show']);
+});

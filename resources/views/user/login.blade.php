@@ -5,7 +5,7 @@
     <div class="login-form">
       <div class="row">
         <div class="col-md-12 text-center">
-          <img src="" alt="navbar brand" class="logo" />
+          <img src="{{asset('assets/img/logo.svg')}}" alt="navbar brand" class="logo" />
         </div>
         <div class="col-md-12 mt-4">
           <h2>Iniciar Sessão</h2>
