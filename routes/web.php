@@ -20,7 +20,7 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('home', [HomeController::class, 'home'])->name('home');
+Route::get('home', [HomeController::class, 'home'])->middleware('auth')->name('home');
 
 Route::prefix('user')->group(function () {
     Route::get('login', [UserController::class, 'login'])->name('login')->middleware('guest');

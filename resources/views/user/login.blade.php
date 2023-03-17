@@ -14,10 +14,16 @@
           <form action="">
             <div class="row">
               <div class="col-md-12 mt-2">
-                <input type="text" class="form-control" placeholder="Nome de Usuário"/>
+                <input type="text" class="form-control" placeholder="Nome de Usuário" name="username"/>
+                @if ($errors->has('username'))
+                 <span class="text-danger">{{ $errors->first('username')}}</span>
+                @endif
               </div>
               <div class="col-md-12 mt-2">
-                <input type="password" class="form-control" placeholder="Palavra-Passe"/>
+                <input type="password" class="form-control" placeholder="Palavra-Passe" name="password"/>
+                @if ($errors->has('password'))
+                 <span class="text-danger">{{ $errors->first('password')}}</span>
+                @endif
               </div>
               <div class="col-md-12 mt-2">
                 <p>
