@@ -33,7 +33,17 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
+                    @include('includes.messages')
+                </div>
 
+                <div class="col-md-12">
+                    {{Form::open(['url'=>"", 'method'=>"post"])}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                        </div>
+                    </div>
+                    {{Form::close()}}
                 </div>
               </div>
             </div>

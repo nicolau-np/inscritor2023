@@ -260,17 +260,17 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="{{asset('assets/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
+									<img src="{{asset('assets/neutro/images/no-photo.png')}}" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="{{asset('assets/img/profile.jpg')}}" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="{{asset('assets/neutro/images/no-photo.png')}}" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<h4>{{Auth::user()->pessoas->nome}}</h4>
+												<p class="text-muted">{{Auth::user()->name}}</p><a href="/user/profile" class="btn btn-xs btn-secondary btn-sm">Ver Perfil</a>
 											</div>
 										</div>
 									</li>
@@ -300,14 +300,14 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="{{asset('assets/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
+							<img src="{{asset('assets/neutro/images/no-photo.png')}}" alt="..." class="avatar-img rounded-circle">
 						</div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample"
                               aria-expanded="true">
                               <span>
-                                Hizrian
-                                <span class="user-level">Administrator</span>
+                                {{Auth::user()->pessoas->nome}}
+                                <span class="user-level">{{Auth::user()->nivel_acesso}}</span>
                                 <span class="caret"></span>
                               </span>
                             </a>

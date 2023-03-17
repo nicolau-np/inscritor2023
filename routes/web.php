@@ -25,6 +25,7 @@ Route::get('home', [HomeController::class, 'home'])->middleware('auth')->name('h
 Route::prefix('user')->group(function () {
     Route::get('login', [UserController::class, 'login'])->name('login')->middleware('guest');
     Route::get('logout', [UserController::class, 'logout'])->middleware('auth');
+    Route::post('login', [UserController::class, 'logar']);
 });
 
 Route::prefix('estudantes')->group(function () {

@@ -11,7 +11,8 @@
           <h2>Iniciar Sessão</h2>
         </div>
         <div class="col-md-12">
-          <form action="">
+          <form action="/user/login" method="POST">
+            @csrf
             <div class="row">
               <div class="col-md-12 mt-2">
                 <input type="text" class="form-control" placeholder="Nome de Usuário" name="username"/>
