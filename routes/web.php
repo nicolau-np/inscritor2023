@@ -12,6 +12,7 @@ use App\Http\Controllers\api\TurmaController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,14 @@ Route::get('/', function () {
 
 Route::get('home', [HomeController::class, 'home'])->middleware('auth')->name('home');
 
-Route::get('municipios/{id}', [AjaxRequestController::class, 'municipio']);
+/**ajax request */
+Route::prefix('request')->group(function(){
+Route::get('municipios/all/{id}', [AjaxRequestController::class, 'municipios']);
+Route::get('cursos/all/{id}', [AjaxRequestController::class, 'cursos']);
+Route::get('classes/all/{id}', [AjaxRequestController::class, 'classes']);
+Route::get('anos/all/{id}', [AjaxRequestController::class, 'anos']);
+});
+
 
 Route::prefix('user')->group(function () {
     Route::get('login', [UserController::class, 'login'])->name('login')->middleware('guest');

@@ -140,7 +140,7 @@
                //console.log(this.responseText);
             }
         };
-        xhttp.open("GET", "/municipios/"+prov, true);
+        xhttp.open("GET", "/request/municipios/all/"+prov, true);
         xhttp.send();
         console.log(xhttp);
     }

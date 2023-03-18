@@ -134,7 +134,7 @@ function getCursos(instituicao) {
            //console.log(this.responseText);
         }
     };
-    xhttp.open("GET", "/cursos/all/"+instituicao, true);
+    xhttp.open("GET", "/request/cursos/all/"+instituicao, true);
     xhttp.send();
     console.log(xhttp);
 }
@@ -147,7 +147,7 @@ function getClasses(instituicao) {
            //console.log(this.responseText);
         }
     };
-    xhttp.open("GET", "/classes/all/"+instituicao, true);
+    xhttp.open("GET", "/request/classes/all/"+instituicao, true);
     xhttp.send();
     console.log(xhttp);
 }
@@ -160,7 +160,7 @@ function getAnos(instituicao) {
            //console.log(this.responseText);
         }
     };
-    xhttp.open("GET", "/anos/all/"+instituicao, true);
+    xhttp.open("GET", "/request/anos/all/"+instituicao, true);
     xhttp.send();
     console.log(xhttp);
 }
