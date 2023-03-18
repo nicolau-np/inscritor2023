@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\AnoLectivo;
+use App\Models\Classe;
+use App\Models\Curso;
 use App\Models\Instituicao;
 use App\Models\Turma;
 use Illuminate\Http\Request;
@@ -26,7 +29,8 @@ class TurmaController extends Controller
         return view('extras.turmas.index', compact('title', 'type', 'menu', 'submenu', 'turmas'));
     }
 
-    public function create(){
+    public function create()
+    {
         $instituicaos = Instituicao::orderBy('instituicao', 'asc');
 
         $title = 'Turmas - Nova';
@@ -47,15 +51,15 @@ class TurmaController extends Controller
     {
         $this->validate($request, [
             'id_curso' => 'required|integer|exists:cursos,id',
-            'id_classe'=>'required|integer|exists:classes,id',
+            'id_classe' => 'required|integer|exists:classes,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
-            'turma'=>'required|string',
+            'turma' => 'required|string',
 
         ], [], [
             'id_curso' => 'Curso',
-            'id_classe'=>'Classe',
+            'id_classe' => 'Classe',
             'id_ano_lectivo' => 'Ano Lectivo',
-            'turma'=>'Turma',
+            'turma' => 'Turma',
         ]);
 
         DB::beginTransaction();
@@ -69,19 +73,23 @@ class TurmaController extends Controller
         }
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $turma = Turma::find($id);
-        if(!$turma)
-        return back()->with('error', 'Nao encontrou');
+        if (!$turma)
+            return back()->with('error', 'Nao encontrou');
 
         $instituicaos = Instituicao::orderBy('instituicao', 'asc');
+        $cursos = Curso::where('id_instituicao', $turma->ano_lectivos->id_instituicao);
+        $classes = Classe::where('id_instituicao', $turma->ano_lectivos->id_instituicao);
+        $ano_lectivos = AnoLectivo::where('id_instituicao', $turma->ano_lectivos->id_instituicao);
 
         $title = 'Turmas - Nova';
         $type = 'extras';
         $menu = 'Turmas';
         $submenu = 'Nova';
 
-        return view('extras.turmas.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos'));
+        return view('extras.turmas.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'cursos', 'classes', 'ano_lectivos', 'turma'));
     }
 
     /**
@@ -105,20 +113,20 @@ class TurmaController extends Controller
     public function update(Request $request, $id)
     {
         $turma = Turma::find($id);
-        if(!$turma)
-        return back()->with('error', 'Nao encontrou');
+        if (!$turma)
+            return back()->with('error', 'Nao encontrou');
 
         $this->validate($request, [
             'id_curso' => 'required|integer|exists:cursos,id',
-            'id_classe'=>'required|integer|exists:classes,id',
+            'id_classe' => 'required|integer|exists:classes,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
-            'turma'=>'required|string',
+            'turma' => 'required|string',
 
         ], [], [
             'id_curso' => 'Curso',
-            'id_classe'=>'Classe',
+            'id_classe' => 'Classe',
             'id_ano_lectivo' => 'Ano Lectivo',
-            'turma'=>'Turma',
+            'turma' => 'Turma',
         ]);
 
         DB::beginTransaction();

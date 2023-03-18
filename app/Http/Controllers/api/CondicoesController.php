@@ -57,11 +57,13 @@ class CondicoesController extends Controller
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
             'data_inicio' => 'required|date',
             'data_fim' => 'required|date',
+            'estado'=>'required|string'
         ], [], [
             'id_instituicao' => 'Instituição',
             'id_ano_lectivo' => 'Ano Lectivo',
             'data_inicio' => 'Data de Início',
             'data_fim' => 'Data de Fim',
+            'estado'=>'Estado'
         ]);
 
         DB::beginTransaction();
@@ -126,16 +128,18 @@ class CondicoesController extends Controller
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
             'data_inicio' => 'required|date',
             'data_fim' => 'required|date',
+            'estado'=>'required|string'
         ], [], [
             'id_instituicao' => 'Instituição',
             'id_ano_lectivo' => 'Ano Lectivo',
             'data_inicio' => 'Data de Início',
             'data_fim' => 'Data de Fim',
+            'estado'=>'Estado'
         ]);
 
         DB::beginTransaction();
         try {
-            Classificador::find($id)->upate($request->all());
+            Classificador::find($id)->update($request->all());
             DB::commit();
             return back()->with('success', "Feito com sucesso!");
         } catch (\Exception $e) {

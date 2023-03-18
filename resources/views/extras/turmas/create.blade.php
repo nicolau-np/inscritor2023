@@ -31,7 +31,7 @@
                     @csrf
                     <div class="card-header">
                         <div class="card-title">Formulário de Cadastro
-                            &nbsp;&nbsp; <a href="/estudantes"><i class="fa
+                            &nbsp;&nbsp; <a href="/extras/turmas"><i class="fa
                                     fa-search"></i></a></div>
                     </div>
                     <div class="card-body">
@@ -48,7 +48,7 @@
                                     <div class="col-md-4">
                                         <label for="">Instituição <span
                                                 class="text-danger">*</span></label>
-                                                {{Form::select('id_instituicao', $instituicaos->pluck('instituicao', 'id'),null, ['placeholder'=>"Instituição", 'class'=>"form-control", 'id'=>"instituicao"])}}
+                                                {{Form::select('id_instituicao', $instituicaos->pluck('instituicao', 'id'), $turma->ano_lectivos->id_instituicao, ['placeholder'=>"Instituição", 'class'=>"form-control", 'id'=>"instituicao"])}}
                                         @if ($errors->has('id_instituicao'))
                                         <span class="text-danger">{{ $errors->first('id_instituicao')}}</span>
                                         @endif
