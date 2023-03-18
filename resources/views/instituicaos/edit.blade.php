@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    {{Form::open(['url'=>"instituicaos", 'method'=>"post"])}}
+                    {{Form::open(['url'=>"instituicaos/{$instituicao->id}", 'method'=>"put"])}}
                     @csrf
                     <div class="card-header">
                         <div class="card-title">Formulário de Cadastro
@@ -47,7 +47,7 @@
                                     <div class="col-md-6">
                                         <label for="">Instituição <span
                                                 class="text-danger">*</span></label>
-                                        {{Form::text('instituicao', null,
+                                        {{Form::text('instituicao', $instituicao->instituicao,
                                         ['placeholder'=>"Instituição",
                                         'class'=>"form-control"])}}
                                         @if ($errors->has('instituicao'))
@@ -59,7 +59,7 @@
                                                 class="text-danger">*</span></label>
                                         {{Form::select('id_provincia',
                                         $provincias->pluck('provincia',
-                                        'id'),null, ['placeholder'=>"Província",
+                                        'id'),$instituicao->municipios->id_provincia, ['placeholder'=>"Província",
                                         'class'=>"form-control", 'id'=>"provincia"])}}
                                         @if ($errors->has('id_provincia'))
                                         <span class="text-danger">{{ $errors->first('id_provincia')}}</span>
@@ -71,7 +71,7 @@
                                                 class="text-danger">*</span></label>
                                         <span id="load-municipios">
                                             {{Form::select('id_municipio',
-                                            [],null, ['placeholder'=>"Município",
+                                            $municipios->pluck('municipio', 'id'), $instituicao->id_municipio, ['placeholder'=>"Município",
                                             'class'=>"form-control"])}}
                                         </span>
 
@@ -82,7 +82,7 @@
 
                                     <div class="col-md-3">
                                         <label for="">Sígla </label>
-                                        {{Form::text('sigla', null,
+                                        {{Form::text('sigla', $instituicao->sigla,
                                         ['placeholder'=>"Sígla",
                                         'class'=>"form-control"])}}
                                         @if ($errors->has('sigla'))
@@ -93,7 +93,7 @@
                                     <div class="col-md-4">
                                         <label for="">Endereço <span
                                                 class="text-danger">*</span></label>
-                                        {{Form::text('endereco', null,
+                                        {{Form::text('endereco', $instituicao->endereco,
                                         ['placeholder'=>"Endereço", 'class'=>"form-control"])}}
                                         @if ($errors->has('endereco'))
                                         <span class="text-danger">{{ $errors->first('endereco')}}</span>
@@ -102,7 +102,7 @@
 
                                     <div class="col-md-3">
                                         <label for="">Telefone </label>
-                                        {{Form::number('telefone', null,
+                                        {{Form::number('telefone', $instituicao->telefone,
                                         ['placeholder'=>"Telefone", 'class'=>"form-control"])}}
                                         @if ($errors->has('telefone'))
                                         <span class="text-danger">{{ $errors->first('id_classe')}}</span>

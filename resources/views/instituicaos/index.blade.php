@@ -60,7 +60,7 @@
                         <td>
                             <a href="/instituicaos/edit/{{$instituicao->id}}" class="btn btn-primary btn-sm">Editar</a>
                             &nbsp;
-                            {{--<a href="/estudantes/destroy/{{$estudante->id}}" class="btn btn-danger btn-sm">Eliminar</a>--}}
+                            <a href="/instituicaos/users/{{$instituicao->id}}" class="btn btn-warning btn-sm">User</a>
                         </td>
                       </tr>
                      @endforeach

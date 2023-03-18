@@ -51,4 +51,6 @@ Route::prefix('instituicaos')->group(function () {
     Route::get('destroy/{id}', [InstituicaoController::class, 'delete']);
     Route::get('/', [InstituicaoController::class, 'index']);
     Route::get('/{id}', [InstituicaoController::class, 'show']);
+    Route::get('/users/{id}', [InstituicaoController::class, 'users']);
+    Route::put('/users/{id}', [InstituicaoController::class, 'usersStore']);
 });
