@@ -341,12 +341,17 @@
                             <p>Principal</p>
                           </a>
                         </li>
+
+                        @if(Auth::user()->nivel_acesso=='user')
                         <li class="nav-item {{$type=='estudantes'?'active':''}}">
                           <a href="/estudantes/create">
                             <i class="fas fa-users"></i>
                             <p>Estudantes</p>
                           </a>
                         </li>
+                        @endif
+
+                        @if(Auth::user()->nivel_acesso=='admin')
                         <li class="nav-item">
                           <a data-toggle="collapse" href="#sidebarLayouts">
                             <i class="fas fa-th-list"></i>
@@ -368,13 +373,16 @@
                             </ul>
                           </div>
                         </li>
-                        <li class="nav-item {{$type=='extras'?'active':null}}">
+                        @endif
+
+                        @if(Auth::user()->nivel_acesso=='manager')
+                        <li class="nav-item {{$type=='extras'?'active submenu':null}}">
                           <a data-toggle="collapse" href="#base">
                             <i class="fas fa-cogs"></i>
                             <p>Extras</p>
                             <span class="caret"></span>
                           </a>
-                          <div class="collapse" id="base">
+                          <div class="collapse {{$type=='extras'?'show':null}}" id="base">
                             <ul class="nav nav-collapse">
                               <li class="{{$menu=='Cursos'?'active':null}}">
                                 <a href="/extras/cursos">
@@ -416,6 +424,7 @@
                             <p>Instituições</p>
                           </a>
                         </li>
+                        @endif
 
                         <li class="nav-item">
                           <a data-toggle="collapse" href="#sidebarSobre">
