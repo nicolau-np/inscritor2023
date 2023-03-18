@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Instituicao;
+use App\Models\Provincia;
 use Illuminate\Http\Request;
 
 class InstituicaoController extends Controller
@@ -14,7 +16,24 @@ class InstituicaoController extends Controller
      */
     public function index()
     {
-        //
+        $instituicaos = Instituicao::paginate(10);
+        $title = 'Instituição - Listar';
+        $type = 'instituicaos';
+        $menu = 'Instituição';
+        $submenu = 'Listar';
+
+        return view('instituicaos.index', compact('title', 'type', 'menu', 'submenu', 'instituicaos'));
+    }
+
+    public function create()
+    {
+        $provincias = Provincia::orderBy('provincia', 'asc');
+        $title = 'Instituição - Nova';
+        $type = 'instituicaos';
+        $menu = 'Instituição';
+        $submenu = 'Nova';
+
+        return view('instituicaos.create', compact('title', 'type', 'menu', 'submenu', 'provincias'));
     }
 
     /**

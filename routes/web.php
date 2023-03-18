@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AjaxRequestController;
 use App\Http\Controllers\api\EstudanteController;
+use App\Http\Controllers\api\InstituicaoController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +22,10 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
+
 Route::get('home', [HomeController::class, 'home'])->middleware('auth')->name('home');
+
+Route::get('municipios/{id}', [AjaxRequestController::class, 'municipio']);
 
 Route::prefix('user')->group(function () {
     Route::get('login', [UserController::class, 'login'])->name('login')->middleware('guest');
@@ -36,4 +41,14 @@ Route::prefix('estudantes')->group(function () {
     Route::get('destroy/{id}', [EstudanteController::class, 'delete']);
     Route::get('/', [EstudanteController::class, 'index']);
     Route::get('/{id}', [EstudanteController::class, 'show']);
+});
+
+Route::prefix('instituicaos')->group(function () {
+    Route::get('/create', [InstituicaoController::class, 'create']);
+    Route::post('/', [InstituicaoController::class, 'store']);
+    Route::get('edit/{id}', [InstituicaoController::class, 'edit']);
+    Route::put('/{id}', [InstituicaoController::class, 'update']);
+    Route::get('destroy/{id}', [InstituicaoController::class, 'delete']);
+    Route::get('/', [InstituicaoController::class, 'index']);
+    Route::get('/{id}', [InstituicaoController::class, 'show']);
 });

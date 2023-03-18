@@ -410,8 +410,8 @@
                           </div>
                         </li>
 
-                        <li class="nav-item">
-                          <a href="widgets.html">
+                        <li class="nav-item {{$type=='instituicaos'?'active':null}}">
+                          <a href="/instituicaos">
                             <i class="fas fa-desktop"></i>
                             <p>Instituições</p>
                           </a>

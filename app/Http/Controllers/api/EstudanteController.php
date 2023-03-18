@@ -23,7 +23,8 @@ class EstudanteController extends Controller
      */
     public function index()
     {
-        $estudantes = Estudante::with('pessoas')->paginate(10);
+        $id_instituicao = Auth::user()->id_instituicao;
+        $estudantes = Estudante::with('pessoas')->where('id_instituicao', $id_instituicao)->paginate(10);
 
         $title = 'Estudantes - Listar';
         $type = 'estudantes';
@@ -106,7 +107,7 @@ class EstudanteController extends Controller
      */
     public function show($id)
     {
-        $estudante = Estudante::find($id);
+        $estudante = Estudante::where(['id' => $id, 'id_instituicao' => Auth::user()->id_instituicao])->first();
         if (!$estudante)
             return back()->with('errors', "Nao encontrou");
 
@@ -120,7 +121,7 @@ class EstudanteController extends Controller
 
     public function edit($id)
     {
-        $estudante = Estudante::find($id);
+        $estudante = Estudante::where(['id' => $id, 'id_instituicao' => Auth::user()->id_instituicao])->first();
         if (!$estudante)
             return back()->with('errors', "Nao encontrou");
 
@@ -146,7 +147,7 @@ class EstudanteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $estudante = Estudante::find($id);
+        $estudante = Estudante::where(['id' => $id, 'id_instituicao' => Auth::user()->id_instituicao])->first();
         if (!$estudante)
             return response(['errors' => "Nao encontrou"], 400);
 
@@ -198,7 +199,7 @@ class EstudanteController extends Controller
      */
     public function destroy($id)
     {
-        $estudante = Estudante::find($id);
+        $estudante = Estudante::where(['id' => $id, 'id_instituicao' => Auth::user()->id_instituicao])->first();
         if (!$estudante)
             return response('errors', "Nao encontrou");
 
