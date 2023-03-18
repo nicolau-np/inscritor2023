@@ -191,9 +191,9 @@ class InstituicaoController extends Controller
         $password = Hash::make('puniv2023');
 
         $data['person'] = [
-            'nome',
-            'data_nascimento',
-            'genero',
+            'nome'=>$request->nome,
+            'data_nascimento'=>$request->data_nascimento,
+            'genero'=>$request->genero,
         ];
 
         $data['user'] = [

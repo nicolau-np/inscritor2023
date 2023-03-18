@@ -99,6 +99,11 @@
                                         @endif
                                     </div>
 
+                                    <div class="col-md-12 mt-4">
+                                        <button class="btn btn-success" type="submit">Salvar</button>
+                                        <button class="btn btn-danger" type="reset">Cancelar</button>
+                                    </div>
+
                                     </div>
 
                                 </div>
@@ -141,8 +146,7 @@
                         </div>
                     </div>
                     <div class="card-action">
-                        <button class="btn btn-success" type="submit">Salvar</button>
-                        <button class="btn btn-danger" type="reset">Cancelar</button>
+
                     </div>
                     {{Form::close()}}
                 </div>
