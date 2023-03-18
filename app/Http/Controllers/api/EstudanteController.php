@@ -23,7 +23,7 @@ class EstudanteController extends Controller
      */
     public function index()
     {
-        $estudantes = Estudante::paginate(10);
+        $estudantes = Estudante::with('pessoas')->paginate(10);
 
         $title = 'Estudantes - Listar';
         $type = 'estudantes';
@@ -36,14 +36,15 @@ class EstudanteController extends Controller
     public function create()
     {
         $id_instituicao = Auth::user()->id_instituicao;
-        $ano_lectivos = AnoLectivo::where('id_instituicao', $id_instituicao)->orderBy('id', 'desc')->pluck('ano', 'id');
-        $classes = Classe::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc')->pluck('classe', 'id');
+        $ano_lectivos = AnoLectivo::where('id_instituicao', $id_instituicao)->orderBy('id', 'desc');
+        $classes = Classe::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc');
         $cursos = Curso::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc')->pluck('curso', 'id');
+
         $title = 'Estudantes - Novo';
         $type = 'estudantes';
         $menu = 'Estudantes';
         $submenu = 'Novo';
-        return view('estudantes.create', compact('title', 'type', 'menu', 'submenu', 'ano_lectivos', 'classes'));
+        return view('estudantes.create', compact('title', 'type', 'menu', 'submenu', 'ano_lectivos', 'classes', 'cursos'));
     }
 
     /**
@@ -59,12 +60,14 @@ class EstudanteController extends Controller
             'data_nascimento' => 'required|date|before_or_equal:today',
             'genero' => 'required|string',
             'id_classe' => 'required|integer|exists:classes,id',
-            'id_ano_lectivo' => 'required|integer|ano_lectivos,id',
+            'id_curso' => 'required|integer|exists:cursos,id',
+            'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
         ], [], [
             'nome' => 'Nome',
             'data_nascimento' => 'Data de Nascimento',
             'genero' => 'Gênero',
             'id_classe' => 'Classe',
+            'id_curso' => 'Curso',
             'id_ano_lectivo' => 'Ano Lectivo',
         ]);
 
@@ -76,12 +79,11 @@ class EstudanteController extends Controller
 
         $data['student'] = [
             'id_pessoa' => null,
-            'id_instituicao' => $request->id_instituicao,
+            'id_instituicao' => Auth::user()->id_instituicao,
             'id_classe' => $request->id_classe,
+            'id_curso' => $request->id_curso,
             'id_ano_lectivo' => $request->id_ano_lectivo,
         ];
-
-        dd($data['student']);
 
         DB::beginTransaction();
         try {
@@ -89,7 +91,7 @@ class EstudanteController extends Controller
             $data['student']['id_pessoa'] = $pessoa->id;
             $estudante = Estudante::create($data['student']);
             DB::commit();
-            return new EstudanteResource($estudante);
+            return back()->with('success', "Feito com sucesso");
         } catch (\Exception $e) {
             DB::rollBack();
             return response(['error' => $e->getMessage()], 500);
@@ -122,12 +124,17 @@ class EstudanteController extends Controller
         if (!$estudante)
             return back()->with('errors', "Nao encontrou");
 
+        $id_instituicao = Auth::user()->id_instituicao;
+        $ano_lectivos = AnoLectivo::where('id_instituicao', $id_instituicao)->orderBy('id', 'desc');
+        $classes = Classe::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc');
+        $cursos = Curso::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc')->pluck('curso', 'id');
+
         $title = 'Estudantes - Editar';
         $type = 'estudantes';
         $menu = 'Estudantes';
         $submenu = 'Editar';
 
-        return view('estudantes.edit', compact('title', 'type', 'menu', 'submenu', 'estudante'));
+        return view('estudantes.edit', compact('title', 'type', 'menu', 'submenu', 'estudante', 'cursos', 'classes', 'ano_lectivos'));
     }
 
     /**
@@ -147,15 +154,15 @@ class EstudanteController extends Controller
             'nome' => 'required|string|min:10',
             'data_nascimento' => 'required|date|before_or_equal:today',
             'genero' => 'required|string',
-            'id_instituicao' => 'required|integer|exists:instituicaos,id',
             'id_classe' => 'required|integer|exists:classes,id',
-            'id_ano_lectivo' => 'required|integer|ano_lectivos,id',
+            'id_curso' => 'required|integer|exists:cursos,id',
+            'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
         ], [], [
             'nome' => 'Nome',
             'data_nascimento' => 'Data de Nascimento',
             'genero' => 'Gênero',
-            'id_instituicao' => 'Instituição',
             'id_classe' => 'Classe',
+            'id_curso' => 'Curso',
             'id_ano_lectivo' => 'Ano Lectivo',
         ]);
 
@@ -166,8 +173,8 @@ class EstudanteController extends Controller
         ];
 
         $data['student'] = [
-            'id_instituicao' => $request->id_instituicao,
             'id_classe' => $request->id_classe,
+            'id_curso' => $request->id_curso,
             'id_ano_lectivo' => $request->id_ano_lectivo,
         ];
 

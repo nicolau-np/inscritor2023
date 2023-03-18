@@ -37,4 +37,8 @@ class Pessoa extends Model
     {
         return $this->hasMany(User::class, 'id_pessoa');
     }
+
+    public function estudantes(){
+        return $this->hasMany(Estudante::class, 'id_pessoa');
+    }
 }

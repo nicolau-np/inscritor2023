@@ -21,6 +21,10 @@ class Estudante extends Model
         'estado',
     ];
 
+    public function pessoas(){
+        return $this->belongsTo(Pessoa::class, 'id_pessoa');
+    }
+
     public function instituicaos()
     {
         return $this->belongsTo(Instituicao::class, 'id_instituicao');

@@ -79,19 +79,19 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <label for="">Curso <span
                                                 class="text-danger">*</span></label>
-                                                {{Form::select('id_classe', $cursos,null, ['placeholder'=>"Curso", 'class'=>"form-control"])}}
+                                                {{Form::select('id_curso', $cursos,null, ['placeholder'=>"Curso", 'class'=>"form-control"])}}
                                         @if ($errors->has('id_curso'))
                                         <span class="text-danger">{{ $errors->first('id_curso')}}</span>
                                         @endif
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="">Classe <span
                                                 class="text-danger">*</span></label>
-                                                {{Form::select('id_classe', $classes,null, ['placeholder'=>"Classe", 'class'=>"form-control"])}}
+                                                {{Form::select('id_classe', $classes->pluck('classe', 'id'), $classes->get()->first()->id, ['placeholder'=>"Classe", 'class'=>"form-control"])}}
                                         @if ($errors->has('id_classe'))
                                         <span class="text-danger">{{ $errors->first('id_classe')}}</span>
                                         @endif
@@ -100,7 +100,7 @@
                                     <div class="col-md-4">
                                         <label for="">Ano Lectivo <span
                                                 class="text-danger">*</span></label>
-                                                {{Form::select('id_ano_lectivo', $ano_lectivos, null, ['placeholder'=>"Ano Lectivo", 'class'=>"form-control"])}}
+                                                {{Form::select('id_ano_lectivo', $ano_lectivos->pluck('ano', 'id'), $ano_lectivos->get()->first()->id, ['placeholder'=>"Ano Lectivo", 'class'=>"form-control"])}}
                                         @if ($errors->has('id_ano_lectivo'))
                                         <span class="text-danger">{{ $errors->first('id_ano_lectivo')}}</span>
                                         @endif

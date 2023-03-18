@@ -35,35 +35,41 @@
               <div class="row">
                 <div class="col-md-12">
 
-                  <table class="table table-head-bg-primary mt-4">
+                    <div class="table-responsive">
+                        <table class="table table-head-bg-primary mt-4">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Nome Completo</th>
+                        <th scope="col">Gênero</th>
+                        <th scope="col">Data de Nascimento</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Ano Lectivo</th>
+                        <th scope="col">Operações</th>
                       </tr>
                     </thead>
                     <tbody>
+                        @foreach($estudantes as $estudante)
                       <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$estudante->pessoas->nome}}</td>
+                        <td>{{$estudante->pessoas->genero}}</td>
+                        <td>{{date('d-m-Y', strtotime($estudante->pessoas->data_nascimento))}}</td>
+                        <td>{{$estudante->cursos->curso}}</td>
+                        <td>{{$estudante->ano_lectivos->ano}}</td>
+                        <td>
+                            <a href="/estudantes/edit/{{$estudante->id}}" class="btn btn-primary btn-sm">Editar</a>
+                            &nbsp;
+                            {{--<a href="/estudantes/destroy/{{$estudante->id}}" class="btn btn-danger btn-sm">Eliminar</a>--}}
+                        </td>
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
+                     @endforeach
                     </tbody>
                   </table>
+                    </div>
+<div class="paginate">
+{{$estudantes->links()}}
+</div>
                 </div>
               </div>
             </div>
