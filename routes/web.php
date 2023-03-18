@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjaxRequestController;
 use App\Http\Controllers\api\AnoLectivoController;
 use App\Http\Controllers\api\ClasseController;
+use App\Http\Controllers\api\CondicoesController;
 use App\Http\Controllers\api\CursoController;
 use App\Http\Controllers\api\EmolumentoController;
 use App\Http\Controllers\api\EstudanteController;
@@ -93,13 +94,13 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
     });
 
     Route::prefix('condicoes')->group(function () {
-        /*Route::get('/create', [Condico::class, 'create']);
-        Route::post('/', [TurmaController::class, 'store']);
-        Route::get('edit/{id}', [TurmaController::class, 'edit']);
-        Route::put('/{id}', [TurmaController::class, 'update']);
-        Route::get('destroy/{id}', [TurmaController::class, 'delete']);
-        Route::get('/', [TurmaController::class, 'index']);
-        Route::get('/{id}', [TurmaController::class, 'show']);*/
+        Route::get('/create', [CondicoesController::class, 'create']);
+        Route::post('/', [CondicoesController::class, 'store']);
+        Route::get('edit/{id}', [CondicoesController::class, 'edit']);
+        Route::put('/{id}', [CondicoesController::class, 'update']);
+        Route::get('destroy/{id}', [CondicoesController::class, 'delete']);
+        Route::get('/', [CondicoesController::class, 'index']);
+        Route::get('/{id}', [CondicoesController::class, 'show']);
     });
 
     Route::prefix('emolumentos')->group(function () {
