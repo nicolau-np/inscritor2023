@@ -99,7 +99,27 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $curso = Curso::find($id);
+        if (!$curso)
+            return back()->with('error', "Nao encontrou");
+
+        $this->validate($request, [
+            'curso' => 'required|string',
+            'id_instituicao' => 'required|integer|exists:instituicaos,id',
+        ], [], [
+            'curso' => 'Curso',
+            'id_instituicao' => 'Instituição'
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $curso = Curso::find($id)->update($request->all());
+            DB::commit();
+            return back()->with('success', "Feito com sucesso!");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**
