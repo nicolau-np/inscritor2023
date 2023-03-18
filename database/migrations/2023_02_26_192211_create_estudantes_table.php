@@ -19,6 +19,7 @@ class CreateEstudantesTable extends Migration
             $table->bigInteger('id_pessoa')->unsigned()->index();
             $table->bigInteger('id_instituicao')->unsigned()->index();
             $table->bigInteger('id_classe')->unsigned()->index();
+            $table->bigInteger('id_curso')->unsigned()->index();
             $table->bigInteger('id_ano_lectivo')->unsigned()->index();
             $table->string('estado_classificacao')->nullable();
             $table->string('estado')->default('on');
@@ -29,6 +30,7 @@ class CreateEstudantesTable extends Migration
             $table->foreign('id_pessoa')->references('id')->on('pessoas')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_instituicao')->references('id')->on('instituicaos')->onUpdate('cascade');
             $table->foreign('id_classe')->references('id')->on('classes')->onUpdate('cascade');
+            $table->foreign('id_curso')->references('id')->on('cursos')->onUpdate('cascade');
             $table->foreign('id_ano_lectivo')->references('id')->on('ano_lectivos')->onUpdate('cascade');
         });
     }

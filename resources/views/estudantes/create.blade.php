@@ -27,19 +27,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    {{Form::open(['url'=>"estudantes", 'method'=>"post"])}}
                     <div class="card-header">
                         <div class="card-title">Formulário de Cadastro
                             &nbsp;&nbsp; <a href="/estudantes"><i class="fa
                                     fa-search"></i></a></div>
                     </div>
                     <div class="card-body">
+
                         <div class="row">
                             <div class="col-md-12">
                                 @include('includes.messages')
                             </div>
 
                             <div class="col-md-12">
-                                {{Form::open(['url'=>"estudantes", 'method'=>"post"])}}
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="">Nome Completo <span
@@ -54,16 +56,17 @@
                                     <div class="col-md-2">
                                         <label for="">Gênero <span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-control"
-                                            name="genero">
-                                            <option value="" hidden>Gênero</option>
-                                            <option value="M">M</option>
-                                            <option value="F">F</option>
-                                        </select>
+                                        {{Form::select('genero', [
+                                        'M'=>"M",
+                                        'F'=>"F"
+                                        ],null, ['placeholder'=>"Gênero", 'class'=>"form-control"])}}
+
                                         @if ($errors->has('genero'))
                                         <span class="text-danger">{{ $errors->first('genero')}}</span>
                                         @endif
                                     </div>
+
+
 
                                     <div class="col-md-4">
                                         <label for="">Data de Nascimento <span
@@ -77,12 +80,18 @@
                                     </div>
 
                                     <div class="col-md-3">
+                                        <label for="">Curso <span
+                                                class="text-danger">*</span></label>
+                                                {{Form::select('id_classe', $cursos,null, ['placeholder'=>"Curso", 'class'=>"form-control"])}}
+                                        @if ($errors->has('id_curso'))
+                                        <span class="text-danger">{{ $errors->first('id_curso')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-3">
                                         <label for="">Classe <span
                                                 class="text-danger">*</span></label>
-                                        <select name="id_classe"
-                                            class="form-control">
-                                            <option value=""></option>
-                                        </select>
+                                                {{Form::select('id_classe', $classes,null, ['placeholder'=>"Classe", 'class'=>"form-control"])}}
                                         @if ($errors->has('id_classe'))
                                         <span class="text-danger">{{ $errors->first('id_classe')}}</span>
                                         @endif
@@ -91,24 +100,22 @@
                                     <div class="col-md-4">
                                         <label for="">Ano Lectivo <span
                                                 class="text-danger">*</span></label>
-                                        <select name="id_ano_lectivo"
-                                            class="form-control">
-                                            <option value=""></option>
-                                        </select>
+                                                {{Form::select('id_ano_lectivo', $ano_lectivos, null, ['placeholder'=>"Ano Lectivo", 'class'=>"form-control"])}}
                                         @if ($errors->has('id_ano_lectivo'))
                                         <span class="text-danger">{{ $errors->first('id_ano_lectivo')}}</span>
                                         @endif
                                     </div>
 
                                 </div>
-                                {{Form::close()}}
+
                             </div>
                         </div>
                     </div>
                     <div class="card-action">
-                        <button class="btn btn-success">Submit</button>
-                        <button class="btn btn-danger">Cancel</button>
+                        <button class="btn btn-success" type="submit">Salvar</button>
+                        <button class="btn btn-danger" type="reset">Cancelar</button>
                     </div>
+                    {{Form::close()}}
                 </div>
             </div>
         </div>

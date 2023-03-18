@@ -35,7 +35,7 @@ class UsuarioSeeder extends Seeder
                 'password' => Hash::make('welwitchia2023'),
                 'nivel_acesso' => 'user',
                 'estado' => 'on',
-            ],
+            ]
         );
     }
 }

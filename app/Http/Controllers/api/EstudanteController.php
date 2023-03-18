@@ -4,9 +4,14 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EstudanteResource;
+use App\Models\AnoLectivo;
+use App\Models\Classe;
+use App\Models\Curso;
 use App\Models\Estudante;
+use App\Models\Instituicao;
 use App\Models\Pessoa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EstudanteController extends Controller
@@ -30,11 +35,15 @@ class EstudanteController extends Controller
 
     public function create()
     {
+        $id_instituicao = Auth::user()->id_instituicao;
+        $ano_lectivos = AnoLectivo::where('id_instituicao', $id_instituicao)->orderBy('id', 'desc')->pluck('ano', 'id');
+        $classes = Classe::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc')->pluck('classe', 'id');
+        $cursos = Curso::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc')->pluck('curso', 'id');
         $title = 'Estudantes - Novo';
         $type = 'estudantes';
         $menu = 'Estudantes';
         $submenu = 'Novo';
-        return view('estudantes.create', compact('title', 'type', 'menu', 'submenu'));
+        return view('estudantes.create', compact('title', 'type', 'menu', 'submenu', 'ano_lectivos', 'classes'));
     }
 
     /**
@@ -49,14 +58,12 @@ class EstudanteController extends Controller
             'nome' => 'required|string|min:10',
             'data_nascimento' => 'required|date|before_or_equal:today',
             'genero' => 'required|string',
-            'id_instituicao' => 'required|integer|exists:instituicaos,id',
             'id_classe' => 'required|integer|exists:classes,id',
             'id_ano_lectivo' => 'required|integer|ano_lectivos,id',
         ], [], [
             'nome' => 'Nome',
             'data_nascimento' => 'Data de Nascimento',
             'genero' => 'Gênero',
-            'id_instituicao' => 'Instituição',
             'id_classe' => 'Classe',
             'id_ano_lectivo' => 'Ano Lectivo',
         ]);
@@ -73,6 +80,8 @@ class EstudanteController extends Controller
             'id_classe' => $request->id_classe,
             'id_ano_lectivo' => $request->id_ano_lectivo,
         ];
+
+        dd($data['student']);
 
         DB::beginTransaction();
         try {
@@ -107,7 +116,8 @@ class EstudanteController extends Controller
         return view('estudantes.show', compact('title', 'type', 'menu', 'submenu', 'estudante'));
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $estudante = Estudante::find($id);
         if (!$estudante)
             return back()->with('errors', "Nao encontrou");
@@ -188,6 +198,5 @@ class EstudanteController extends Controller
         Pessoa::find($estudante->id_pessoa)->delete();
 
         return back()->with('success', "Feito com sucesso!");
-
-   }
+    }
 }

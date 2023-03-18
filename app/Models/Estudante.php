@@ -15,20 +15,29 @@ class Estudante extends Model
         'id_pessoa',
         'id_instituicao',
         'id_classe',
+        'id_curso',
         'id_ano_lectivo',
         'estado_classificacao',
         'estado',
     ];
 
-    public function instituicaos(){
+    public function instituicaos()
+    {
         return $this->belongsTo(Instituicao::class, 'id_instituicao');
     }
 
-    public function classes(){
+    public function classes()
+    {
         return $this->belongsTo(Classe::class, 'id_classe');
     }
 
-    public function ano_lectivos(){
+    public function ano_lectivos()
+    {
         return $this->belongsTo(AnoLectivo::class, 'id_ano_lectivo');
+    }
+
+    public function cursos()
+    {
+        return $this->belongsTo(Curso::class, 'id_curso');
     }
 }
