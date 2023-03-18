@@ -17,7 +17,7 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        $cursos = Classe::paginate(10);
+        $classes = Classe::paginate(10);
         $title = 'Classes - Listar';
         $type = 'extras';
         $menu = 'Classes';
@@ -49,7 +49,7 @@ class ClasseController extends Controller
             'classe' => 'required|string',
             'id_instituicao' => 'required|integer|exists:instituicaos,id',
         ], [], [
-            'classe' => 'Curso',
+            'classe' => 'Classe',
             'id_instituicao' => 'Instituição'
         ]);
 
@@ -76,7 +76,7 @@ class ClasseController extends Controller
         $menu = 'Classes';
         $submenu = 'Nova';
 
-        return view('extras.classes.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos'));
+        return view('extras.classes.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'classe'));
     }
 
     /**
