@@ -28,7 +28,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">Listar Classes &nbsp;&nbsp; <a
+              <div class="card-title">Listar Turmas &nbsp;&nbsp; <a
                   href="/extras/turmas/create"><i class="fa fa-plus-circle"></i></a></div>
             </div>
             <div class="card-body">
@@ -53,7 +53,7 @@
                       <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$turma->turma}}</td>
-                        <td>{{$turma->instituicaos->instituicao}}</td>
+                        <td>{{$turma->ano_lectivos->instituicaos->instituicao}}</td>
                         <td>{{$turma->cursos->curso}}</td>
                         <td>{{$turma->classes->classe}}</td>
                         <td>{{$turma->ano_lectivos->ano}}</td>

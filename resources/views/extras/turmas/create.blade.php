@@ -92,7 +92,7 @@
                                     <div class="col-md-3">
                                         <label for="">Ano Lectivo <span
                                                 class="text-danger">*</span></label>
-                                        <span id="load-ano">
+                                        <span id="load-anos">
                                             {{Form::select('id_ano_lectivo',[], null,
                                             ['placeholder'=>"Ano Lectivo",
                                             'class'=>"form-control"])}}
@@ -122,7 +122,7 @@ var instituicao = document.getElementById('instituicao');
 
 instituicao.addEventListener('change', function (e) {
     getCursos(instituicao.value);
-    getClasses(instituicao.value);
+   getClasses(instituicao.value);
     getAnos(instituicao.value);
 });
 
