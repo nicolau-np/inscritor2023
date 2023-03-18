@@ -99,13 +99,13 @@ class CondicoesController extends Controller
             return back()->with('errors', "Nao encontrou");
 
         $instituicaos = Instituicao::orderBy('instituicao', 'asc');
-        $ano_lectivos = AnoLectivo::where('id_instituicao', $condicao->id_instituicao)->orderBy('ano_lectivos', 'asc');
+        $ano_lectivos = AnoLectivo::where('id_instituicao', $condicao->id_instituicao)->orderBy('id', 'desc');
         $title = 'Condições - Nova';
         $type = 'extras';
         $menu = 'Condições';
         $submenu = 'Nova';
 
-        return view('extras.condicoes.create', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos'));
+        return view('extras.condicoes.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos', 'condicao'));
     }
 
     /**

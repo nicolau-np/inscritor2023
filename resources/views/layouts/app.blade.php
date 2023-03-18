@@ -400,7 +400,7 @@
                                 </a>
                               </li>
                               <li class="{{$menu=='Condições'?'active':null}}">
-                                <a href="/extras/condicoes">
+                                <a href="/extras/condicaos">
                                   <span class="sub-item">Condições</span>
                                 </a>
                               </li>

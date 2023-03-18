@@ -101,7 +101,7 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
         Route::get('/{id}', [TurmaController::class, 'show']);
     });
 
-    Route::prefix('condicoes')->group(function () {
+    Route::prefix('condicaos')->group(function () {
         Route::get('/create', [CondicoesController::class, 'create']);
         Route::post('/', [CondicoesController::class, 'store']);
         Route::get('edit/{id}', [CondicoesController::class, 'edit']);
