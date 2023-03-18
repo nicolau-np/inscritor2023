@@ -48,7 +48,7 @@ class AnoLectivoController extends Controller
     {
         $this->validate($request, [
             'id_instituicao' => 'required|integer|exists:instituicaos,id',
-            'ano' => 'required|integer',
+            'ano' => 'required|string',
         ], [], [
             'id_instituicao' => 'Instituição',
             'ano' => 'Ano Lectivo',
@@ -88,7 +88,7 @@ class AnoLectivoController extends Controller
         $menu = 'Ano Lectivo';
         $submenu = 'Editar';
 
-        return view('extras.ano_lectivos.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos'));
+        return view('extras.ano_lectivos.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivo'));
     }
 
     /**
@@ -106,7 +106,7 @@ class AnoLectivoController extends Controller
 
         $this->validate($request, [
             'id_instituicao' => 'required|integer|exists:instituicaos,id',
-            'ano' => 'required|integer',
+            'ano' => 'required|string',
         ], [], [
             'id_instituicao' => 'Instituição',
             'ano' => 'Ano Lectivo',
