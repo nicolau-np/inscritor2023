@@ -1,8 +1,13 @@
 <?php
 
 use App\Http\Controllers\AjaxRequestController;
+use App\Http\Controllers\api\AnoLectivoController;
+use App\Http\Controllers\api\ClasseController;
+use App\Http\Controllers\api\CursoController;
+use App\Http\Controllers\api\EmolumentoController;
 use App\Http\Controllers\api\EstudanteController;
 use App\Http\Controllers\api\InstituicaoController;
+use App\Http\Controllers\api\TurmaController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +38,7 @@ Route::prefix('user')->group(function () {
     Route::post('login', [UserController::class, 'logar']);
 });
 
-Route::prefix('estudantes')->group(function () {
+Route::prefix('estudantes')->middleware('auth.user')->group(function () {
     Route::get('/create', [EstudanteController::class, 'create']);
     Route::post('/', [EstudanteController::class, 'store']);
     Route::get('edit/{id}', [EstudanteController::class, 'edit']);
@@ -43,7 +48,7 @@ Route::prefix('estudantes')->group(function () {
     Route::get('/{id}', [EstudanteController::class, 'show']);
 });
 
-Route::prefix('instituicaos')->group(function () {
+Route::prefix('instituicaos')->middleware('auth.manager')->group(function () {
     Route::get('/create', [InstituicaoController::class, 'create']);
     Route::post('/', [InstituicaoController::class, 'store']);
     Route::get('edit/{id}', [InstituicaoController::class, 'edit']);
@@ -53,4 +58,67 @@ Route::prefix('instituicaos')->group(function () {
     Route::get('/{id}', [InstituicaoController::class, 'show']);
     Route::get('/users/{id}', [InstituicaoController::class, 'users']);
     Route::put('/users/{id}', [InstituicaoController::class, 'usersStore']);
+});
+
+Route::prefix('extras')->middleware('auth.manager')->group(function () {
+
+    Route::prefix('cursos')->group(function () {
+        Route::get('/create', [CursoController::class, 'create']);
+        Route::post('/', [CursoController::class, 'store']);
+        Route::get('edit/{id}', [CursoController::class, 'edit']);
+        Route::put('/{id}', [CursoController::class, 'update']);
+        Route::get('destroy/{id}', [CursoController::class, 'delete']);
+        Route::get('/', [CursoController::class, 'index']);
+        Route::get('/{id}', [CursoController::class, 'show']);
+    });
+
+    Route::prefix('classes')->group(function () {
+        Route::get('/create', [ClasseController::class, 'create']);
+        Route::post('/', [ClasseController::class, 'store']);
+        Route::get('edit/{id}', [ClasseController::class, 'edit']);
+        Route::put('/{id}', [ClasseController::class, 'update']);
+        Route::get('destroy/{id}', [ClasseController::class, 'delete']);
+        Route::get('/', [ClasseController::class, 'index']);
+        Route::get('/{id}', [ClasseController::class, 'show']);
+    });
+
+    Route::prefix('turmas')->group(function () {
+        Route::get('/create', [TurmaController::class, 'create']);
+        Route::post('/', [TurmaController::class, 'store']);
+        Route::get('edit/{id}', [TurmaController::class, 'edit']);
+        Route::put('/{id}', [TurmaController::class, 'update']);
+        Route::get('destroy/{id}', [TurmaController::class, 'delete']);
+        Route::get('/', [TurmaController::class, 'index']);
+        Route::get('/{id}', [TurmaController::class, 'show']);
+    });
+
+    Route::prefix('condicoes')->group(function () {
+        /*Route::get('/create', [Condico::class, 'create']);
+        Route::post('/', [TurmaController::class, 'store']);
+        Route::get('edit/{id}', [TurmaController::class, 'edit']);
+        Route::put('/{id}', [TurmaController::class, 'update']);
+        Route::get('destroy/{id}', [TurmaController::class, 'delete']);
+        Route::get('/', [TurmaController::class, 'index']);
+        Route::get('/{id}', [TurmaController::class, 'show']);*/
+    });
+
+    Route::prefix('emolumentos')->group(function () {
+        Route::get('/create', [EmolumentoController::class, 'create']);
+        Route::post('/', [EmolumentoController::class, 'store']);
+        Route::get('edit/{id}', [EmolumentoController::class, 'edit']);
+        Route::put('/{id}', [EmolumentoController::class, 'update']);
+        Route::get('destroy/{id}', [EmolumentoController::class, 'delete']);
+        Route::get('/', [EmolumentoController::class, 'index']);
+        Route::get('/{id}', [EmolumentoController::class, 'show']);
+    });
+
+    Route::prefix('ano_lectivos')->group(function () {
+        Route::get('/create', [AnoLectivoController::class, 'create']);
+        Route::post('/', [AnoLectivoController::class, 'store']);
+        Route::get('edit/{id}', [AnoLectivoController::class, 'edit']);
+        Route::put('/{id}', [AnoLectivoController::class, 'update']);
+        Route::get('destroy/{id}', [AnoLectivoController::class, 'delete']);
+        Route::get('/', [AnoLectivoController::class, 'index']);
+        Route::get('/{id}', [AnoLectivoController::class, 'show']);
+    });
 });

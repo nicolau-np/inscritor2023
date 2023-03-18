@@ -368,7 +368,7 @@
                             </ul>
                           </div>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{$type=='extras'?'active':null}}">
                           <a data-toggle="collapse" href="#base">
                             <i class="fas fa-cogs"></i>
                             <p>Extras</p>
@@ -376,33 +376,33 @@
                           </a>
                           <div class="collapse" id="base">
                             <ul class="nav nav-collapse">
-                              <li>
-                                <a href="components/avatars.html">
+                              <li class="{{$menu=='Cursos'?'active':null}}">
+                                <a href="/extras/cursos">
                                   <span class="sub-item">Cursos</span>
                                 </a>
                               </li>
-                              <li>
-                                <a href="components/buttons.html">
+                              <li class="{{$menu=='Classes'?'active':null}}">
+                                <a href="/extras/classes">
                                   <span class="sub-item">Classes</span>
                                 </a>
                               </li>
-                              <li>
-                                <a href="components/gridsystem.html">
+                              <li class="{{$menu=='Turmas'?'active':null}}">
+                                <a href="/extras/turmas">
                                   <span class="sub-item">Turmas</span>
                                 </a>
                               </li>
-                              <li>
-                                <a href="components/panels.html">
+                              <li class="{{$menu=='Condições'?'active':null}}">
+                                <a href="/extras/condicoes">
                                   <span class="sub-item">Condições</span>
                                 </a>
                               </li>
-                              <li>
-                                <a href="components/notifications.html">
+                              <li class="{{$menu=='Emolumentos'?'active':null}}">
+                                <a href="/extras/emolumentos">
                                   <span class="sub-item">Emolumentos</span>
                                 </a>
                               </li>
-                              <li>
-                                <a href="components/sweetalert.html">
+                              <li class="{{$menu=='Ano Lectivo'?'active':null}}">
+                                <a href="/extras/ano_lectivos">
                                   <span class="sub-item">Ano Lectivo</span>
                                 </a>
                               </li>
