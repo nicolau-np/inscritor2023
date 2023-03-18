@@ -89,13 +89,13 @@ class EmolumentoController extends Controller
             return back()->with('errors', "Nao encontrou");
 
         $instituicaos = Instituicao::orderBy('instituicao', 'asc');
-        $ano_lectivos = AnoLectivo::where('id_instituicao', $emolumento->id_instituicao)->orderBy('ano_lectivos', 'asc');
+        $ano_lectivos = AnoLectivo::where('id_instituicao', $emolumento->id_instituicao)->orderBy('ano', 'asc');
         $title = 'Emolumentos - Editar';
         $type = 'extras';
         $menu = 'Emolumentos';
         $submenu = 'Editar';
 
-        return view('extras.emolumentos.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos'));
+        return view('extras.emolumentos.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos', 'emolumento'));
     }
 
     /**
