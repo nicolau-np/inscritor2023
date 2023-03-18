@@ -28,6 +28,7 @@
             <div class="col-md-12">
                 <div class="card">
                     {{Form::open(['url'=>"estudantes", 'method'=>"post"])}}
+                    @csrf
                     <div class="card-header">
                         <div class="card-title">Formulário de Cadastro
                             &nbsp;&nbsp; <a href="/estudantes"><i class="fa

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Instituicao;
 use App\Models\Provincia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InstituicaoController extends Controller
 {
@@ -44,7 +45,26 @@ class InstituicaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_municipio'=>'required|integer|exists:municipios,id',
+            'instituicao'=>'required|string|unique:instituicaos,instituicao',
+            'endereco'=>'required|string',
+
+        ], [], [
+            'id_municipio'=>'Município',
+            'instituicao'=>'Instituição',
+            'endereco'=>'Endereço',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            Instituicao::create($request->all());
+            DB::commit();
+            return back()->with('success', "Feito com sucesso");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**

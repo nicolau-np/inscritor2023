@@ -27,7 +27,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    {{Form::open(['url'=>"estudantes", 'method'=>"post"])}}
+                    {{Form::open(['url'=>"instituicaos", 'method'=>"post"])}}
+                    @csrf
                     <div class="card-header">
                         <div class="card-title">Formulário de Cadastro
                             &nbsp;&nbsp; <a href="/instituicaos"><i class="fa
@@ -80,8 +81,7 @@
                                     </div>
 
                                     <div class="col-md-3">
-                                        <label for="">Sígla <span
-                                                class="text-danger">*</span></label>
+                                        <label for="">Sígla </label>
                                         {{Form::text('sigla', null,
                                         ['placeholder'=>"Sígla",
                                         'class'=>"form-control"])}}
@@ -101,8 +101,7 @@
                                     </div>
 
                                     <div class="col-md-3">
-                                        <label for="">Telefone <span
-                                                class="text-danger">*</span></label>
+                                        <label for="">Telefone </label>
                                         {{Form::number('telefone', null,
                                         ['placeholder'=>"Telefone", 'class'=>"form-control"])}}
                                         @if ($errors->has('telefone'))
