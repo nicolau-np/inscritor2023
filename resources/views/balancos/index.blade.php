@@ -46,7 +46,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="">Data de Início <span class="text-danger">*</span></label>
-                                        {{Form::date('data_inicio', null, ['class'=>"form-control", 'placeholder'=>"Data de Início"])}}
+                                        {{Form::date('data_inicio', session('data_inicio') ? session('data_inicio'): null, ['class'=>"form-control", 'placeholder'=>"Data de Início"])}}
                                         @if ($errors->has('data_inicio'))
                                         <span class="text-danger">{{ $errors->first('data_inicio')}}</span>
                                         @endif
@@ -54,18 +54,32 @@
 
                                     <div class="col-md-3">
                                         <label for="">Data de Fim <span class="text-danger">*</span></label>
-                                        {{Form::date('data_fim', null, ['class'=>"form-control", 'placeholder'=>"Data de Fim"])}}
+                                        {{Form::date('data_fim', session('data_fim') ? session('data_fim'): null, ['class'=>"form-control", 'placeholder'=>"Data de Fim"])}}
                                         @if ($errors->has('data_fim'))
                                         <span class="text-danger">{{ $errors->first('data_fim')}}</span>
                                         @endif
                                     </div>
 
+                                    <div class="col-md-3">
+                                        <label for="">Ano Lectivo <span class="text-danger">*</span></label>
+                                        {{Form::select('id_ano_lectivo', $ano_lectivos->pluck('ano', 'id'), session('ano_lectivo') ? session('ano_lectivo')->id : $ano_lectivos->get()->first()->id, ['class'=>"form-control", 'placeholder'=>"Ano Lectivo"])}}
+                                        @if ($errors->has('id_ano_lectivo'))
+                                        <span class="text-danger">{{ $errors->first('id_ano_lectivo')}}</span>
+                                        @endif
+                                    </div>
+
                                     <div class="col-md-3 mt-4">
                                         <button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-search"></i> Pesquisar</button>
+                                        <button class="btn btn-warning btn-sm" type="submit"><i class="fas fa-print"></i> Printer</button>
                                     </div>
+
+
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-12">
-                                        @if($estudantes)
-                                        {{ $estudantes }}
+                                        @if(session('estudantes'))
+                                            hello world
                                         @endif
                                     </div>
                                 </div>
