@@ -9,6 +9,7 @@ use App\Models\Curso;
 use App\Models\Estudante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class BalancoController extends Controller
 {
@@ -39,13 +40,19 @@ class BalancoController extends Controller
             'id_ano_lectivo' => 'Ano Lectivo',
         ]);
 
-        $estudantes = Estudante::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $request->id_ano_lectivo])->get();
+        $cursos = Curso::where('id_instituicao', $id_instituicao)->orderBy('curso', 'asc');
+        $classes = Classe::where('id_instituicao', $id_instituicao)->orderBy('classe', 'asc');
+        $title = 'Balanços - Extrair';
+        $type = 'balancos';
+        $menu = 'Balanços';
+        $submenu = 'Extrair';
+
+        $estudantes = Estudante::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $request->id_ano_lectivo]);
         $ano_lectivo = AnoLectivo::find($request->id_ano_lectivo);
 
         if ($request->data_inicio > $request->data_fim)
             return back()->with('error', "A data inicial não deve ser superior a data final");
 
-
-        return back()->with(['estudantes' => $estudantes, 'data_inicio' => $request->data_inicio, 'data_fim' => $request->data_fim, 'ano_lectivo' => $ano_lectivo]);
+        return view('balancos.show', compact('title', 'type', 'menu', 'submenu', 'estudantes', 'ano_lectivo', 'cursos', 'classes'));
     }
 }
