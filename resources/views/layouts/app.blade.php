@@ -373,6 +373,13 @@
                             </ul>
                           </div>
                         </li>
+
+                        <li class="nav-item {{$type=='balancos'?'active':null}}">
+                            <a href="/balancos">
+                              <i class="fas fa-balance-scale"></i>
+                              <p>Balanços</p>
+                            </a>
+                          </li>
                         @endif
 
                         @if(Auth::user()->nivel_acesso=='manager')

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AjaxRequestController;
 use App\Http\Controllers\api\AnoLectivoController;
+use App\Http\Controllers\api\BalancoController;
 use App\Http\Controllers\api\ClasseController;
 use App\Http\Controllers\api\CondicoesController;
 use App\Http\Controllers\api\CursoController;
@@ -33,11 +34,11 @@ Route::get('/', function () {
 Route::get('home', [HomeController::class, 'home'])->middleware('auth')->name('home');
 
 /**ajax request */
-Route::prefix('request')->group(function(){
-Route::get('municipios/all/{id}', [AjaxRequestController::class, 'municipios']);
-Route::get('cursos/all/{id}', [AjaxRequestController::class, 'cursos']);
-Route::get('classes/all/{id}', [AjaxRequestController::class, 'classes']);
-Route::get('anos/all/{id}', [AjaxRequestController::class, 'anos']);
+Route::prefix('request')->group(function () {
+    Route::get('municipios/all/{id}', [AjaxRequestController::class, 'municipios']);
+    Route::get('cursos/all/{id}', [AjaxRequestController::class, 'cursos']);
+    Route::get('classes/all/{id}', [AjaxRequestController::class, 'classes']);
+    Route::get('anos/all/{id}', [AjaxRequestController::class, 'anos']);
 });
 
 
@@ -130,4 +131,8 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
         Route::get('/', [AnoLectivoController::class, 'index']);
         Route::get('/{id}', [AnoLectivoController::class, 'show']);
     });
+});
+
+Route::prefix('balancos')->group(function () {
+    Route::get('/', [BalancoController::class, 'index']);
 });
