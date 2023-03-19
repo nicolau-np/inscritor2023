@@ -44,8 +44,29 @@
                             <div class="col-md-12">
 
                                 <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="">Data de Início <span class="text-danger">*</span></label>
+                                        {{Form::date('data_inicio', null, ['class'=>"form-control", 'placeholder'=>"Data de Início"])}}
+                                        @if ($errors->has('data_inicio'))
+                                        <span class="text-danger">{{ $errors->first('data_inicio')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="">Data de Fim <span class="text-danger">*</span></label>
+                                        {{Form::date('data_fim', null, ['class'=>"form-control", 'placeholder'=>"Data de Fim"])}}
+                                        @if ($errors->has('data_fim'))
+                                        <span class="text-danger">{{ $errors->first('data_fim')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-3 mt-4">
+                                        <button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-search"></i> Pesquisar</button>
+                                    </div>
                                     <div class="col-md-12">
-                                        
+                                        @if($estudantes)
+                                        {{ $estudantes }}
+                                        @endif
                                     </div>
                                 </div>
 

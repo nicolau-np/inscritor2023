@@ -135,4 +135,5 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
 
 Route::prefix('balancos')->group(function () {
     Route::get('/', [BalancoController::class, 'index']);
+    Route::post('/', [BalancoController::class, 'search']);
 });
