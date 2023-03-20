@@ -28,7 +28,6 @@ class BalancoController extends Controller
 
     public function search(Request $request)
     {
-        $id_instituicao = Auth::user()->id_instituicao;
 
         $this->validate($request, [
             'data_inicio' => 'required|date',
@@ -40,6 +39,7 @@ class BalancoController extends Controller
             'id_ano_lectivo' => 'Ano Lectivo',
         ]);
 
+        $id_instituicao = Auth::user()->id_instituicao;
         $cursos = Curso::where('id_instituicao', $id_instituicao)->orderBy('curso', 'asc');
         $classes = Classe::where('id_instituicao', $id_instituicao)->orderBy('classe', 'asc');
         $title = 'Balanços - Extrair';
@@ -47,12 +47,11 @@ class BalancoController extends Controller
         $menu = 'Balanços';
         $submenu = 'Extrair';
 
-        $estudantes = Estudante::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $request->id_ano_lectivo]);
+        $estudantes = Estudante::where(['id_instituicao'=>$id_instituicao, 'id_ano_lectivo'=>$request->id_ano_lectivo])->whereBetween('created_at', [$request->data_inicio, $request->data_fim]);
         $ano_lectivo = AnoLectivo::find($request->id_ano_lectivo);
 
         if ($request->data_inicio > $request->data_fim)
             return back()->with('error', "A data inicial não deve ser superior a data final");
-
-        return view('balancos.show', compact('title', 'type', 'menu', 'submenu', 'estudantes', 'ano_lectivo', 'cursos', 'classes'));
+         return view('balancos.show', compact('title', 'type', 'menu', 'submenu', 'estudantes', 'ano_lectivo', 'cursos', 'classes'));
     }
 }

@@ -46,15 +46,29 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                            $data=[
+                                'estudante_mf'=>0,
+                                'estudante_f'=>0
+                            ];
+                            @endphp
+
                             @foreach($cursos->get() as $curso)
+
+                            @php
+                            $estudantes_curso = $estudantes->get()->where('id_curso', $curso->id);
+                            $data['estudante_mf'] = $estudantes_curso->count();
+                            @endphp
                             <tr>
                                 <td>{{$curso->curso}}</td>
                                 @for($i=13; $i<=17; $i++)
                                 <td></td>
                                 <td></td>
                                 @endfor
-                                <td></td>
-                                <td>{{$estudantes->where('id_curso', $curso->id)->count()}}</td>
+                                <td>
+                                    {{$estudantes->get()->where('id_curso', $curso->id)->count()}}
+                                </td>
+                                <td>{{$data['estudante_mf']}}</td>
                             </tr>
                             @endforeach
                         </tbody>
