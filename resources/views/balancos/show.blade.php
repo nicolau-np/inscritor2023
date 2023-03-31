@@ -54,21 +54,14 @@
                             @endphp
 
                             @foreach($cursos->get() as $curso)
-
-                            @php
-                            $estudantes_curso = $estudantes->get()->where('id_curso', $curso->id);
-                            $data['estudante_mf'] = $estudantes_curso->count();
-                            @endphp
                             <tr>
                                 <td>{{$curso->curso}}</td>
                                 @for($i=13; $i<=17; $i++)
                                 <td></td>
                                 <td></td>
                                 @endfor
-                                <td>
-                                    {{$estudantes->get()->where('id_curso', $curso->id)->count()}}
-                                </td>
-                                <td>{{$data['estudante_mf']}}</td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -137,3 +137,8 @@ Route::prefix('balancos')->group(function () {
     Route::get('/', [BalancoController::class, 'index']);
     Route::post('/', [BalancoController::class, 'search']);
 });
+
+Route::get('text', function () {
+    $date = date('d-m-Y') - 12;
+    echo $date;
+});

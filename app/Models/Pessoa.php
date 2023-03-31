@@ -41,4 +41,8 @@ class Pessoa extends Model
     public function estudantes(){
         return $this->hasMany(Estudante::class, 'id_pessoa');
     }
+
+    public static function getIdade(){
+        
+    }
 }
