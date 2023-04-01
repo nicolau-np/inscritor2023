@@ -12,6 +12,7 @@ use App\Http\Controllers\api\InstituicaoController;
 use App\Http\Controllers\api\TurmaController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\HomeController;
+use App\Models\Pessoa;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
@@ -139,6 +140,9 @@ Route::prefix('balancos')->group(function () {
 });
 
 Route::get('text', function () {
-    $date = date('d-m-Y') - 12;
-    echo $date;
+    $dateOfBirth = "1996-07-02";
+
+    $idade = Pessoa::getIdade($dateOfBirth);
+
+    return $idade;
 });

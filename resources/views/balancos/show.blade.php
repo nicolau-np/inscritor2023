@@ -1,3 +1,6 @@
+@php
+use App\Http\Controllers\StaticController;
+@endphp
 @extends('layouts.app')
 @section('content')
 <div class="content">
@@ -48,12 +51,18 @@
                         <tbody>
                             @php
                             $data=[
-                                'estudante_mf'=>0,
-                                'estudante_f'=>0
+                                'estudante_f'=>0,
                             ];
                             @endphp
 
                             @foreach($cursos->get() as $curso)
+                            @php
+                            $count_estudantes = StaticController::countEstudantes($curso->id, $curso->id_instituicao, $ano_lectivo->id, null);
+
+                            echo $count_estudantes;
+
+                            @endphp
+
                             <tr>
                                 <td>{{$curso->curso}}</td>
                                 @for($i=13; $i<=17; $i++)
@@ -61,7 +70,7 @@
                                 <td></td>
                                 @endfor
                                 <td></td>
-                                <td></td>
+                                <td>{{$count_estudantes->count()}}</td>
                             </tr>
                             @endforeach
                         </tbody>

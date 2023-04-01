@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -42,7 +43,10 @@ class Pessoa extends Model
         return $this->hasMany(Estudante::class, 'id_pessoa');
     }
 
-    public static function getIdade(){
-        
+    public static function getIdade($data_nascimento){
+
+        $age = Carbon::parse($data_nascimento)->age;
+
+        return $age;
     }
 }
