@@ -12,6 +12,7 @@ use App\Http\Controllers\api\InstituicaoController;
 use App\Http\Controllers\api\TurmaController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StaticController;
 use App\Models\Pessoa;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
@@ -137,12 +138,4 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
 Route::prefix('balancos')->group(function () {
     Route::get('/', [BalancoController::class, 'index']);
     Route::post('/', [BalancoController::class, 'search']);
-});
-
-Route::get('text', function () {
-    $dateOfBirth = "1996-07-02";
-
-    $idade = Pessoa::getIdade($dateOfBirth);
-
-    return $idade;
 });

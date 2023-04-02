@@ -34,16 +34,19 @@ use App\Http\Controllers\StaticController;
                         <thead>
                             <tr>
                                 <th rowspan="2">CURSO</th>
-                                @for($i=13; $i<=17; $i++)
+                                @for($i=13; $i<=16; $i++)
                                 <th colspan="2">{{$i}} ANOS</th>
                                 @endfor
+                                <th colspan="2">+17 ANOS</th>
                                 <th colspan="2">TOTAL</th>
                             </tr>
                             <tr>
-                                @for($i=13; $i<=17; $i++)
+                                @for($i=13; $i<=16; $i++)
                                 <th>F</th>
                                 <th>MF</th>
                                 @endfor
+                                <th>F</th>
+                                <th>MF</th>
                                 <th>F</th>
                                 <th>MF</th>
                             </tr>
@@ -51,26 +54,31 @@ use App\Http\Controllers\StaticController;
                         <tbody>
                             @php
                             $data=[
-                                'estudante_f'=>0,
+                                'estudante_f'=>null,
+                                'estudante_mf'=>null,
+                                'estudante_idade_f'=>null,
+                                'estudante_idade_mf'=>null,
                             ];
                             @endphp
 
                             @foreach($cursos->get() as $curso)
                             @php
-                            $count_estudantes = StaticController::countEstudantes($curso->id, $curso->id_instituicao, $ano_lectivo->id, null);
+                            $data['estudante_f'] = StaticController::countEstudantes($curso->id, $curso->id_instituicao, $ano_lectivo->id, null, null);
+                            $data['estudante_mf'] = StaticController::countEstudantes($curso->id, $curso->id_instituicao, $ano_lectivo->id, null, 'F');
 
-                            echo $count_estudantes;
 
                             @endphp
 
                             <tr>
                                 <td>{{$curso->curso}}</td>
-                                @for($i=13; $i<=17; $i++)
+                                @for($i=13; $i<=16; $i++)
                                 <td></td>
                                 <td></td>
                                 @endfor
                                 <td></td>
-                                <td>{{$count_estudantes->count()}}</td>
+                                <td></td>
+                                <td>{{$data['estudante_mf']->count()}}</td>
+                                <td>{{$data['estudante_f']->count()}}</td>
                             </tr>
                             @endforeach
                         </tbody>

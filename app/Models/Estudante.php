@@ -21,7 +21,8 @@ class Estudante extends Model
         'estado',
     ];
 
-    public function pessoas(){
+    public function pessoas()
+    {
         return $this->belongsTo(Pessoa::class, 'id_pessoa');
     }
 
