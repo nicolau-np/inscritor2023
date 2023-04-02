@@ -352,27 +352,12 @@
                         @endif
 
                         @if(Auth::user()->nivel_acesso=='admin')
-                        <li class="nav-item">
-                          <a data-toggle="collapse" href="#sidebarLayouts">
-                            <i class="fas fa-th-list"></i>
-                            <p>Listas</p>
-                            <span class="caret"></span>
-                          </a>
-                          <div class="collapse" id="sidebarLayouts">
-                            <ul class="nav nav-collapse">
-                              <li>
-                                <a href="/listas/admitidos">
-                                  <span class="sub-item">Estudantes Admitidos</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="/listas/nadmitidos">
-                                  <span class="sub-item">Estudantes N/Admitidos</span>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
+                           <li class="nav-item {{$type=='listas'?'active':null}}">
+                            <a href="/listas">
+                              <i class="fas fa-th-list"></i>
+                              <p>Listas</p>
+                            </a>
+                          </li>
 
                         <li class="nav-item {{$type=='balancos'?'active':null}}">
                             <a href="/balancos">

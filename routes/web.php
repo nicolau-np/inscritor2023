@@ -10,6 +10,7 @@ use App\Http\Controllers\api\EmolumentoController;
 use App\Http\Controllers\api\EstudanteController;
 use App\Http\Controllers\api\InstituicaoController;
 use App\Http\Controllers\api\ListaController;
+use App\Http\Controllers\api\ReportController;
 use App\Http\Controllers\api\TurmaController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\HomeController;
@@ -142,14 +143,18 @@ Route::prefix('balancos')->group(function () {
     Route::post('/', [BalancoController::class, 'search']);
 });
 
-Route::prefix('listas')->group(function(){
-    Route::get('/{estado}', [ListaController::class, 'index']);
+Route::prefix('listas')->group(function () {
+    Route::get('/', [ListaController::class, 'index']);
+});
+
+Route::prefix('report')->group(function () {
+    Route::post('listas', [ReportController::class, 'listas']);
 });
 
 Route::get('/text', function () {
     $data = "2023-03-19";
     $data2 = "2023-04-02";
-    $estudantes = Estudante::where(['id_instituicao'=>1, 'id_ano_lectivo'=>1])->whereDate('created_at', '>=',$data)->whereDate('created_at','<=', $data2)->get();
+    $estudantes = Estudante::where(['id_instituicao' => 1, 'id_ano_lectivo' => 1])->whereDate('created_at', '>=', $data)->whereDate('created_at', '<=', $data2)->get();
 
     return $estudantes;
 });
