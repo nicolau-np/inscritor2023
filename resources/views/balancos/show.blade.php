@@ -32,6 +32,8 @@ use App\Http\Controllers\StaticController;
                 <b>Data Incial:</b> {{date('d-m-Y',strtotime($data_inicial))}}
                 &nbsp;&nbsp;&nbsp;
                 <b>Data Final:</b> {{date('d-m-Y',strtotime($data_final))}}
+                &nbsp;&nbsp;&nbsp;
+                <b>Total de Inscritos:</b> {{$estudantes->count()}}
             </div>
             <div class="col-md-12 mt-2">
                 <div class="table-responsive">
@@ -44,12 +46,15 @@ use App\Http\Controllers\StaticController;
                                 @endfor
                                 <th colspan="2">>=17 ANOS</th>
                                 <th colspan="2">TOTAL</th>
+                                <th colspan="2">VALORES ({{number_format($emolumento->valor,2,',','.')}})</th>
                             </tr>
                             <tr>
                                 @for($i=13; $i<=16; $i++)
                                 <th>F</th>
                                 <th>MF</th>
                                 @endfor
+                                <th>F</th>
+                                <th>MF</th>
                                 <th>F</th>
                                 <th>MF</th>
                                 <th>F</th>
@@ -95,12 +100,15 @@ use App\Http\Controllers\StaticController;
                                 <td>{{$data['estudante_idade_mf']->count()}}</td>
                                 <td>{{$data['estudante_mf']->count()}}</td>
                                 <td>{{$data['estudante_f']->count()}}</td>
+
+                                <td>{{number_format(($data['estudante_mf']->count() * $emolumento->valor),2,',','.')}}</td>
+                                <td>{{number_format(($data['estudante_f']->count() * $emolumento->valor),2,',','.')}}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-               
+
             </div>
         </div>
     </div>

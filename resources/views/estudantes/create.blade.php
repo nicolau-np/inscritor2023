@@ -32,7 +32,10 @@
                     <div class="card-header">
                         <div class="card-title">Formulário de Cadastro
                             &nbsp;&nbsp; <a href="/estudantes"><i class="fa
-                                    fa-search"></i></a></div>
+                                    fa-search"></i></a>
+                                &nbsp;&nbsp;
+                                <b>Inscritos: {{$estudantes->count()}}</b>
+                                </div>
                     </div>
                     <div class="card-body">
 
