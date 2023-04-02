@@ -9,10 +9,12 @@ use App\Http\Controllers\api\CursoController;
 use App\Http\Controllers\api\EmolumentoController;
 use App\Http\Controllers\api\EstudanteController;
 use App\Http\Controllers\api\InstituicaoController;
+use App\Http\Controllers\api\ListaController;
 use App\Http\Controllers\api\TurmaController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StaticController;
+use App\Models\Estudante;
 use App\Models\Pessoa;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
@@ -138,4 +140,16 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
 Route::prefix('balancos')->group(function () {
     Route::get('/', [BalancoController::class, 'index']);
     Route::post('/', [BalancoController::class, 'search']);
+});
+
+Route::prefix('listas')->group(function(){
+    Route::get('/{estado}', [ListaController::class, 'index']);
+});
+
+Route::get('/text', function () {
+    $data = "2023-03-19";
+    $data2 = "2023-04-02";
+    $estudantes = Estudante::where(['id_instituicao'=>1, 'id_ano_lectivo'=>1])->whereDate('created_at', '>=',$data)->whereDate('created_at','<=', $data2)->get();
+
+    return $estudantes;
 });

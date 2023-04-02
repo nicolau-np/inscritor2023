@@ -45,6 +45,7 @@
                         <th scope="col">Data de Nascimento</th>
                         <th scope="col">Curso</th>
                         <th scope="col">Ano Lectivo</th>
+                        <th scope="col">Data de Inscrição</th>
                         <th scope="col">Operações</th>
                       </tr>
                     </thead>
@@ -57,6 +58,7 @@
                         <td>{{date('d-m-Y', strtotime($estudante->pessoas->data_nascimento))}}</td>
                         <td>{{$estudante->cursos->curso}}</td>
                         <td>{{$estudante->ano_lectivos->ano}}</td>
+                        <td>{{date('d-m-Y', strtotime($estudante->created_at))}}</td>
                         <td>
                             <a href="/estudantes/edit/{{$estudante->id}}" class="btn btn-primary btn-sm">Editar</a>
                             &nbsp;

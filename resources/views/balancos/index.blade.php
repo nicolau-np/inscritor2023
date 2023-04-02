@@ -70,7 +70,7 @@
 
                                     <div class="col-md-3 mt-4">
                                         <button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-search"></i> Pesquisar</button>
-                                        <button class="btn btn-warning btn-sm" type="submit"><i class="fas fa-print"></i> Printer</button>
+                                       
                                     </div>
 
 

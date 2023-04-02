@@ -361,12 +361,12 @@
                           <div class="collapse" id="sidebarLayouts">
                             <ul class="nav nav-collapse">
                               <li>
-                                <a href="sidebar-style-1.html">
+                                <a href="/listas/admitidos">
                                   <span class="sub-item">Estudantes Admitidos</span>
                                 </a>
                               </li>
                               <li>
-                                <a href="overlay-sidebar.html">
+                                <a href="/listas/nadmitidos">
                                   <span class="sub-item">Estudantes N/Admitidos</span>
                                 </a>
                               </li>

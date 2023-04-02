@@ -28,7 +28,12 @@ use App\Http\Controllers\StaticController;
             </ul>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mt-2">
+                <b>Data Incial:</b> {{date('d-m-Y',strtotime($data_inicial))}}
+                &nbsp;&nbsp;&nbsp;
+                <b>Data Final:</b> {{date('d-m-Y',strtotime($data_final))}}
+            </div>
+            <div class="col-md-12 mt-2">
                 <div class="table-responsive">
                     <table class="table table-head-bg-primary table-bordered">
                         <thead>
@@ -37,7 +42,7 @@ use App\Http\Controllers\StaticController;
                                 @for($i=13; $i<=16; $i++)
                                 <th colspan="2">{{$i}} ANOS</th>
                                 @endfor
-                                <th colspan="2">+17 ANOS</th>
+                                <th colspan="2">>=17 ANOS</th>
                                 <th colspan="2">TOTAL</th>
                             </tr>
                             <tr>
@@ -58,13 +63,15 @@ use App\Http\Controllers\StaticController;
                                 'estudante_mf'=>null,
                                 'estudante_idade_f'=>null,
                                 'estudante_idade_mf'=>null,
+                                'total_f'=>0,
+                                'total_mf'=>0,
                             ];
                             @endphp
 
                             @foreach($cursos->get() as $curso)
                             @php
-                            $data['estudante_f'] = StaticController::countEstudantes($curso->id, $curso->id_instituicao, $ano_lectivo->id, null, null);
-                            $data['estudante_mf'] = StaticController::countEstudantes($curso->id, $curso->id_instituicao, $ano_lectivo->id, null, 'F');
+                            $data['estudante_f'] = StaticController::countEstudantes($curso->id, $curso->id_instituicao, $ano_lectivo->id, null, $data_inicial, $data_final);
+                            $data['estudante_mf'] = StaticController::countEstudantes($curso->id, $curso->id_instituicao, $ano_lectivo->id, 'F', $data_inicial, $data_final);
 
 
                             @endphp
@@ -72,11 +79,21 @@ use App\Http\Controllers\StaticController;
                             <tr>
                                 <td>{{$curso->curso}}</td>
                                 @for($i=13; $i<=16; $i++)
-                                <td></td>
-                                <td></td>
+                                @php
+                                    $data['estudante_idade_mf'] = StaticController::countEstudantesIdade($curso->id, $curso->id_instituicao, $ano_lectivo->id, $i, $data_inicial, $data_final);
+                                    $data['estudante_idade_f'] = StaticController::countEstudantesIdadeGenero($curso->id, $curso->id_instituicao, $ano_lectivo->id, $i, "F", $data_inicial, $data_final);
+                                @endphp
+                                <td>{{$data['estudante_idade_f']->count()}}</td>
+                                <td>{{$data['estudante_idade_mf']->count()}}</td>
                                 @endfor
-                                <td></td>
-                                <td></td>
+
+                                @php
+                                    $data['estudante_idade_mf'] = StaticController::countEstudantesIdade($curso->id, $curso->id_instituicao, $ano_lectivo->id, 17, $data_inicial, $data_final);
+                                    $data['estudante_idade_f'] = StaticController::countEstudantesIdadeGenero($curso->id, $curso->id_instituicao, $ano_lectivo->id, 17, "F", $data_inicial, $data_final);
+
+                                @endphp
+                                <td>{{$data['estudante_idade_f']->count()}}</td>
+                                <td>{{$data['estudante_idade_mf']->count()}}</td>
                                 <td>{{$data['estudante_mf']->count()}}</td>
                                 <td>{{$data['estudante_f']->count()}}</td>
                             </tr>

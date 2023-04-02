@@ -47,11 +47,13 @@ class BalancoController extends Controller
         $menu = 'Balanços';
         $submenu = 'Extrair';
 
-        $estudantes = Estudante::where(['id_instituicao'=>$id_instituicao, 'id_ano_lectivo'=>$request->id_ano_lectivo])->whereBetween('created_at', [$request->data_inicio, $request->data_fim]);
+        $data_inicial = $request->data_inicio;
+        $data_final = $request->data_fim;
+
         $ano_lectivo = AnoLectivo::find($request->id_ano_lectivo);
 
         if ($request->data_inicio > $request->data_fim)
             return back()->with('error', "A data inicial não deve ser superior a data final");
-         return view('balancos.show', compact('title', 'type', 'menu', 'submenu', 'estudantes', 'ano_lectivo', 'cursos', 'classes'));
+         return view('balancos.show', compact('title', 'type', 'menu', 'submenu', 'ano_lectivo', 'cursos', 'classes', 'data_inicial', 'data_final'));
     }
 }
