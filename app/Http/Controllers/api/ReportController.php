@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\AnoLectivo;
 use App\Models\Classe;
+use App\Models\Classificador;
 use App\Models\Curso;
 use App\Models\Estudante;
 use Illuminate\Http\Request;
@@ -27,14 +28,26 @@ class ReportController extends Controller
             'id_ano_lectivo' => 'Ano Lectivo',
         ]);
 
-        $id_instituicao = Auth::user()->id_instituicao;
+        $estudantes = null;
 
-        $estudantes = Estudante::where(['id_ano_lectivo'=>$request->id_ano_lectivo, 'id_instituicao'=>$id_instituicao, 'id_classe'=>$request->id_classe, 'id_curso'=>$request->id_curso])->get();
+        $id_instituicao = Auth::user()->id_instituicao;
 
         $ano_lectivo = AnoLectivo::find($request->id_ano_lectivo);
         $curso = Curso::find($request->id_curso);
         $classe = Classe::find($request->id_classe);
         $estado = $request->estado;
+
+        $classificador = Classificador::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $request->id_ano_lectivo])->first();
+
+        if ($request->estado == 'Admitidos') {
+            $estudantes = Estudante::whereHas('pessoas', function ($query) use ($classificador) {
+                $query->whereBetween('data_nascimento', [$classificador->data_inicio, $classificador->data_fim]);
+            })->where(['id_ano_lectivo' => $request->id_ano_lectivo, 'id_instituicao' => $id_instituicao, 'id_classe' => $request->id_classe, 'id_curso' => $request->id_curso])->get()->sortBy('pessoas.nome');
+        } elseif ($request->estado == 'N/Admitidos') {
+            $estudantes = Estudante::whereHas('pessoas', function ($query) use ($classificador) {
+                $query->whereDate('data_nascimento', '<', $classificador->data_inicio);
+            })->where(['id_ano_lectivo' => $request->id_ano_lectivo, 'id_instituicao' => $id_instituicao, 'id_classe' => $request->id_classe, 'id_curso' => $request->id_curso])->get()->sortBy('pessoas.nome');
+        }
 
         $pdf = PDF::loadView('report.lista', compact('ano_lectivo', 'curso', 'classe', 'estado', 'estudantes'))->setPaper('A4', 'normal');
         return $pdf->stream('LISTA  - [ ' . strtoupper($estado) . ' ].pdf');

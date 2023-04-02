@@ -63,8 +63,7 @@ use App\Http\Controllers\StaticController;
                                 'estudante_mf'=>null,
                                 'estudante_idade_f'=>null,
                                 'estudante_idade_mf'=>null,
-                                'total_f'=>0,
-                                'total_mf'=>0,
+                                'total'=>0,
                             ];
                             @endphp
 
@@ -90,7 +89,7 @@ use App\Http\Controllers\StaticController;
                                 @php
                                     $data['estudante_idade_mf'] = StaticController::countEstudantesIdade($curso->id, $curso->id_instituicao, $ano_lectivo->id, 17, $data_inicial, $data_final);
                                     $data['estudante_idade_f'] = StaticController::countEstudantesIdadeGenero($curso->id, $curso->id_instituicao, $ano_lectivo->id, 17, "F", $data_inicial, $data_final);
-
+                                    $data['total'] = $data['total'] + $data['estudante_mf']->count();
                                 @endphp
                                 <td>{{$data['estudante_idade_f']->count()}}</td>
                                 <td>{{$data['estudante_idade_mf']->count()}}</td>
@@ -101,6 +100,7 @@ use App\Http\Controllers\StaticController;
                         </tbody>
                     </table>
                 </div>
+               
             </div>
         </div>
     </div>

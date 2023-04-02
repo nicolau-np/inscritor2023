@@ -76,7 +76,7 @@ $mes_estensao = StaticController::getMesExtensao(date('m'));
                                         <td>{{$getPessoaData->nome}}</td>
                                         <td>{{$getPessoaData->genero}}</td>
                                         <td>{{date('d-m-Y', strtotime($getPessoaData->data_nascimento))}}</td>
-                                        <td>{{$getPessoaData->getIdade($getPessoaData->data_nascimento)}}</td>
+                                        <td>{{$getPessoaData->getIdade($getPessoaData->data_nascimento)}} anos</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
