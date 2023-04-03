@@ -43,7 +43,7 @@ class ReportController extends Controller
             $estudantes = Estudante::whereHas('pessoas', function ($query) use ($classificador) {
                 $query->whereBetween('data_nascimento', [$classificador->data_inicio, $classificador->data_fim]);
             })->where(['id_ano_lectivo' => $id_ano_lectivo, 'id_instituicao' => $id_instituicao, 'id_classe' => $id_classe, 'id_curso' => $id_curso])->get()->sortBy('pessoas.nome');
-        } elseif ($estado == 'N/Admitidos') {
+        } elseif ($estado == 'Não Admitidos') {
             $estudantes = Estudante::whereHas('pessoas', function ($query) use ($classificador) {
                 $query->whereDate('data_nascimento', '<', $classificador->data_inicio);
             })->where(['id_ano_lectivo' => $id_ano_lectivo, 'id_instituicao' => $id_instituicao, 'id_classe' => $id_classe, 'id_curso' => $id_curso])->get()->sortBy('pessoas.nome');

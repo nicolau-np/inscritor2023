@@ -64,7 +64,7 @@
                                         <label for="">Estado <span class="text-danger">*</span></label>
                                         {{Form::select('estado',[
                                             'Admitidos'=>"Admitidos",
-                                            'N/Admitidos'=>"N/Admitidos",
+                                            'Não Admitidos'=>"Não Admitidos",
                                         ], null, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
                                         @if ($errors->has('estado'))
                                         <span class="text-danger">{{ $errors->first('estado')}}</span>

@@ -40,7 +40,7 @@ class ListasFinaisExport implements FromView, ShouldAutoSize
             $this->estudantes = Estudante::whereHas('pessoas', function ($query) {
                 $query->whereBetween('data_nascimento', [$this->classificador->data_inicio, $this->classificador->data_fim]);
             })->where(['id_ano_lectivo' => $this->ano_lectivo->id, 'id_instituicao' => $this->id_instituicao, 'id_classe' => $this->classe->id, 'id_curso' => $this->curso->id])->get()->sortBy('pessoas.nome');
-        } elseif ($this->estado == 'N/Admitidos') {
+        } elseif ($this->estado == 'Não Admitidos') {
             $this->estudantes = Estudante::whereHas('pessoas', function ($query) {
                 $query->whereDate('data_nascimento', '<', $this->classificador->data_inicio);
             })->where(['id_ano_lectivo' => $this->ano_lectivo->id, 'id_instituicao' => $this->id_instituicao, 'id_classe' => $this->classe->id, 'id_curso' => $this->curso->id])->get()->sortBy('pessoas.nome');
