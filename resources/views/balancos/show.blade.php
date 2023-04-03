@@ -3,6 +3,9 @@ use App\Http\Controllers\StaticController;
 @endphp
 @extends('layouts.app')
 @section('content')
+
+
+
 <div class="content">
     <div class="page-inner">
         <div class="page-header">
@@ -35,6 +38,7 @@ use App\Http\Controllers\StaticController;
                 &nbsp;&nbsp;&nbsp;
                 <b>Total de Inscritos:</b> {{$estudantes->count()}}
             </div>
+
             <div class="col-md-12 mt-2">
                 <div class="table-responsive">
                     <table class="table table-head-bg-primary table-bordered">
