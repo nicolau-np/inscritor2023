@@ -144,11 +144,16 @@ Route::prefix('balancos')->group(function () {
 });
 
 Route::prefix('listas')->group(function () {
+    Route::post('/', [ListaController::class, 'store']);
     Route::get('/', [ListaController::class, 'index']);
 });
 
-Route::prefix('report')->group(function () {
-    Route::post('listas', [ReportController::class, 'listas']);
+Route::prefix('pdf')->group(function () {
+    Route::get('listas/{id_curso}/{id_classe}/{id_ano_lectivo}/{estado}', [ReportController::class, 'listas']);
+});
+
+Route::prefix('excel')->group(function () {
+    Route::get('listas/{id_curso}/{id_classe}/{id_ano_lectivo}/{estado}', [ReportController::class, 'listas']);
 });
 
 Route::get('/text', function () {

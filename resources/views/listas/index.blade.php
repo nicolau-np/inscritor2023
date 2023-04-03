@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    {{Form::open(['url'=>"report/listas", 'method'=>"post"])}}
+                    {{Form::open(['url'=>"listas", 'method'=>"post"])}}
                     @csrf
                     <div class="card-header">
                         <div class="card-title">
@@ -79,7 +79,18 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-md-2 mt-4">
+                                    <div class="col-md-2">
+                                        <label for="">Tipo <span class="text-danger">*</span></label>
+                                        {{Form::select('tipo',[
+                                            'PDF'=>"PDF",
+                                            'Excel'=>"Excel",
+                                        ], "PDF", ['class'=>"form-control", 'placeholder'=>"Tipo"])}}
+                                        @if ($errors->has('tipo'))
+                                        <span class="text-danger">{{ $errors->first('tipo')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-1 mt-4">
                                         <button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-search"></i> Pesquisar</button>
 
                                     </div>

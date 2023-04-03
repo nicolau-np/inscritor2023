@@ -7,16 +7,14 @@ use App\Models\AnoLectivo;
 use App\Models\Classe;
 use App\Models\Classificador;
 use App\Models\Curso;
-use App\Models\Estudante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PDF;
 
-class ReportController extends Controller
+class ExcelController extends Controller
 {
     public function listas($id_curso, $id_classe, $id_ano_lectivo, $estado)
     {
-       
+        dd('excel');
         $estudantes = null;
 
         $id_instituicao = Auth::user()->id_instituicao;
@@ -37,17 +35,5 @@ class ReportController extends Controller
 
         $classificador = Classificador::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $id_ano_lectivo])->first();
 
-        if ($estado == 'Admitidos') {
-            $estudantes = Estudante::whereHas('pessoas', function ($query) use ($classificador) {
-                $query->whereBetween('data_nascimento', [$classificador->data_inicio, $classificador->data_fim]);
-            })->where(['id_ano_lectivo' => $id_ano_lectivo, 'id_instituicao' => $id_instituicao, 'id_classe' => $id_classe, 'id_curso' => $id_curso])->get()->sortBy('pessoas.nome');
-        } elseif ($estado == 'N/Admitidos') {
-            $estudantes = Estudante::whereHas('pessoas', function ($query) use ($classificador) {
-                $query->whereDate('data_nascimento', '<', $classificador->data_inicio);
-            })->where(['id_ano_lectivo' => $id_ano_lectivo, 'id_instituicao' => $id_instituicao, 'id_classe' => $id_classe, 'id_curso' => $id_curso])->get()->sortBy('pessoas.nome');
-        }
-
-        $pdf = PDF::loadView('report.lista', compact('ano_lectivo', 'curso', 'classe', 'estado', 'estudantes'))->setPaper('A4', 'normal');
-        return $pdf->stream('LISTA  - [ ' . strtoupper($estado) . ' ].pdf');
     }
 }
