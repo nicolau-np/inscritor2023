@@ -8,6 +8,7 @@ use App\Http\Controllers\api\CondicoesController;
 use App\Http\Controllers\api\CursoController;
 use App\Http\Controllers\api\EmolumentoController;
 use App\Http\Controllers\api\EstudanteController;
+use App\Http\Controllers\api\ExcelController;
 use App\Http\Controllers\api\InstituicaoController;
 use App\Http\Controllers\api\ListaController;
 use App\Http\Controllers\api\ReportController;
@@ -153,7 +154,7 @@ Route::prefix('pdf')->group(function () {
 });
 
 Route::prefix('excel')->group(function () {
-    Route::get('listas/{id_curso}/{id_classe}/{id_ano_lectivo}/{estado}', [ReportController::class, 'listas']);
+    Route::get('listas/{id_curso}/{id_classe}/{id_ano_lectivo}/{estado}', [ExcelController::class, 'listas']);
 });
 
 Route::get('/text', function () {
