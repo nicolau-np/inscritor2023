@@ -36,6 +36,7 @@ $mes_estensao = StaticController::getMesExtensao(date('m'));
     <body>
         <div class="cabecalho">
             <p>
+                <img src="https://istm-faa.co.ao/images/2018/04/22/republica-de-angola-675x450-1.jpg" style="width:90px; height:60px;" alt=""/><br/>
                 República de Angola<br/>
                     Direcção Provincial da Educação, Ciência e Tecnologia<br/>
                         {{$ano_lectivo->instituicaos->instituicao}}<br/>
