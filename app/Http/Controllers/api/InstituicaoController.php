@@ -192,14 +192,14 @@ class InstituicaoController extends Controller
 
         ]);
 
-        if ($request->nivel_acesso == "user") {
+        /*if ($request->nivel_acesso == "user") {
 
             $this->validate($request, [
                 'id_curso'=>'required|integer|exists:cursos,id'
             ],[],[
                 'id_curso'=>"Curso"
             ]);
-        }
+        }*/
 
         $password = Hash::make('puniv2023');
 
