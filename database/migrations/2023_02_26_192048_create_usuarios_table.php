@@ -18,6 +18,7 @@ class CreateUsuariosTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_instituicao')->nullable()->unsigned()->index();
             $table->bigInteger('id_pessoa')->unsigned()->index();
+            $table->bigInteger('id_curso')->nullable()->unsigned()->index();
             $table->string('name')->unique();
             $table->text('password');
             $table->string('nivel_acesso');
@@ -28,6 +29,7 @@ class CreateUsuariosTable extends Migration
         Schema::table('usuarios', function (Blueprint $table) {
             $table->foreign('id_instituicao')->references('id')->on('instituicaos')->onUpdate('cascade');
             $table->foreign('id_pessoa')->references('id')->on('pessoas')->onUpdate('cascade');
+            $table->foreign('id_curso')->references('id')->on('cursos')->onUpdate('cascade');
         });
     }
 

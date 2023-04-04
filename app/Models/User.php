@@ -30,4 +30,8 @@ class User extends Authenticatable
     public function pessoas(){
         return $this->belongsTo(Pessoa::class, 'id_pessoa');
     }
+
+    public function cursos(){
+        return $this->belongsTo(Curso::class, 'id_curso');
+    }
 }

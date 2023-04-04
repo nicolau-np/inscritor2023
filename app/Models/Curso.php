@@ -23,11 +23,18 @@ class Curso extends Model
         return $this->belongsTo(Instituicao::class, 'id_instituicao');
     }
 
-    public function turmas(){
+    public function turmas()
+    {
         return $this->hasMany(Turma::class, 'id_curso');
     }
 
-    public function estudantes(){
+    public function estudantes()
+    {
         return $this->hasMany(Estudante::class, 'id_curso');
+    }
+
+    public function users()
+    {
+        return $this->hasMany(Curso::class, 'id_curso');
     }
 }

@@ -69,9 +69,35 @@
                     </tbody>
                   </table>
                     </div>
-<div class="paginate">
-{{$estudantes->links()}}
-</div>
+                    <div class="paginate">
+                        @if ($estudantes->hasPages())
+                        <ul class="pagination justify-content-center m-0">
+                            @if ($estudantes->onFirstPage())
+                                <li class="disabled"><span>
+                                        <i class="fa fa-chevron-left"></i> Anterior</span>
+                                </li>
+                            @else
+                                <li> <a href="{{ $estudantes->previousPageUrl() }}" rel="prev"><span>
+                                            <i class="fa fa-chevron-left"></i> Anterior</span></a>
+                                </li>
+                            @endif
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            @if ($estudantes->hasMorePages())
+                                <li> <a href="{{ $estudantes->nextPageUrl() }}" rel="next"><span>
+                                            Próxima <i class="fa fa-chevron-right"></i></span></a>
+                                </li>
+
+                            @else
+                                <li class="disabled"><span>
+                                        Próxima <i class="fa fa-chevron-right"></i></span>
+                                </li>
+                            @endif
+                        </ul>
+                        @endif
+                    </div>
                 </div>
               </div>
             </div>

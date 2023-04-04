@@ -33,8 +33,7 @@
                         <div class="card-title">Formulário de Cadastro
                             &nbsp;&nbsp; <a href="/estudantes"><i class="fa
                                     fa-search"></i></a>
-                                &nbsp;&nbsp;
-                                <b>Inscritos: {{$estudantes->count()}}</b>
+
                                 </div>
                     </div>
                     <div class="card-body">
@@ -80,6 +79,28 @@
                                         'class'=>"form-control"])}}
                                         @if ($errors->has('data_nascimento'))
                                         <span class="text-danger">{{ $errors->first('data_nascimento')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">E-mail <span
+                                            class="text-danger">*</span></label>
+                                        {{Form::email('email', null,
+                                        ['placeholder'=>"E-mail",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="">Telefone <span
+                                            class="text-danger">*</span></label>
+                                        {{Form::number('telefone', null,
+                                        ['placeholder'=>"Telefone",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('telefone'))
+                                        <span class="text-danger">{{ $errors->first('telefone')}}</span>
                                         @endif
                                     </div>
 

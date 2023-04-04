@@ -40,13 +40,12 @@ class EstudanteController extends Controller
         $ano_lectivos = AnoLectivo::where('id_instituicao', $id_instituicao)->orderBy('id', 'desc');
         $classes = Classe::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc');
         $cursos = Curso::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc')->pluck('curso', 'id');
-        $estudantes = Estudante::where(['id_instituicao'=>$id_instituicao, 'id_ano_lectivo'=>$ano_lectivos->get()->first()->id])->get();
 
         $title = 'Estudantes - Novo';
         $type = 'estudantes';
         $menu = 'Estudantes';
         $submenu = 'Novo';
-        return view('estudantes.create', compact('title', 'type', 'menu', 'submenu', 'ano_lectivos', 'classes', 'cursos', 'estudantes'));
+        return view('estudantes.create', compact('title', 'type', 'menu', 'submenu', 'ano_lectivos', 'classes', 'cursos'));
     }
 
     /**
@@ -64,6 +63,8 @@ class EstudanteController extends Controller
             'id_classe' => 'required|integer|exists:classes,id',
             'id_curso' => 'required|integer|exists:cursos,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
+            'email'=>'required|email',
+            'telefone'=>'required|integer',
         ], [], [
             'nome' => 'Nome',
             'data_nascimento' => 'Data de Nascimento',
@@ -71,12 +72,16 @@ class EstudanteController extends Controller
             'id_classe' => 'Classe',
             'id_curso' => 'Curso',
             'id_ano_lectivo' => 'Ano Lectivo',
+            'email'=>"E-mail",
+            'telefone'=>"Telefone",
         ]);
 
         $data['person'] = [
             'nome' => $request->nome,
             'genero' => $request->genero,
-            'data_nascimento' => $request->data_nascimento
+            'data_nascimento' => $request->data_nascimento,
+            'telefone'=>$request->telefone,
+            'email'=>$request->email,
         ];
 
         $data['student'] = [

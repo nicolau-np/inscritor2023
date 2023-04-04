@@ -25,16 +25,6 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
 
-
-        <!-- grafico js-->
-        <script src="{{ asset('highcharts/highcharts.js') }}"></script>
-        <script src="{{ asset('highcharts/modules/exporting.js') }}"></script>
-        <script src="{{ asset('highcharts/modules/export-data.js') }}"></script>
-        <script src="{{ asset('highcharts/modules/accessibility.js') }}"></script>
-
-        <script src="{{ asset('highcharts/highcharts-more.js') }}"></script>
-        <!-- end grafico-->
-
     @livewireStyles
     @livewireScripts
 </head>

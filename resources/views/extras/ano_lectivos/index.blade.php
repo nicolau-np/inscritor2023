@@ -54,7 +54,7 @@
                         <td>
                             <a href="/extras/ano_lectivos/edit/{{$ano_lectivo->id}}" class="btn btn-primary btn-sm">Editar</a>
                             &nbsp;
-                            {{--<a href="/estudantes/destroy/{{$estudante->id}}" class="btn btn-danger btn-sm">Eliminar</a>--}}
+                            {{--<a href="/ano_lectivos/destroy/{{$estudante->id}}" class="btn btn-danger btn-sm">Eliminar</a>--}}
                         </td>
                       </tr>
                      @endforeach
@@ -62,7 +62,33 @@
                   </table>
                     </div>
                 <div class="paginate">
-                {{$ano_lectivos->links()}}
+                    @if ($ano_lectivos->hasPages())
+                    <ul class="pagination justify-content-center m-0">
+                        @if ($ano_lectivos->onFirstPage())
+                            <li class="disabled"><span>
+                                    <i class="fa fa-chevron-left"></i> Anterior</span>
+                            </li>
+                        @else
+                            <li> <a href="{{ $ano_lectivos->previousPageUrl() }}" rel="prev"><span>
+                                        <i class="fa fa-chevron-left"></i> Anterior</span></a>
+                            </li>
+                        @endif
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        @if ($ano_lectivos->hasMorePages())
+                            <li> <a href="{{ $ano_lectivos->nextPageUrl() }}" rel="next"><span>
+                                        Próxima <i class="fa fa-chevron-right"></i></span></a>
+                            </li>
+
+                        @else
+                            <li class="disabled"><span>
+                                    Próxima <i class="fa fa-chevron-right"></i></span>
+                            </li>
+                        @endif
+                    </ul>
+                    @endif
                 </div>
                 </div>
               </div>
