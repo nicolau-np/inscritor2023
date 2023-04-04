@@ -43,7 +43,6 @@
                         <th scope="col">Instituição</th>
                         <th scope="col">Município</th>
                         <th scope="col">Sígla</th>
-                        <th scope="col">Endereço</th>
                         <th scope="col">Telefone</th>
                         <th scope="col">Operações</th>
                       </tr>
@@ -55,7 +54,6 @@
                         <td>{{$instituicao->instituicao}}</td>
                         <td>{{$instituicao->municipios->municipio}}</td>
                         <td>{{$instituicao->sigla}}</td>
-                        <td>{{$instituicao->endereco}}</td>
                         <td>{{$instituicao->telefone}}</td>
                         <td>
                             <a href="/instituicaos/edit/{{$instituicao->id}}" class="btn btn-primary btn-sm">Editar</a>

@@ -35,6 +35,6 @@ class Curso extends Model
 
     public function users()
     {
-        return $this->hasMany(Curso::class, 'id_curso');
+        return $this->hasMany(User::class, 'id_curso');
     }
 }

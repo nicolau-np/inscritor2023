@@ -98,6 +98,13 @@
                                         <span class="text-danger">{{ $errors->first('nivel_acesso')}}</span>
                                         @endif
                                     </div>
+                                    <div class="col-md-4">
+                                        <label for="">Curso </label>
+                                        {{Form::select('id_curso', $cursos->pluck('curso', 'id'), null, ['placeholder'=>"Curso", 'class'=>"form-control"])}}
+                                        @if ($errors->has('id_curso'))
+                                        <span class="text-danger">{{ $errors->first('id_curso')}}</span>
+                                        @endif
+                                    </div>
 
                                     <div class="col-md-12 mt-4">
                                         <button class="btn btn-success" type="submit">Salvar</button>
@@ -116,7 +123,7 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">Nome Completo</th>
                                                 <th scope="col">Data de Nascimento</th>
-                                                <th scope="col">Gênero</th>
+                                                <th scope="col">Curso</th>
                                                 <th scope="col">Nome de Usuário</th>
                                                 <th scope="col">Nível de Acesso</th>
                                                 <th scope="col">Operações</th>
@@ -128,7 +135,7 @@
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$user->pessoas->nome}}</td>
                                                 <td>{{$user->pessoas->data_nascimento}}</td>
-                                                <td>{{$user->pessoas->genero}}</td>
+                                                <td>{{$user->cursos ? $user->cursos->curso : null}}</td>
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->nivel_acesso}}</td>
                                                 <td>

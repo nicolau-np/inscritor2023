@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Curso;
 use App\Models\Instituicao;
 use App\Models\Municipio;
 use App\Models\Pessoa;
@@ -159,12 +160,13 @@ class InstituicaoController extends Controller
             return back()->with('error', "Não encontrou");
 
         $users = User::where('id_instituicao', $instituicao->id)->get();
+        $cursos = Curso::where('id_instituicao', $instituicao->id)->orderBy('curso', 'asc');
 
         $title = 'Instituição - Usuários';
         $type = 'instituicaos';
         $menu = 'Instituição';
         $submenu = 'Usuários';
-        return view('instituicaos.users', compact('title', 'type', 'menu', 'submenu', 'instituicao', 'users'));
+        return view('instituicaos.users', compact('title', 'type', 'menu', 'submenu', 'instituicao', 'users', 'cursos'));
     }
 
     public function usersStore(Request $request, $id)
@@ -180,25 +182,37 @@ class InstituicaoController extends Controller
             'name' => 'required|string|unique:usuarios,name',
             'nivel_acesso' => 'required|string',
 
+
         ], [], [
             'nome' => 'Nome Completo',
             'data_nascimento' => 'Data de Nascimento',
             'genero' => 'Gênero',
             'name' => 'Nome de Usuário',
             'nivel_acesso' => 'Nível de Acesso',
+
         ]);
+
+        if ($request->nivel_acesso == "user") {
+
+            $this->validate($request, [
+                'id_curso'=>'required|integer|exists:cursos,id'
+            ],[],[
+                'id_curso'=>"Curso"
+            ]);
+        }
 
         $password = Hash::make('puniv2023');
 
         $data['person'] = [
-            'nome'=>$request->nome,
-            'data_nascimento'=>$request->data_nascimento,
-            'genero'=>$request->genero,
+            'nome' => $request->nome,
+            'data_nascimento' => $request->data_nascimento,
+            'genero' => $request->genero,
         ];
 
         $data['user'] = [
             'id_instituicao' => $id,
             'id_pessoa' => null,
+            'id_curso' => $request->id_curso,
             'name' => $request->name,
             'password' => $password,
             'nivel_acesso' => $request->nivel_acesso,

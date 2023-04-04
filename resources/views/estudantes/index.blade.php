@@ -39,26 +39,24 @@
                         <table class="table table-head-bg-primary mt-4">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Nome Completo</th>
                         <th scope="col">Gênero</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">E-mail</th>
                         <th scope="col">Data de Nascimento</th>
                         <th scope="col">Curso</th>
-                        <th scope="col">Ano Lectivo</th>
-                        <th scope="col">Data de Inscrição</th>
                         <th scope="col">Operações</th>
                       </tr>
                     </thead>
                     <tbody>
                         @foreach($estudantes as $estudante)
                       <tr>
-                        <td>{{$loop->iteration}}</td>
                         <td>{{$estudante->pessoas->nome}}</td>
                         <td>{{$estudante->pessoas->genero}}</td>
+                        <td>{{$estudante->pessoas->telefone}}</td>
+                        <td>{{$estudante->pessoas->email}}</td>
                         <td>{{date('d-m-Y', strtotime($estudante->pessoas->data_nascimento))}}</td>
                         <td>{{$estudante->cursos->curso}}</td>
-                        <td>{{$estudante->ano_lectivos->ano}}</td>
-                        <td>{{date('d-m-Y', strtotime($estudante->created_at))}}</td>
                         <td>
                             <a href="/estudantes/edit/{{$estudante->id}}" class="btn btn-primary btn-sm">Editar</a>
                             &nbsp;
