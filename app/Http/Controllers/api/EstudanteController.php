@@ -36,11 +36,17 @@ class EstudanteController extends Controller
 
     public function create()
     {
+        $cursos = null;
+
         $id_instituicao = Auth::user()->id_instituicao;
         $ano_lectivos = AnoLectivo::where('id_instituicao', $id_instituicao)->orderBy('id', 'desc');
         $classes = Classe::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc');
-        $cursos = Curso::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc')->pluck('curso', 'id');
 
+        if (Auth::user()->id_curso == null) {
+            $cursos = Curso::where('id_instituicao', $id_instituicao)->orderBy('id', 'asc')->pluck('curso', 'id');
+        } else {
+            $cursos = Curso::where(['id' => Auth::user()->id_curso, 'id_instituicao' => $id_instituicao])->orderBy('id', 'asc')->pluck('curso', 'id');
+        }
         $title = 'Estudantes - Novo';
         $type = 'estudantes';
         $menu = 'Estudantes';
@@ -63,8 +69,8 @@ class EstudanteController extends Controller
             'id_classe' => 'required|integer|exists:classes,id',
             'id_curso' => 'required|integer|exists:cursos,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
-            'email'=>'required|email',
-            'telefone'=>'required|integer',
+            'email' => 'required|email',
+            'telefone' => 'required|integer',
         ], [], [
             'nome' => 'Nome',
             'data_nascimento' => 'Data de Nascimento',
@@ -72,16 +78,16 @@ class EstudanteController extends Controller
             'id_classe' => 'Classe',
             'id_curso' => 'Curso',
             'id_ano_lectivo' => 'Ano Lectivo',
-            'email'=>"E-mail",
-            'telefone'=>"Telefone",
+            'email' => "E-mail",
+            'telefone' => "Telefone",
         ]);
 
         $data['person'] = [
             'nome' => $request->nome,
             'genero' => $request->genero,
             'data_nascimento' => $request->data_nascimento,
-            'telefone'=>$request->telefone,
-            'email'=>$request->email,
+            'telefone' => $request->telefone,
+            'email' => $request->email,
         ];
 
         $data['student'] = [

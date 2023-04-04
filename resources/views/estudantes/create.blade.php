@@ -107,7 +107,7 @@
                                     <div class="col-md-4">
                                         <label for="">Curso <span
                                                 class="text-danger">*</span></label>
-                                                {{Form::select('id_curso', $cursos,null, ['placeholder'=>"Curso", 'class'=>"form-control"])}}
+                                                {{Form::select('id_curso', $cursos, Auth::user()->id_curso ? Auth::user()->id_curso : null, ['placeholder'=>"Curso", 'class'=>"form-control"])}}
                                         @if ($errors->has('id_curso'))
                                         <span class="text-danger">{{ $errors->first('id_curso')}}</span>
                                         @endif
