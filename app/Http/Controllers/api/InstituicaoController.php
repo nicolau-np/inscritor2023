@@ -222,20 +222,18 @@ class InstituicaoController extends Controller
 
         if ($request->foto) {
             $this->validate($request, [
-                'foto' => 'required', 'mimes:jpg,jpeg,png,JPG,JPEG,PNG', 'max:6000',
+                'foto' => 'required|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:6000',
             ], [], [
                 'foto' => "Foto"
             ]);
 
-            $path =  time();
-            $request->file('foto')->storeAS('users', $path);
+            $path =  time() . '_' . $request->file('foto')->getClientOriginalName();
+            $request->file('foto')->storeAS('users', $path, 'uploads');
             $data['person']['foto'] = $path;
         }
 
         DB::beginTransaction();
         try {
-
-
 
             $pessoa = Pessoa::create($data['person']);
             $data['user']['id_pessoa'] = $pessoa->id;

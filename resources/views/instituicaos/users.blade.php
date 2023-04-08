@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    {{Form::open(['url'=>"/instituicaos/users/{$instituicao->id}", 'method'=>"put"])}}
+                    {{Form::open(['url'=>"/instituicaos/users/{$instituicao->id}", 'method'=>"put", 'enctype' => "multipart/form-data"])}}
                     @csrf
                     <div class="card-header">
                         <div class="card-title">Formulário de Cadastro
