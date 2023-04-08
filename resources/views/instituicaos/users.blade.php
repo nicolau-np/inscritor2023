@@ -88,6 +88,14 @@
                                     </div>
 
                                     <div class="col-md-4">
+                                        <label for="">Foto </label>
+                                        {{Form::file('foto',null, ['placeholder'=>"Foto", 'class'=>"form-control"])}}
+                                        @if ($errors->has('foto'))
+                                        <span class="text-danger">{{ $errors->first('foto')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-4">
                                         <label for="">Nível de Acesso <span
                                                 class="text-danger">*</span></label>
                                                 {{Form::select('nivel_acesso', [
