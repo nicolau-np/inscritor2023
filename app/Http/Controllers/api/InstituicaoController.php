@@ -207,7 +207,7 @@ class InstituicaoController extends Controller
             'nome' => $request->nome,
             'data_nascimento' => $request->data_nascimento,
             'genero' => $request->genero,
-            'foto'=>null,
+            'foto' => null,
         ];
 
         $data['user'] = [
@@ -219,22 +219,23 @@ class InstituicaoController extends Controller
             'nivel_acesso' => $request->nivel_acesso,
         ];
 
-        dd($request->foto);
+
+        if ($request->foto) {
+            $this->validate($request, [
+                'foto' => 'required', 'mimes:jpg,jpeg,png,JPG,JPEG,PNG', 'max:6000',
+            ], [], [
+                'foto' => "Foto"
+            ]);
+
+            $path =  time();
+            $request->file('foto')->storeAS('users', $path);
+            $data['person']['foto'] = $path;
+        }
 
         DB::beginTransaction();
         try {
 
-            if ($request->hasFile('foto') && $request->foto->isValid()) {
-                $this->validate($request, [
-                    'foto' => 'required', 'mimes:jpg,jpeg,png,JPG,JPEG,PNG', 'max:6000',
-                ], [], [
-                    'foto' => "Foto"
-                ]);
 
-                $path =  time() . '_' . $request->file('foto')->getClientOriginalName();
-                $request->file('foto')->storeAS('users', $path, 'uploads');
-                $data['person']['foto'] = $path;
-            }
 
             $pessoa = Pessoa::create($data['person']);
             $data['user']['id_pessoa'] = $pessoa->id;
