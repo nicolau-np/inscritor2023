@@ -46,4 +46,28 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function edit()
+    {
+        $title = '[INSCRITOR] - Editar Perfil';
+        $type = 'edit';
+        $menu = 'Editar Perfil';
+        $submenu = null;
+        return view('user.edit', compact('title', 'type', 'menu', 'submenu'));
+    }
+
+    public function editar(Request $request)
+    {
+        $this->validate($request, [
+            'password_actual'=>'required|string|min:6',
+            'password'=>'required|string|min:6|confirmed',
+            'password_confirmation'=>'required|string|min:6'
+        ],[],[
+            'password_actual'=>'Palavra-Passe Actual',
+            'password'=>'Nova Palavra-Passe',
+            'password_confirmation'=>'Confirmar Palavra-Passe'
+        ]);
+
+
+    }
 }

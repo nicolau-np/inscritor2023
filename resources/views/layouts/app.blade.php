@@ -329,7 +329,7 @@
                                   </a>
                                 </li>
                                 <li>
-                                  <a href="#edit">
+                                  <a href="/user/edit">
                                     <span class="link-collapse">Editar Perfil</span>
                                   </a>
                                 </li>

@@ -52,6 +52,8 @@ Route::prefix('user')->group(function () {
     Route::get('login', [UserController::class, 'login'])->name('login')->middleware('guest');
     Route::get('logout', [UserController::class, 'logout'])->middleware('auth');
     Route::post('login', [UserController::class, 'logar']);
+    Route::get('edit', [UserController::class, 'edit']);
+    Route::post('edit', [UserController::class, 'editar']);
 });
 
 Route::prefix('estudantes')->middleware('auth.user')->group(function () {
