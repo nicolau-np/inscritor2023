@@ -28,7 +28,7 @@
 			<div class="logo-header" data-background-color="blue">
 
 				<a href="/" class="logo">
-                    <h2 style="margin-top:14px; color: #fff; font-weight:bold;">Inscritor</h2>
+                    <h3 style="margin-top:18px; color: #fff; font-weight:bold;">INSCRITOR</h2>
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -467,7 +467,7 @@
                     <ul class="nav">
                       <li class="nav-item">
                         <a class="nav-link" routerLink="/">
-                          Inscritor
+                          INSCRITOR
                         </a>
                       </li>
                       <li class="nav-item">
