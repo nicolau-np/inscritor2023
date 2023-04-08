@@ -27,8 +27,8 @@
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 
-				<a href="index.html" class="logo">
-					<img src="{{asset('assets/img/logo.svg')}}" alt="navbar brand" class="navbar-brand">
+				<a href="/" class="logo">
+                    <h2 style="margin-top:14px; color: #fff; font-weight:bold;">Inscritor</h2>
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -56,7 +56,7 @@
 										<i class="fa fa-search search-icon"></i>
 									</button>
 								</div>
-								<input type="text" placeholder="Search ..." class="form-control">
+								<input type="text" placeholder="Pesquisar ..." class="form-control" />
 							</div>
 						</form>
 					</div>
@@ -250,14 +250,26 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="{{asset('assets/neutro/images/no-photo.png')}}" alt="..." class="avatar-img rounded-circle">
+									<img src="
+                                    @if(Auth::user()->pessoas->foto)
+                                    {{asset('users/'.Auth::user()->pessoas->foto)}}
+                                    @else
+                                    {{asset('assets/neutro/images/no-photo.png')}}
+                                    @endif
+                                    " alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="{{asset('assets/neutro/images/no-photo.png')}}" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="
+                                                @if(Auth::user()->pessoas->foto)
+                                                {{asset('users/'.Auth::user()->pessoas->foto)}}
+                                                @else
+                                                {{asset('assets/neutro/images/no-photo.png')}}
+                                                @endif
+                                                " alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4>{{Auth::user()->pessoas->nome}}</h4>
 												<p class="text-muted">{{Auth::user()->name}}</p><a href="/user/profile" class="btn btn-xs btn-secondary btn-sm">Ver Perfil</a>
@@ -290,7 +302,13 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="{{asset('assets/neutro/images/no-photo.png')}}" alt="..." class="avatar-img rounded-circle">
+							<img src="
+                                    @if(Auth::user()->pessoas->foto)
+                                    {{asset('users/'.Auth::user()->pessoas->foto)}}
+                                    @else
+                                    {{asset('assets/neutro/images/no-photo.png')}}
+                                    @endif
+                            " alt="..." class="avatar-img rounded-circle">
 						</div>
                         <div class="info">
                             <a data-toggle="collapse" href="#collapseExample"
