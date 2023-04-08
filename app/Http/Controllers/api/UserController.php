@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -28,16 +30,16 @@ class UserController extends Controller
             ]
         );
 
-        $user = User::where(['name' => $request->username])->first();
+        $user = User::where('name', $request->username)->first();
 
         if ($user->estado == "off") {
-            return back()->with(['error' => "Usuário bloqueado, sem permissão."]);
+            return back()->with('error', "Usuário bloqueado, sem permissão.");
         }
 
         if (Auth::attempt(['name' => $request->username, 'password' => $request->password])) {
             return redirect('/home');
         } else {
-            return back()->with(['error' => "Palavra passe incorrectas"]);
+            return back()->with('error', "Palavra passe incorrecta");
         }
     }
 
@@ -59,15 +61,28 @@ class UserController extends Controller
     public function editar(Request $request)
     {
         $this->validate($request, [
-            'password_actual'=>'required|string|min:6',
-            'password'=>'required|string|min:6|confirmed',
-            'password_confirmation'=>'required|string|min:6'
-        ],[],[
-            'password_actual'=>'Palavra-Passe Actual',
-            'password'=>'Nova Palavra-Passe',
-            'password_confirmation'=>'Confirmar Palavra-Passe'
+            'password_actual' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required|string|min:6'
+        ], [], [
+            'password_actual' => 'Palavra-Passe Actual',
+            'password' => 'Nova Palavra-Passe',
+            'password_confirmation' => 'Confirmar Palavra-Passe'
         ]);
 
+        if (!Hash::check($request->password_actual, Auth::user()->password))
+            return back()->with('error', "Palavra-Passe actual incorrecta!");
 
+        $password = Hash::make($request->password);
+
+        DB::beginTransaction();
+        try {
+            User::find(Auth::user()->id)->update(['password' => $password]);
+            DB::commit();
+            return back()->with('success', "Feito com sucesso");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response(['error' => $e->getMessage()], 500);
+        }
     }
 }

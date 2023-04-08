@@ -131,6 +131,7 @@ class InstituicaoController extends Controller
             ]);
         }
 
+
         DB::beginTransaction();
         try {
             Instituicao::find($instituicao->id)->update($request->all());

@@ -20,22 +20,7 @@ class UsuarioSeeder extends Seeder
                 'nivel_acesso' => 'manager',
                 'estado' => 'on',
             ],
-            [
-                'id_instituicao' => 1,
-                'id_pessoa' => 2,
-                'name' => 'admin.inscritor',
-                'password' => Hash::make('welwitchia2023'),
-                'nivel_acesso' => 'admin',
-                'estado' => 'on',
-            ],
-            [
-                'id_instituicao' => 1,
-                'id_pessoa' => 3,
-                'name' => 'user.inscritor',
-                'password' => Hash::make('welwitchia2023'),
-                'nivel_acesso' => 'user',
-                'estado' => 'on',
-            ]
+
         );
     }
 }

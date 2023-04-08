@@ -11,6 +11,9 @@
           <h2>Iniciar Sessão</h2>
         </div>
         <div class="col-md-12">
+            @include('includes.messages')
+        </div>
+        <div class="col-md-12">
           <form action="/user/login" method="POST">
             @csrf
             <div class="row">
