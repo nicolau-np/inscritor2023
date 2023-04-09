@@ -17,7 +17,7 @@
     </div>
     <div class="page-inner mt--5">
         <div class="row mt--2">
-            <div class="col-md-12">
+          {{-- <div class="col-md-12">
                 <div class="card full-height">
                     <div class="card-body">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -41,9 +41,9 @@
                               <span class="sr-only">Next</span>
                             </a>
                           </div>
-                    </div>
-                </div>
-            </div>
+                    </div> </div>
+            </div>--}}
+
 
         </div>
     </div>

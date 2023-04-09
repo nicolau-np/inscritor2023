@@ -32,9 +32,7 @@ use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/home');
-});
+Route::get('/', [HomeController::class, 'client']);
 
 
 Route::get('home', [HomeController::class, 'home'])->middleware('auth')->name('home');

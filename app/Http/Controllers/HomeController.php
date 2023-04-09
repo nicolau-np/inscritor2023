@@ -14,4 +14,13 @@ class HomeController extends Controller
         $submenu = null;
         return view('home', compact('title', 'type', 'menu', 'submenu'));
     }
+
+    public function client()
+    {
+        $title = '[INSCRITOR] - Sistema de Selecção Automática';
+        $type = 'home';
+        $menu = 'Home';
+        $submenu = null;
+        return view('client.home', compact('title', 'type', 'menu', 'submenu'));
+    }
 }

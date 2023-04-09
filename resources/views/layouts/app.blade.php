@@ -80,54 +80,7 @@
 								<li>
 									<div class="message-notif-scroll scrollbar-outer">
 										<div class="notif-center">
-											<a href="#">
-												<div class="notif-img">
-													<img src="{{asset('assets/img/jm_denis.jpg')}}" alt="Img Profile">
-												</div>
-												<div class="notif-content">
-													<span class="subject">Jimmy Denis</span>
-													<span class="block">
-														How are you ?
-													</span>
-													<span class="time">5 minutes ago</span>
-												</div>
-											</a>
-											<a href="#">
-												<div class="notif-img">
-													<img src="{{asset('assets/img/chadengle.jpg')}}" alt="Img Profile">
-												</div>
-												<div class="notif-content">
-													<span class="subject">Chad</span>
-													<span class="block">
-														Ok, Thanks !
-													</span>
-													<span class="time">12 minutes ago</span>
-												</div>
-											</a>
-											<a href="#">
-												<div class="notif-img">
-													<img src="{{asset('assets/img/mlane.jpg')}}" alt="Img Profile">
-												</div>
-												<div class="notif-content">
-													<span class="subject">Jhon Doe</span>
-													<span class="block">
-														Ready for the meeting today...
-													</span>
-													<span class="time">12 minutes ago</span>
-												</div>
-											</a>
-											<a href="#">
-												<div class="notif-img">
-													<img src="{{asset('assets/img/talha.jpg')}}" alt="Img Profile">
-												</div>
-												<div class="notif-content">
-													<span class="subject">Talha</span>
-													<span class="block">
-														Hi, Apa Kabar ?
-													</span>
-													<span class="time">17 minutes ago</span>
-												</div>
-											</a>
+
 										</div>
 									</div>
 								</li>
@@ -148,44 +101,7 @@
 								<li>
 									<div class="notif-scroll scrollbar-outer">
 										<div class="notif-center">
-											<a href="#">
-												<div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
-												<div class="notif-content">
-													<span class="block">
-														New user registered
-													</span>
-													<span class="time">5 minutes ago</span>
-												</div>
-											</a>
-											<a href="#">
-												<div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
-												<div class="notif-content">
-													<span class="block">
-														Rahmad commented on Admin
-													</span>
-													<span class="time">12 minutes ago</span>
-												</div>
-											</a>
-											<a href="#">
-												<div class="notif-img">
-													<img src="{{asset('assets/img/profile2.jpg')}}" alt="Img Profile">
-												</div>
-												<div class="notif-content">
-													<span class="block">
-														Reza send messages to you
-													</span>
-													<span class="time">12 minutes ago</span>
-												</div>
-											</a>
-											<a href="#">
-												<div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
-												<div class="notif-content">
-													<span class="block">
-														Farrah liked Admin
-													</span>
-													<span class="time">17 minutes ago</span>
-												</div>
-											</a>
+
 										</div>
 									</div>
 								</li>
@@ -198,54 +114,7 @@
 							<a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
 								<i class="fas fa-layer-group"></i>
 							</a>
-							<div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
-								<div class="quick-actions-header">
-									<span class="title mb-1">Quick Actions</span>
-									<span class="subtitle op-8">Shortcuts</span>
-								</div>
-								<div class="quick-actions-scroll scrollbar-outer">
-									<div class="quick-actions-items">
-										<div class="row m-0">
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-file-1"></i>
-													<span class="text">Generated Report</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-database"></i>
-													<span class="text">Create New Database</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-pen"></i>
-													<span class="text">Create New Post</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-interface-1"></i>
-													<span class="text">Create New Task</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-list"></i>
-													<span class="text">Completed Tasks</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-file"></i>
-													<span class="text">Create New Invoice</span>
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
+							
 						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
