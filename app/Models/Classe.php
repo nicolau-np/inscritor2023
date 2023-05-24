@@ -17,6 +17,14 @@ class Classe extends Model
         'estado',
     ];
 
+    public function emolumentos(){
+        return $this->hasMany(Emolumento::class, 'id_classe');
+    }
+
+    public function classificadors(){
+        return $this->hasMany(Classificador::class, 'id_classe');
+    }
+
     public function instituicaos()
     {
         return $this->belongsTo(Instituicao::class, 'id_instituicao');

@@ -14,10 +14,20 @@ class Emolumento extends Model
     protected $fillable = [
         'id_instituicao',
         'id_ano_lectivo',
+        'id_classe',
+        'id_curso',
         'emolumento',
         'valor',
         'estado',
     ];
+
+    public function classes(){
+        return $this->belongsTo(Classe::class, 'id_classe');
+    }
+
+    public function cursos(){
+        return $this->belongsTo(Curso::class, 'id_curso');
+    }
 
     public function ano_lectivos()
     {

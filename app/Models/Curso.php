@@ -18,6 +18,14 @@ class Curso extends Model
         'estado',
     ];
 
+    public function emolumentos(){
+        return $this->hasMany(Emolumento::class, 'id_curso');
+    }
+
+    public function classificadors(){
+        return $this->hasMany(Classificador::class, 'id_curso');
+    }
+
     public function instituicaos()
     {
         return $this->belongsTo(Instituicao::class, 'id_instituicao');
