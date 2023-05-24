@@ -5,29 +5,32 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>About</h2>
-        <p>About Us</p>
+        <h2>Sobre</h2>
+        <p>Sobre Nós</p>
       </div>
 
       <div class="row content">
         <div class="col-lg-6">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.
+          <p style="text-align: justify;">
+            Somos uma instituição comprometida em simplificar e
+            otimizar o processo de seleção de candidatos.
+            Com o nosso sistema de seleção automática, tornamos
+            todo o processo mais eficiente e preciso.
           </p>
           <ul>
-            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+            <li><i class="ri-check-double-line"></i> Rápido</li>
+            <li><i class="ri-check-double-line"></i> Eficaz</li>
+            <li><i class="ri-check-double-line"></i> Económico</li>
           </ul>
         </div>
         <div class="col-lg-6 pt-4 pt-lg-0">
-          <p>
-            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          <p style="text-align: justify;">
+            Nosso sistema utiliza algoritmos avançados para analisar as inscrições dos candidatos de forma automática e imparcial.
+             Isso permite que identifiquemos rapidamente os candidatos com maior potencial e adequação aos critérios estabelecidos.
+             Além disso, nosso sistema gera balanços e estatísticas diárias, fornecendo uma visão abrangente do número de inscritos por período de tempo. Com essas informações em mãos, você poderá tomar
+             decisões embasadas e estratégicas para o processo seletivo.
           </p>
-          <a href="#" class="btn-learn-more">Learn More</a>
+          {{--<a href="#" class="btn-learn-more">Ler Mais</a>--}}
         </div>
       </div>
 
@@ -44,8 +47,8 @@
           <div class="count-box">
             <i class="bi bi-emoji-smile"></i>
             <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-            <p><strong>Happy Clients</strong> consequuntur quae qui deca rode</p>
-            <a href="#">Find out more &raquo;</a>
+            <p><strong>Clientes satisfeitos</strong> Clientes satisfeitos são o resultado da década</p>
+            <a href="#">Descubra mais &raquo;</a>
           </div>
         </div>
 
@@ -53,8 +56,8 @@
           <div class="count-box">
             <i class="bi bi-journal-richtext"></i>
             <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-            <p><strong>Projects</strong> adipisci atque cum quia aut numquam delectus</p>
-            <a href="#">Find out more &raquo;</a>
+            <p><strong>Instituições</strong> Junta-te a outras instituições e seja feliz como eles</p>
+            <a href="#">Descubra mais &raquo;</a>
           </div>
         </div>
 
@@ -62,8 +65,8 @@
           <div class="count-box">
             <i class="bi bi-headset"></i>
             <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-            <p><strong>Hours Of Support</strong> aut commodi quaerat. Aliquam ratione</p>
-            <a href="#">Find out more &raquo;</a>
+            <p><strong>Horas de suporte</strong> ou peça ajuda. Por algum motivo ou dúvida</p>
+            <a href="#">Descubra mais &raquo;</a>
           </div>
         </div>
 
@@ -71,8 +74,8 @@
           <div class="count-box">
             <i class="bi bi-people"></i>
             <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-            <p><strong>Hard Workers</strong> rerum asperiores dolor molestiae doloribu</p>
-            <a href="#">Find out more &raquo;</a>
+            <p><strong>Parceiros</strong> espalhados por muitos pontos do país a tornarem sonhos em realizade</p>
+            <a href="#">Descubra mais &raquo;</a>
           </div>
         </div>
 
@@ -81,72 +84,14 @@
     </div>
   </section><!-- End Counts Section -->
 
-  <!-- ======= Why Us Section ======= -->
-  <section id="why-us" class="why-us section-bg">
-    <div class="container-fluid" data-aos="fade-up">
-
-      <div class="row">
-
-        <div class="col-lg-5 align-items-stretch video-box" style='background-image: url("{{asset('assets/client/img/why-us.jpg')}}");' data-aos="zoom-in" data-aos-delay="100">
-          <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
-        </div>
-
-        <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
-
-          <div class="content">
-            <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto</strong></h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-            </p>
-          </div>
-
-          <div class="accordion-list">
-            <ul>
-              <li>
-                <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
-                  <p>
-                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
-                  <p>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
-                  <p>
-                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                  </p>
-                </div>
-              </li>
-
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- End Why Us Section -->
-
 
   <!-- ======= Testimonials Section ======= -->
   <section id="testimonials" class="testimonials section-bg">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>Testimonials</h2>
-        <p>Testimonials</p>
+        <h2>CLIENTES SATISFEITOS</h2>
+        <p>CLIENTES SATISFEITOS</p>
       </div>
 
       <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
@@ -155,12 +100,12 @@
           <div class="swiper-slide">
             <div class="testimonial-wrap">
               <div class="testimonial-item">
-                <img src="{{asset('assets/client/img/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
+                <img src="{{asset('assets/neutro/images/no-photo.png')}}" class="testimonial-img" alt="">
+                <h3>Maria Santos</h3>
                 <h4>Ceo &amp; Founder</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  O sistema de seleção automática revolucionou nosso processo de contratação. Agora podemos identificar os candidatos mais qualificados de forma rápida e precisa. Estamos muito satisfeitos com os resultados!
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -170,12 +115,12 @@
           <div class="swiper-slide">
             <div class="testimonial-wrap">
               <div class="testimonial-item">
-                <img src="{{asset('assets/client/img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
+                <img src="{{asset('assets/neutro/images/no-photo.png')}}" class="testimonial-img" alt="">
+                <h3>Pedro Silva</h3>
                 <h4>Designer</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  Com o sistema automatizado, ganhamos eficiência e precisão na análise das inscrições. Agora podemos admitir os melhores candidatos com base em critérios claros e objetivos. Recomendo!
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -185,12 +130,12 @@
           <div class="swiper-slide">
             <div class="testimonial-wrap">
               <div class="testimonial-item">
-                <img src="{{asset('assets/client/img/testimonials/testimonials-3.jpg')}}" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
+                <img src="{{asset('assets/neutro/images/no-photo.png')}}" class="testimonial-img" alt="">
+                <h3>Ana Oliveira</h3>
                 <h4>Store Owner</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  O sistema de geração de balanços e estatísticas diárias nos fornece insights valiosos sobre o desempenho do nosso processo seletivo. Estamos adorando ter dados concretos para embasar nossas decisões.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -200,12 +145,12 @@
           <div class="swiper-slide">
             <div class="testimonial-wrap">
               <div class="testimonial-item">
-                <img src="{{asset('assets/client/img/testimonials/testimonials-4.jpg')}}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
+                <img src="{{asset('assets/neutro/images/no-photo.png')}}" class="testimonial-img" alt="">
+                <h3>José Almeida</h3>
                 <h4>Freelancer</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  O sistema automatizado simplificou todo o processo de seleção, economizando tempo e recursos. Agora podemos nos concentrar na análise dos candidatos mais promissores. Estamos impressionados!
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -215,12 +160,12 @@
           <div class="swiper-slide">
             <div class="testimonial-wrap">
               <div class="testimonial-item">
-                <img src="{{asset('assets/client/img/testimonials/testimonials-5.jpg')}}" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
+                <img src="{{asset('assets/neutro/images/no-photo.png')}}" class="testimonial-img" alt="">
+                <h3>Camila Rodrigues</h3>
                 <h4>Entrepreneur</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                  Como membro da comissão de seleção, estou muito feliz com a praticidade das listas nominais geradas em PDF e Excel. Isso facilita nossa revisão e discussão dos candidatos durante o processo seletivo.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -239,101 +184,14 @@
     <div class="container" data-aos="zoom-in">
 
       <div class="text-center">
-        <h3>Call To Action</h3>
-        <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <a class="cta-btn" href="#">Call To Action</a>
+        <h3>Apoio ao Cliente</h3>
+        <p> A nossa linha de apoio ao cliente está aberta nos dias e horas normais de trabalho. Ligue sem exitar e vai ter o atendimento imediato.</p>
+        <a class="cta-btn" href="#">Ligar Agora</a>
       </div>
 
     </div>
   </section><!-- End Cta Section -->
 
-  <!-- ======= Team Section ======= -->
-  <section id="team" class="team section-bg">
-    <div class="container" data-aos="fade-up">
-
-      <div class="section-title">
-        <h2>Team</h2>
-        <p>Check our Team</p>
-      </div>
-
-      <div class="row">
-
-        <div class="col-xl-3 col-lg-4 col-md-6">
-          <div class="member" data-aos="zoom-in" data-aos-delay="100">
-            <img src="{{asset('assets/client/img/team/team-1.jpg')}}" class="img-fluid" alt="">
-            <div class="member-info">
-              <div class="member-info-content">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
-              </div>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
-          <div class="member" data-aos="zoom-in" data-aos-delay="200">
-            <img src="{{asset('assets/client/img/team/team-2.jpg')}}" class="img-fluid" alt="">
-            <div class="member-info">
-              <div class="member-info-content">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
-              </div>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
-          <div class="member" data-aos="zoom-in" data-aos-delay="300">
-            <img src="{{asset('assets/client/img/team/team-3.jpg')}}" class="img-fluid" alt="">
-            <div class="member-info">
-              <div class="member-info-content">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-              </div>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
-          <div class="member" data-aos="zoom-in" data-aos-delay="400">
-            <img src="{{asset('assets/client/img/team/team-4.jpg')}}" class="img-fluid" alt="">
-            <div class="member-info">
-              <div class="member-info-content">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-              </div>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- End Team Section -->
 
   <!-- ======= Frequently Asked Questions Section ======= -->
   <section id="faq" class="faq">
@@ -341,17 +199,17 @@
 
       <div class="section-title">
         <h2>F.A.Q</h2>
-        <p>Frequently Asked Questions</p>
+        <p>PERGUNTAS FREQUENTES</p>
       </div>
 
       <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
         <div class="col-lg-5">
           <i class="bx bx-help-circle"></i>
-          <h4>Non consectetur a erat nam at lectus urna duis?</h4>
+          <h4>Como funciona o sistema de seleção automática de candidatos?</h4>
         </div>
         <div class="col-lg-7">
           <p>
-            Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+            O sistema de seleção automática de candidatos utiliza algoritmos avançados para analisar as inscrições dos candidatos com base em critérios predefinidos. Ele classifica e pontua automaticamente os candidatos, identificando os mais qualificados de acordo com os requisitos estabelecidos.
           </p>
         </div>
       </div><!-- End F.A.Q Item-->
@@ -359,11 +217,11 @@
       <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
         <div class="col-lg-5">
           <i class="bx bx-help-circle"></i>
-          <h4>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h4>
+          <h4>Quais são os critérios utilizados pelo sistema para selecionar os candidatos?</h4>
         </div>
         <div class="col-lg-7">
           <p>
-            Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
+            Os critérios utilizados pelo sistema podem variar de acordo com as necessidades e requisitos da instituição. Eles podem incluir experiência profissional, habilidades específicas, qualificações educacionais, resultados de testes ou outras métricas relevantes. Os critérios são definidos e configurados de acordo com as preferências da instituição.
           </p>
         </div>
       </div><!-- End F.A.Q Item-->
@@ -371,11 +229,11 @@
       <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
         <div class="col-lg-5">
           <i class="bx bx-help-circle"></i>
-          <h4>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?</h4>
+          <h4>O sistema de seleção automática substitui completamente o processo manual de seleção de candidatos?</h4>
         </div>
         <div class="col-lg-7">
           <p>
-            Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus.
+            O sistema de seleção automática é projetado para auxiliar e agilizar o processo de seleção, tornando-o mais eficiente e preciso. Ele automatiza tarefas como triagem de currículos e classificação inicial, permitindo que a equipe foque em etapas mais estratégicas, como entrevistas e avaliações mais aprofundadas. No entanto, a tomada de decisão final ainda é realizada pelos profissionais responsáveis.
           </p>
         </div>
       </div><!-- End F.A.Q Item-->
@@ -383,11 +241,11 @@
       <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
         <div class="col-lg-5">
           <i class="bx bx-help-circle"></i>
-          <h4>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h4>
+          <h4>Como o sistema de seleção automática gera balanços e estatísticas diárias?</h4>
         </div>
         <div class="col-lg-7">
           <p>
-            Aperiam itaque sit optio et deleniti eos nihil quidem cumque. Voluptas dolorum accusantium sunt sit enim. Provident consequuntur quam aut reiciendis qui rerum dolorem sit odio. Repellat assumenda soluta sunt pariatur error doloribus fuga.
+            O sistema registra e processa as informações sobre os candidatos inscritos, como quantidade, perfil demográfico e dados relevantes. Com base nesses dados, ele gera balanços e estatísticas diárias que fornecem uma visão detalhada do número de inscritos por período de tempo, permitindo uma análise mais abrangente do processo seletivo.
           </p>
         </div>
       </div><!-- End F.A.Q Item-->
@@ -395,11 +253,11 @@
       <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="500">
         <div class="col-lg-5">
           <i class="bx bx-help-circle"></i>
-          <h4>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</h4>
+          <h4>O sistema de seleção automática gera listas nominais de candidatos admitidos e não admitidos?</h4>
         </div>
         <div class="col-lg-7">
           <p>
-            Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+            Sim, o sistema é capaz de gerar listas nominais de candidatos admitidos e não admitidos. Essas listas são disponibilizadas em formato PDF e Excel, permitindo que sejam facilmente compartilhadas e utilizadas pela equipe responsável pelo processo seletivo.
           </p>
         </div>
       </div><!-- End F.A.Q Item-->
@@ -412,8 +270,8 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>Contact</h2>
-        <p>Contact Us</p>
+        <h2>Contactar</h2>
+        <p>Contactar-Nos</p>
       </div>
 
       <div class="row">
@@ -424,22 +282,22 @@
             <div class="col-md-12">
               <div class="info-box">
                 <i class="bx bx-map"></i>
-                <h3>Our Address</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <h3>Nosso Endereço</h3>
+                <p>Cassange, Moçamedes, Namibe</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4">
                 <i class="bx bx-envelope"></i>
-                <h3>Email Us</h3>
-                <p>info@example.com<br>contact@example.com</p>
+                <h3>Nosso Email</h3>
+                <p>inscritor@gmail.com<br>inscritorsuport@gmail.com</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4">
                 <i class="bx bx-phone-call"></i>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                <h3>Nossos Contactos</h3>
+                <p>+244 922 000 000<br>+244 926 000 000</p>
               </div>
             </div>
           </div>
@@ -450,24 +308,24 @@
           <form action="forms/contact.php" method="post" role="form" class="php-email-form">
             <div class="row">
               <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Seu Nome" required>
               </div>
               <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Seu E-mail" required>
               </div>
             </div>
             <div class="form-group mt-3">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
             </div>
             <div class="form-group mt-3">
-              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              <textarea class="form-control" name="message" rows="5" placeholder="Mensagem" required></textarea>
             </div>
             <div class="my-3">
-              <div class="loading">Loading</div>
+              <div class="loading">Carregando</div>
               <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="sent-message">Sua mensagens foi bem enviada. Obrigado!</div>
             </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
+            <div class="text-center"><button type="submit">Enviar Mensagem</button></div>
           </form>
         </div>
 

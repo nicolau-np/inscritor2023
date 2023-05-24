@@ -75,7 +75,7 @@
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Bem-vindo ao <span>Inscritor</span></h2>
-              <p class="animate__animated animate__fadeInUp">Sistema de Selecção Automática</p>
+              <p class="animate__animated animate__fadeInUp">Sistema de Seleção Automática de candidatos inscritos.</p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ler Mais</a>
             </div>
           </div>
@@ -85,8 +85,8 @@
         <div class="carousel-item" style="background-image: url({{asset('assets/client/img/slide/slide-2.jpg')}})">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">Fácil e Rápido</h2>
-              <p class="animate__animated animate__fadeInUp">Com apenas um clique e tem acesso as estatísticas e balanços.</p>
+              <h2 class="animate__animated animate__fadeInDown">Balanços e Estatísticas Diárias</h2>
+              <p class="animate__animated animate__fadeInUp">O sistema gera balanços e estatísticas diárias de inscritos por período de tempo.</p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ler Mais</a>
             </div>
           </div>
@@ -96,8 +96,8 @@
         <div class="carousel-item" style="background-image: url({{asset('assets/client/img/slide/slide-3.jpg')}})">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-              <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+              <h2 class="animate__animated animate__fadeInDown">Listas Nominais de Candidatos</h2>
+              <p class="animate__animated animate__fadeInUp">O sistema gera listas nominais de candidatos admitidos e não admitidos.</p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ler Mais</a>
             </div>
           </div>

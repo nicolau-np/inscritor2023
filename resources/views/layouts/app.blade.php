@@ -4,7 +4,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>{{$title}}</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
+	<!-- Favicons -->
+    <link href="{{asset('assets/client/img/favicon.png')}}" rel="icon">
+    <link href="{{asset('assets/client/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    
     <link rel="stylesheet" href="{{asset('assets/neutro/css/style.css')}}">
 	<!-- Fonts and icons -->
 	<script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
@@ -114,7 +117,7 @@
 							<a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
 								<i class="fas fa-layer-group"></i>
 							</a>
-							
+
 						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
