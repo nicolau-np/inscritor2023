@@ -107,7 +107,7 @@ class EstudanteController extends Controller
             $data['student']['id_pessoa'] = $pessoa->id;
             $estudante = Estudante::create($data['student']);
             DB::commit();
-            return back()->with('success', "Feito com sucesso");
+            return back()->with('success', "Feito com sucesso! Nº de Inscrição:". date('Y').''.$estudante->id);
         } catch (\Exception $e) {
             DB::rollBack();
             return response(['error' => $e->getMessage()], 500);
@@ -204,8 +204,6 @@ class EstudanteController extends Controller
             'id_curso' => $request->id_curso,
             'id_ano_lectivo' => $request->id_ano_lectivo,
         ];
-
-
 
         DB::beginTransaction();
         try {

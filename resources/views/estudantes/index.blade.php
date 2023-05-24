@@ -39,6 +39,7 @@
                         <table class="table table-head-bg-primary mt-4">
                     <thead>
                       <tr>
+                        <th scope="col">Nº de Insc.</th>
                         <th scope="col">Nome Completo</th>
                         <th scope="col">Gênero</th>
                         <th scope="col">Telefone</th>
@@ -51,6 +52,7 @@
                     <tbody>
                         @foreach($estudantes as $estudante)
                       <tr>
+                        <td>{{ date('Y', strtotime($estudante->created_at)) }}{{ $estudante->id }}</td>
                         <td>{{$estudante->pessoas->nome}}</td>
                         <td>{{$estudante->pessoas->genero}}</td>
                         <td>{{$estudante->pessoas->telefone}}</td>

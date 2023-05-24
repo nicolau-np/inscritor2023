@@ -39,7 +39,8 @@
                     <div class="card-body">
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="font-weight:bold; font-size:15px;">
+
                                 @include('includes.messages')
                             </div>
 
@@ -94,7 +95,7 @@
                                         @endif
                                     </div>
 
-                                    
+
 
                                     <div class="col-md-4">
                                         <label for="">E-mail </label>
