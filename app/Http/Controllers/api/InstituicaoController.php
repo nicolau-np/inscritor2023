@@ -178,7 +178,7 @@ class InstituicaoController extends Controller
 
         $this->validate($request, [
             'nome' => 'required|string',
-            'data_nascimento' => 'required|date|before_or_equal:today',
+            'data_nascimento' => 'required|date|before:today',
             'genero' => 'required|string',
             'name' => 'required|string|unique:usuarios,name',
             'nivel_acesso' => 'required|string',

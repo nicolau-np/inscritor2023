@@ -46,7 +46,7 @@
                             <div class="col-md-12">
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label for="">Nome Completo <span
                                                 class="text-danger">*</span></label>
                                         {{Form::text('nome', null,
@@ -56,6 +56,18 @@
                                         <span class="text-danger">{{ $errors->first('nome')}}</span>
                                         @endif
                                     </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">Nº do Bilhete de Identidade <span
+                                                class="text-danger">*</span></label>
+                                        {{Form::text('bilhete', null,
+                                        ['placeholder'=>"Nº do Bilhete de Identidade",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('bilhete'))
+                                        <span class="text-danger">{{ $errors->first('bilhete')}}</span>
+                                        @endif
+                                    </div>
+
                                     <div class="col-md-2">
                                         <label for="">Gênero <span
                                                 class="text-danger">*</span></label>
@@ -82,9 +94,10 @@
                                         @endif
                                     </div>
 
+                                    
+
                                     <div class="col-md-4">
-                                        <label for="">E-mail <span
-                                            class="text-danger">*</span></label>
+                                        <label for="">E-mail </label>
                                         {{Form::email('email', null,
                                         ['placeholder'=>"E-mail",
                                         'class'=>"form-control"])}}

@@ -44,7 +44,7 @@
                             <div class="col-md-12">
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label for="">Nome Completo <span
                                                 class="text-danger">*</span></label>
                                         {{Form::text('nome', $estudante->pessoas->nome,
@@ -52,6 +52,16 @@
                                         'class'=>"form-control"])}}
                                         @if ($errors->has('nome'))
                                         <span class="text-danger">{{ $errors->first('nome')}}</span>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="">Nº do Bilhete de Identidade <span
+                                                class="text-danger">*</span></label>
+                                        {{Form::text('bilhete', $estudante->pessoas->bilhete,
+                                        ['placeholder'=>"Nº do Bilhete de Identidade",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('bilhete'))
+                                        <span class="text-danger">{{ $errors->first('bilhete')}}</span>
                                         @endif
                                     </div>
                                     <div class="col-md-2">
@@ -77,6 +87,27 @@
                                         'class'=>"form-control"])}}
                                         @if ($errors->has('data_nascimento'))
                                         <span class="text-danger">{{ $errors->first('data_nascimento')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">E-mail </label>
+                                        {{Form::email('email', $estudante->pessoas->email,
+                                        ['placeholder'=>"E-mail",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="">Telefone <span
+                                            class="text-danger">*</span></label>
+                                        {{Form::number('telefone', $estudante->pessoas->telefone,
+                                        ['placeholder'=>"Telefone",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('telefone'))
+                                        <span class="text-danger">{{ $errors->first('telefone')}}</span>
                                         @endif
                                     </div>
 

@@ -13,6 +13,7 @@ use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class EstudanteController extends Controller
 {
@@ -64,13 +65,13 @@ class EstudanteController extends Controller
     {
         $this->validate($request, [
             'nome' => 'required|string|min:10',
-            'data_nascimento' => 'required|date|before_or_equal:today',
+            'data_nascimento' => 'required|date|before:today',
             'genero' => 'required|string',
             'id_classe' => 'required|integer|exists:classes,id',
             'id_curso' => 'required|integer|exists:cursos,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
-            'email' => 'required|email',
             'telefone' => 'required|integer',
+            'bilhete'=>'required|string|unique:pessoas,bilhete'
         ], [], [
             'nome' => 'Nome',
             'data_nascimento' => 'Data de Nascimento',
@@ -80,6 +81,7 @@ class EstudanteController extends Controller
             'id_ano_lectivo' => 'Ano Lectivo',
             'email' => "E-mail",
             'telefone' => "Telefone",
+            'bilhete'=>"Nº do Bilhete de Identidade",
         ]);
 
         $data['person'] = [
@@ -88,6 +90,7 @@ class EstudanteController extends Controller
             'data_nascimento' => $request->data_nascimento,
             'telefone' => $request->telefone,
             'email' => $request->email,
+            'bilhete'=>$request->bilhete,
         ];
 
         $data['student'] = [
@@ -179,10 +182,21 @@ class EstudanteController extends Controller
             'id_ano_lectivo' => 'Ano Lectivo',
         ]);
 
+        if($request->bilhete!=$estudante->pessoas->bilhete){
+            $this->validate($request,[
+                'bilhete'=>'required|string|unique:pessoas,bilhete'
+            ],[],[
+                'bilhete'=>"Nº do Bilhete de Identidade",
+            ]);
+        }
+
         $data['person'] = [
             'nome' => $request->nome,
             'genero' => $request->genero,
-            'data_nascimento' => $request->data_nascimento
+            'data_nascimento' => $request->data_nascimento,
+            'bilhete'=>$request->bilhete,
+            'telefone' => $request->telefone,
+            'email' => $request->email,
         ];
 
         $data['student'] = [
@@ -190,6 +204,8 @@ class EstudanteController extends Controller
             'id_curso' => $request->id_curso,
             'id_ano_lectivo' => $request->id_ano_lectivo,
         ];
+
+
 
         DB::beginTransaction();
         try {
