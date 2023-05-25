@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\AnoLectivo;
 use App\Models\Classificador;
 use App\Models\Instituicao;
+use App\Models\Classe;
+use App\Models\Curso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,12 +38,14 @@ class CondicoesController extends Controller
     {
         $instituicaos = Instituicao::orderBy('instituicao', 'asc');
         $ano_lectivos = AnoLectivo::orderBy('ano_lectivos', 'asc');
+        $classes = Classe::orderBy('classe', 'asc');
+        $cursos = Curso::orderBy('curso', 'asc');
         $title = 'Condições - Nova';
         $type = 'extras';
         $menu = 'Condições';
         $submenu = 'Nova';
 
-        return view('extras.condicoes.create', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos'));
+        return view('extras.condicoes.create', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos', 'classes', 'cursos'));
     }
 
     /**
@@ -55,12 +59,16 @@ class CondicoesController extends Controller
         $this->validate($request, [
             'id_instituicao' => 'required|integer|exists:instituicaos,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
+            'id_classe' => 'required|integer|exists:classes,id',
+            'id_curso'=>'required|integer|exists:cursos,id',
             'data_inicio' => 'required|date',
             'data_fim' => 'required|date',
             'estado'=>'required|string'
         ], [], [
             'id_instituicao' => 'Instituição',
             'id_ano_lectivo' => 'Ano Lectivo',
+            'id_classe'=>"Classe",
+            'id_curso'=>"Curso",
             'data_inicio' => 'Data de Início',
             'data_fim' => 'Data de Fim',
             'estado'=>'Estado'
@@ -102,12 +110,14 @@ class CondicoesController extends Controller
 
         $instituicaos = Instituicao::orderBy('instituicao', 'asc');
         $ano_lectivos = AnoLectivo::where('id_instituicao', $condicao->id_instituicao)->orderBy('id', 'desc');
+        $classes = Classe::orderBy('classe', 'asc');
+        $cursos = Curso::orderBy('curso', 'asc');
         $title = 'Condições - Nova';
         $type = 'extras';
         $menu = 'Condições';
         $submenu = 'Nova';
 
-        return view('extras.condicoes.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos', 'condicao'));
+        return view('extras.condicoes.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos', 'condicao', 'cursos', 'classes'));
     }
 
     /**
@@ -126,12 +136,16 @@ class CondicoesController extends Controller
         $this->validate($request, [
             'id_instituicao' => 'required|integer|exists:instituicaos,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
+            'id_classe' => 'required|integer|exists:classes,id',
+            'id_curso'=>'required|integer|exists:cursos,id',
             'data_inicio' => 'required|date',
             'data_fim' => 'required|date',
             'estado'=>'required|string'
         ], [], [
             'id_instituicao' => 'Instituição',
             'id_ano_lectivo' => 'Ano Lectivo',
+            'id_classe'=>"Classe",
+            'id_curso'=>"Curso",
             'data_inicio' => 'Data de Início',
             'data_fim' => 'Data de Fim',
             'estado'=>'Estado'

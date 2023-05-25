@@ -53,8 +53,6 @@
                                         @endif
                                     </div>
 
-
-
                                     <div class="col-md-4">
                                         <label for="">Emolumento <span
                                                 class="text-danger">*</span></label>
@@ -63,6 +61,28 @@
                                         'class'=>"form-control"])}}
                                         @if ($errors->has('emolumento'))
                                         <span class="text-danger">{{ $errors->first('emolumento')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">Curso <span
+                                                class="text-danger">*</span></label>
+                                        {{Form::select('id_curso', $cursos->pluck('curso', 'id'), $emolumento->id_curso,
+                                        ['placeholder'=>"Curso",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('id_curso'))
+                                        <span class="text-danger">{{ $errors->first('id_curso')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">Classe <span
+                                                class="text-danger">*</span></label>
+                                        {{Form::select('id_classe', $classes->pluck('classe', 'id'), $emolumento->id_classe,
+                                        ['placeholder'=>"Classe",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('id_classe'))
+                                        <span class="text-danger">{{ $errors->first('id_classe')}}</span>
                                         @endif
                                     </div>
 

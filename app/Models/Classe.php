@@ -18,7 +18,7 @@ class Classe extends Model
     ];
 
     public function emolumentos(){
-        return $this->hasMany(Emolumento::class, 'id_classe');
+        return $this->hasOne(Emolumento::class, 'id_classe');
     }
 
     public function classificadors(){

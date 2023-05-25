@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\AnoLectivo;
 use App\Models\Emolumento;
 use App\Models\Instituicao;
+use App\Models\Classe;
+use App\Models\Curso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Psy\VersionUpdater\Installer;
@@ -32,12 +34,14 @@ class EmolumentoController extends Controller
     {
         $instituicaos = Instituicao::orderBy('instituicao', 'asc');
         $ano_lectivos = AnoLectivo::orderBy('ano_lectivos', 'asc');
+        $classes = Classe::orderBy('classe', 'asc');
+        $cursos = Curso::orderBy('curso', 'asc');
         $title = 'Emolumentos - Nova';
         $type = 'extras';
         $menu = 'Emolumentos';
         $submenu = 'Nova';
 
-        return view('extras.emolumentos.create', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos'));
+        return view('extras.emolumentos.create', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos', 'cursos', 'classes'));
     }
 
     /**
@@ -51,11 +55,15 @@ class EmolumentoController extends Controller
         $this->validate($request, [
             'id_instituicao' => 'required|integer|exists:instituicaos,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
+            'id_classe' => 'required|integer|exists:classes,id',
+            'id_curso'=>'required|integer|exists:cursos,id',
             'emolumento' => 'required|string',
             'valor' => 'required|numeric|min:1',
         ], [], [
             'id_instituicao' => 'Instituição',
             'id_ano_lectivo' => 'Ano Lectivo',
+            'id_classe'=>"Classe",
+            'id_curso'=>"Curso",
             'emolumento' => 'Emolumento',
             'valor' => 'Valor',
         ]);
@@ -90,12 +98,14 @@ class EmolumentoController extends Controller
 
         $instituicaos = Instituicao::orderBy('instituicao', 'asc');
         $ano_lectivos = AnoLectivo::where('id_instituicao', $emolumento->id_instituicao)->orderBy('ano', 'asc');
+        $classes = Classe::orderBy('classe', 'asc');
+        $cursos = Curso::orderBy('curso', 'asc');
         $title = 'Emolumentos - Editar';
         $type = 'extras';
         $menu = 'Emolumentos';
         $submenu = 'Editar';
 
-        return view('extras.emolumentos.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos', 'emolumento'));
+        return view('extras.emolumentos.edit', compact('title', 'type', 'menu', 'submenu', 'instituicaos', 'ano_lectivos', 'emolumento', 'classes', 'cursos'));
     }
 
     /**
@@ -114,11 +124,15 @@ class EmolumentoController extends Controller
         $this->validate($request, [
             'id_instituicao' => 'required|integer|exists:instituicaos,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
+            'id_classe' => 'required|integer|exists:classes,id',
+            'id_curso'=>'required|integer|exists:cursos,id',
             'emolumento' => 'required|string',
             'valor' => 'required|numeric|min:1',
         ], [], [
             'id_instituicao' => 'Instituição',
             'id_ano_lectivo' => 'Ano Lectivo',
+            'id_classe'=>"Classe",
+            'id_curso'=>"Curso",
             'emolumento' => 'Emolumento',
             'valor' => 'Valor',
         ]);

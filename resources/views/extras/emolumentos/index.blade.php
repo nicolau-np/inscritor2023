@@ -42,6 +42,8 @@
                         <th scope="col">#</th>
                         <th scope="col">Emolumento</th>
                         <th scope="col">Instituição</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Classe</th>
                         <th scope="col">Ano Lectivo</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Operações</th>
@@ -53,6 +55,8 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$emolumento->emolumento}}</td>
                         <td>{{$emolumento->instituicaos->instituicao}}</td>
+                        <td>{{$emolumento->cursos->curso ?? null}}</td>
+                        <td>{{$emolumento->classes->classe ?? null}}</td>
                         <td>{{$emolumento->ano_lectivos->ano}}</td>
                         <td>{{number_format($emolumento->valor,2,',','.')}}</td>
                         <td>
