@@ -53,6 +53,29 @@
                                         @endif
                                     </div>
 
+
+                                    <div class="col-md-4">
+                                        <label for="">Curso <span
+                                                class="text-danger">*</span></label>
+                                        {{Form::select('id_curso', $cursos->pluck('curso', 'id'), $condicao->id_curso,
+                                        ['placeholder'=>"Curso",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('id_curso'))
+                                        <span class="text-danger">{{ $errors->first('id_curso')}}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">Classe <span
+                                                class="text-danger">*</span></label>
+                                        {{Form::select('id_classe', $classes->pluck('classe', 'id'),$condicao->id_classe,
+                                        ['placeholder'=>"Classe",
+                                        'class'=>"form-control"])}}
+                                        @if ($errors->has('id_classe'))
+                                        <span class="text-danger">{{ $errors->first('id_classe')}}</span>
+                                        @endif
+                                    </div>
+
                                     <div class="col-md-4">
                                         <label for="">Data de Início <span
                                                 class="text-danger">*</span></label>

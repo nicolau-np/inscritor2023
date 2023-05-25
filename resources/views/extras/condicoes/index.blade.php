@@ -42,6 +42,8 @@
                         <th scope="col">#</th>
                         <th scope="col">Instituição</th>
                         <th scope="col">Ano Lectivo</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Classe</th>
                         <th scope="col">Data de Início</th>
                         <th scope="col">Data de Fim</th>
                         <th scope="col">Operações</th>
@@ -53,7 +55,8 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$condicao->instituicaos->instituicao}}</td>
                         <td>{{$condicao->ano_lectivos->ano}}</td>
-
+                        <td>{{ $condicao->cursos->curso ?? null }}</td>
+                        <td>{{ $condicao->classes->classe ?? null }}</td>
                         <td>{{$condicao->data_inicio}}</td>
                         <td>{{$condicao->data_fim}}</td>
                         <td>
