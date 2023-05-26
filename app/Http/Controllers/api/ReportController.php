@@ -35,9 +35,9 @@ class ReportController extends Controller
 
         $estado = $estado;
 
-        $classificador = Classificador::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $id_ano_lectivo])->first();
+        $classificador = Classificador::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $id_ano_lectivo, 'id_classe'=>$id_classe, 'id_curso'=>$id_curso])->first();
         if (!$classificador)
-            return back()->with('error', "Nao encontrou");
+            return back()->with('error', "Nao encontrou classificador");
 
         if ($estado == 'Admitidos') {
             $estudantes = Estudante::whereHas('pessoas', function ($query) use ($classificador) {

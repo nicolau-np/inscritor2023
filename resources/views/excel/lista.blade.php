@@ -69,15 +69,13 @@ $mes_estensao = StaticController::getMesExtensao(date('m'));
                                 </thead>
                                 <tbody>
                                     @foreach ($estudantes as $estudante)
-                                    @php
-                                        $getPessoaData = StaticController::getPessoaData($estudante->id_pessoa);
-                                    @endphp
+                                   
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$getPessoaData->nome}}</td>
-                                        <td>{{$getPessoaData->genero}}</td>
-                                        <td>{{date('d-m-Y', strtotime($getPessoaData->data_nascimento))}}</td>
-                                        <td>{{$getPessoaData->getIdade($getPessoaData->data_nascimento)}} anos</td>
+                                        <td>{{$estudante->pessoas->nome ?? null}}</td>
+                                        <td>{{$estudante->pessoas->genero ?? null}}</td>
+                                        <td>{{date('d-m-Y', strtotime($estudante->pessoas->data_nascimento)) ?? null}}</td>
+                                        <td>{{$estudante->pessoas->getIdade($estudante->pessoas->data_nascimento) ?? null}} anos</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

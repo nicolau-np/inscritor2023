@@ -30,7 +30,7 @@ class ExcelController extends Controller
         if (!$classe)
             return back()->with('error', "Nao encontrou");
 
-        $classificador = Classificador::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $id_ano_lectivo])->first();
+        $classificador = Classificador::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $id_ano_lectivo, 'id_classe'=>$id_classe, 'id_curso'=>$id_curso])->first();
         if (!$classificador)
             return back()->with('error', "Nao encontrou");
 
