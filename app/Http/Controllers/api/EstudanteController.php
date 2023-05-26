@@ -233,4 +233,25 @@ class EstudanteController extends Controller
 
         return back()->with('success', "Feito com sucesso!");
     }
+
+    public function search(Request $request){
+        $this->validate($request, [
+            'search_text'=>'required|string',
+        ],[],[
+            'search_text'=>"Pesquisar"
+        ]);
+
+        $estudantes = Estudante::whereHas('pessoas', function($query) use($request){
+            $query->where('nome', 'LIKE', "%{$request->search_text}%");
+            $query->orWhere('bilhete', 'LIKE', "%{$request->search_text}%");
+        })->get();
+
+        $search_text = $request->search_text;
+        $title = 'Estudantes - Pesquisar';
+        $type = 'estudantes';
+        $menu = 'Estudantes';
+        $submenu = 'Pesquisar';
+
+        return view('estudantes.search', compact('title', 'type', 'menu', 'submenu', 'estudantes', 'search_text'));
+    }
 }

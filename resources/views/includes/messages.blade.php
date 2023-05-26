@@ -1,15 +1,17 @@
 @if (session('error'))
-<div class="alert bg-danger" style="color:white"
-    role="alert">
-    {{ session('error') }} <a href="#"
-        class="pull-right"><em
-            class="fa fa-lg fa-close"></em></a></div>
+<div class="alert alert-danger" >
+    {{ session('error') }}
+</div>
+@endif
+
+@if (session('info'))
+<div class="alert alert-info">
+    {{ session('info') }}
+</div>
 @endif
 
 @if (session('success'))
-<div class="alert bg-success"
-    style="color:white" role="alert">
-    {{ session('success') }} <a href="#"
-        class="pull-right"><em
-            class="fa fa-lg fa-close"></em></a></div>
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
 @endif

@@ -7,7 +7,7 @@
 	<!-- Favicons -->
     <link href="{{asset('assets/client/img/favicon.png')}}" rel="icon">
     <link href="{{asset('assets/client/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-    
+
     <link rel="stylesheet" href="{{asset('assets/neutro/css/style.css')}}">
 	<!-- Fonts and icons -->
 	<script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
@@ -52,16 +52,16 @@
 
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
-						<form class="navbar-left navbar-form nav-search mr-md-3">
-							<div class="input-group">
+                        {{ Form::open(['method'=>"post", 'url'=>"/estudantes/search", 'class'=>"navbar-left navbar-form nav-search mr-md-3"]) }}
+						    <div class="input-group">
 								<div class="input-group-prepend">
 									<button type="submit" class="btn btn-search pr-1">
 										<i class="fa fa-search search-icon"></i>
 									</button>
 								</div>
-								<input type="text" placeholder="Pesquisar ..." class="form-control" />
+                                {{ Form::text('search_text', null, ['class'=>"form-control", 'placeholder'=>"Pesquisar como Nome ou Nº de Bilhete"]) }}
 							</div>
-						</form>
+						{{ Form::close() }}
 					</div>
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						<li class="nav-item toggle-nav-search hidden-caret">

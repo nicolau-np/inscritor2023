@@ -55,7 +55,8 @@ Route::prefix('user')->group(function () {
 });
 
 Route::prefix('estudantes')->middleware('auth.user')->group(function () {
-    Route::get('/create', [EstudanteController::class, 'create']);
+    Route::get('create', [EstudanteController::class, 'create']);
+    Route::post('search', [EstudanteController::class, 'search']);
     Route::post('/', [EstudanteController::class, 'store']);
     Route::get('edit/{id}', [EstudanteController::class, 'edit']);
     Route::put('/{id}', [EstudanteController::class, 'update']);
