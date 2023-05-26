@@ -52,7 +52,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Principal</a></li>
           <li><a class="nav-link scrollto" href="#about">Sobre</a></li>
-          <li><a class="nav-link scrollto" href="#team">Equipa</a></li>
+          <li><a class="nav-link scrollto" href="#faq">F.A.Q</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contactos</a></li>
           <li><a class="getstarted scrollto" href="#">Consultar</a></li>
         </ul>
