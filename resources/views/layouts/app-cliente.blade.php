@@ -54,7 +54,7 @@
           <li><a class="nav-link scrollto" href="#about">Sobre</a></li>
           <li><a class="nav-link scrollto" href="#team">Equipa</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contactos</a></li>
-          <li><a class="getstarted scrollto" href="/home">Iniciar Sessão</a></li>
+          <li><a class="getstarted scrollto" href="#">Consultar</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -71,7 +71,7 @@
       <div class="carousel-inner" role="listbox">
 
         <!-- Slide 1 -->
-        <div class="carousel-item active" style="background-image: url({{asset('assets/client/img/slide/slide-1.jpg')}})">
+        <div class="carousel-item active" style="background-image: url({{asset('assets/client/img/slide/slide02.png')}})">
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Bem-vindo ao <span>Inscritor</span></h2>
@@ -82,7 +82,7 @@
         </div>
 
         <!-- Slide 2 -->
-        <div class="carousel-item" style="background-image: url({{asset('assets/client/img/slide/slide-2.jpg')}})">
+        <div class="carousel-item" style="background-image: url({{asset('assets/client/img/slide/slide01.jpg')}})">
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Balanços e Estatísticas Diárias</h2>
@@ -93,7 +93,7 @@
         </div>
 
         <!-- Slide 3 -->
-        <div class="carousel-item" style="background-image: url({{asset('assets/client/img/slide/slide-3.jpg')}})">
+        <div class="carousel-item" style="background-image: url({{asset('assets/client/img/slide/slide03.webp')}})">
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Listas Nominais de Candidatos</h2>
@@ -153,7 +153,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Principal</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Sobre</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Política de Privacidade</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/home">Iniciar Sessão</a></li>
             </ul>
           </div>
 
