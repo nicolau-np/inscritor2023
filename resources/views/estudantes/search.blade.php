@@ -41,6 +41,9 @@
                                         Nenhum estudante encontrado com o topico {{ strtoupper($search_text) }}
                                     </div>
                                     @else
+                                    <div class="alert alert-info">
+                                        Pesquisa feita no topico {{ strtoupper($search_text) }}
+                                    </div>
                                     <table class="table table-head-bg-primary mt-4">
                                         <thead>
                                             <tr>

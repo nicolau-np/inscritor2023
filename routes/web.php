@@ -54,15 +54,15 @@ Route::prefix('user')->group(function () {
     Route::post('edit', [UserController::class, 'editar']);
 });
 
-Route::prefix('estudantes')->middleware('auth.user')->group(function () {
-    Route::get('create', [EstudanteController::class, 'create']);
+Route::prefix('estudantes')->middleware('auth')->group(function () {
+    Route::get('create', [EstudanteController::class, 'create'])->middleware('auth.user');
     Route::post('search', [EstudanteController::class, 'search']);
-    Route::post('/', [EstudanteController::class, 'store']);
-    Route::get('edit/{id}', [EstudanteController::class, 'edit']);
-    Route::put('/{id}', [EstudanteController::class, 'update']);
-    Route::get('destroy/{id}', [EstudanteController::class, 'delete']);
-    Route::get('/', [EstudanteController::class, 'index']);
-    Route::get('/{id}', [EstudanteController::class, 'show']);
+    Route::post('/', [EstudanteController::class, 'store'])->middleware('auth.user');
+    Route::get('edit/{id}', [EstudanteController::class, 'edit'])->middleware('auth.user');
+    Route::put('/{id}', [EstudanteController::class, 'update'])->middleware('auth.user');
+    Route::get('destroy/{id}', [EstudanteController::class, 'delete'])->middleware('auth.user');
+    Route::get('/', [EstudanteController::class, 'index'])->middleware('auth.user');
+    Route::get('/{id}', [EstudanteController::class, 'show'])->middleware('auth.user');
 });
 
 Route::prefix('instituicaos')->middleware('auth.manager')->group(function () {
