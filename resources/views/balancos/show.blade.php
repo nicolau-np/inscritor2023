@@ -50,15 +50,13 @@ use App\Http\Controllers\StaticController;
                                 @endfor
                                 <th colspan="2">>=17 ANOS</th>
                                 <th colspan="2">TOTAL</th>
-                                <th colspan="2">VALORES ({{number_format($emolumento->valor,2,',','.')}})</th>
+
                             </tr>
                             <tr>
                                 @for($i=13; $i<=16; $i++)
                                 <th>F</th>
                                 <th>MF</th>
                                 @endfor
-                                <th>F</th>
-                                <th>MF</th>
                                 <th>F</th>
                                 <th>MF</th>
                                 <th>F</th>
@@ -105,14 +103,20 @@ use App\Http\Controllers\StaticController;
                                 <td>{{$data['estudante_mf']->count()}}</td>
                                 <td>{{$data['estudante_f']->count()}}</td>
 
-                                <td>{{number_format(($data['estudante_mf']->count() * $emolumento->valor),2,',','.')}}</td>
-                                <td>{{number_format(($data['estudante_f']->count() * $emolumento->valor),2,',','.')}}</td>
+
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
 
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                emolumentos
             </div>
         </div>
     </div>
