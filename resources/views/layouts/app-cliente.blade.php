@@ -130,7 +130,7 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
-              <h3>Inscritor</h3>
+              <h3>INSCRITOR</h3>
               <p class="pb-3"><em>Sistema de Selecção automática, estatísticas e balanços</em></p>
               <p>
                 Moçamedes <br>

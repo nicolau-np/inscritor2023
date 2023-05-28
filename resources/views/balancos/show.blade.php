@@ -114,11 +114,28 @@ use App\Http\Controllers\StaticController;
 
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                emolumentos
-            </div>
+       <div class="row">
+        <div class="col-md-12">
+            <table class="table table-head-bg-primary table-bordered">
+                <thead>
+                    <tr>
+                        <th>CURSOS</th>
+                        <th>TOTAL DE ESTUDANTES</th>
+                        <th>VALOR ARRECADADO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($emolumentos as $emolumento)
+                    <tr>
+                        <td>{{ $emolumento->cursos->curso }} {{ $emolumento->classes->classe }} ({{ number_format($emolumento->valor,2,',','.') }})</td>
+                        <td>{{ $estudantes->where('id_curso', $emolumento->id_curso)->where('id_classe', $emolumento->id_classe)->count() }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
+       </div>
+
     </div>
 </div>
 @endsection

@@ -43,7 +43,7 @@ class BalancoController extends Controller
         $id_instituicao = Auth::user()->id_instituicao;
         $cursos = Curso::where('id_instituicao', $id_instituicao)->orderBy('curso', 'asc');
         $classes = Classe::where('id_instituicao', $id_instituicao)->orderBy('classe', 'asc');
-        #$emolumento = Emolumento::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $request->id_ano_lectivo])->first();
+        $emolumentos = Emolumento::where(['id_instituicao' => $id_instituicao, 'id_ano_lectivo' => $request->id_ano_lectivo])->get();
         $title = 'Balanços - Extrair';
         $type = 'balancos';
         $menu = 'Balanços';
@@ -58,6 +58,6 @@ class BalancoController extends Controller
 
         if ($request->data_inicio > $request->data_fim)
             return back()->with('error', "A data inicial não deve ser superior a data final");
-        return view('balancos.show', compact('title', 'type', 'menu', 'submenu', 'ano_lectivo', 'cursos', 'classes', 'data_inicial', 'data_final', 'estudantes'));
+        return view('balancos.show', compact('title', 'type', 'menu', 'submenu', 'ano_lectivo', 'cursos', 'classes', 'data_inicial', 'data_final', 'estudantes', 'emolumentos'));
     }
 }
