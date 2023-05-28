@@ -44,10 +44,10 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        @if($estudante->data_nascimento >= $classificador->data_inicio && $estudante->data_nascimento <= $classificador->data_fim)
-                            <div class="alert alert-success">Admitido</div>
-                        @elseif($estudante->data_nascimento <= $classificador->data_inicio || $estudante->data_nascimento >= $classificador->data_fim)
-                            <div class="alert alert-danger">Não Admitido</div>
+                        @if($estudante->pessoas->data_nascimento < $classificador->data_inicio)
+                        <div class="alert alert-danger">Não Admitido</div>
+                        @elseif($estudante->pessoas->data_nascimento >= $classificador->data_inicio && $estudante->pessoas->data_nascimento <= $classificador->data_fim)
+                        <div class="alert alert-success">Admitido</div>
                         @endif
                     </div>
                 </div>
