@@ -125,13 +125,36 @@ use App\Http\Controllers\StaticController;
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $data = [
+                            'total_estudante'=>0,
+                            'total_valor'=>0,
+                        ];
+                    @endphp
                     @foreach ($emolumentos as $emolumento)
+                    @php
+                        $count = $estudantes->where('id_curso', $emolumento->id_curso)->where('id_classe', $emolumento->id_classe)->count();
+                        $data['total_estudante'] = $data['total_estudante'] + $count;
+                        $data['total_valor'] = $data['total_valor'] + ($count*$emolumento->valor);
+                    @endphp
                     <tr>
                         <td>{{ $emolumento->cursos->curso }} {{ $emolumento->classes->classe }} ({{ number_format($emolumento->valor,2,',','.') }})</td>
-                        <td>{{ $estudantes->where('id_curso', $emolumento->id_curso)->where('id_classe', $emolumento->id_classe)->count() }}</td>
+                        <td>{{ $count }}</td>
+                        <td>
+                            {{ number_format($count*$emolumento->valor,2,',','.') }}
+                        </td>
                     </tr>
                     @endforeach
+
                 </tbody>
+                <tfoot>
+                    <tr>
+
+                        <th>TOTAL GERAL</th>
+                        <th>{{ $data['total_estudante'] }}</td>
+                        <th>{{ number_format($data['total_valor'],2,',','.') }}</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
        </div>
