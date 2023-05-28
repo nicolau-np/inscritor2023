@@ -31,8 +31,20 @@
             @include('includes.messages')
         </div>
         @if($estudante!="no")
-            <div class="col-md-12">
-                {{ $estudante }}
+            <div class="col-md-5">
+                <div class="perfil" style="padding:8px;">
+                    <span style="font-weight:bold;">Nº de Inscrição: {{ $inscricao }}</span><br/>
+                    <span style="font-weight:bold;">Instituição:</span> {{ $estudante->instituicaos->instituicao }}<br/>
+                    <span style="font-weight:bold;">Nome Completo:</span> {{ $estudante->pessoas->nome ?? null }}<br/>
+                    <span style="font-weight:bold;">Nº de Bilhete:</span> {{ $estudante->pessoas->bilhete ?? null }}<br/>
+                    <span style="font-weight:bold;">Curso:</span> {{ $estudante->cursos->curso }}<br/>
+
+                </div>
+                @if($estudante->data_nascimento >= $classificador->data_inicio && $estudante->data_nascimento <= $classificador->data_fim)
+                    <div class="alert alert-success">Admitido</div>
+                @elseif($estudante->data_nascimento <= $classificador->data_inicio || $estudante->data_nascimento >= $classificador->data_fim)
+                    <div class="alert alert-danger">Não Admitido</div>
+                @endif
             </div>
         @endif
       </div>
