@@ -34,6 +34,7 @@ use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
 Route::get('/', [HomeController::class, 'client']);
 Route::get('consultar', [HomeController::class, 'consultar']);
+Route::post('consultar', [HomeController::class, 'consultar']);
 
 Route::get('home', [HomeController::class, 'home'])->middleware('auth')->name('home');
 

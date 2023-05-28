@@ -9,11 +9,29 @@
         <p>Consultar</p>
       </div>
 
-      <div class="row content">
-        <div class="col-lg-12 col-md-12">
-
+      <div class="row">
+        <div class="col-md-12">
+            {{ Form::open(['url'=>"/consultar", 'method'=>"post"]) }}
+            @csrf
+            <div class="row">
+                <div class="col-md-5">
+                    {{ Form::number('numero_inscricao', null, ['placeholder'=>"Nº de Inscrição", 'class'=>"form-control"]) }}
+                </div>
+                <div class="col-md-4">
+                    {{ Form::submit('Pesquisar', ['class'=>"btn btn-primary"]) }}
+                </div>
+            </div>
+            {{ Form::close() }}
         </div>
 
+      </div>
+
+      <div class="row">
+        @if($estudante!="no")
+            <div class="col-md-12">
+                {{ $estudante }}
+            </div>
+        @endif
       </div>
 
     </div>
