@@ -55,7 +55,7 @@
                     <li><a class="nav-link scrollto" href="#about">Sobre</a></li>
                     <li><a class="nav-link scrollto" href="#faq">F.A.Q</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contactos</a></li>
-                    <li><a class="getstarted scrollto" href="#">Consultar</a></li>
+                    <li><a class="getstarted scrollto" href="/consultar">Consultar</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -64,6 +64,7 @@
     </header><!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
+    @if($type=="home")
     <section id="hero">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
@@ -125,6 +126,9 @@
 
         </div>
     </section><!-- End Hero -->
+    @else
+    <div class="mt-10"></div>
+    @endif
 
     <main id="main">
 
