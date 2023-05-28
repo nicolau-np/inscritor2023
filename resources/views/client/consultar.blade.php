@@ -27,6 +27,9 @@
       </div>
 
       <div class="row">
+        <div class="col-md-12">
+            @include('includes.messages')
+        </div>
         @if($estudante!="no")
             <div class="col-md-12">
                 {{ $estudante }}

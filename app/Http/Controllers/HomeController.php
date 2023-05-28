@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Estudante;
 
 class HomeController extends Controller
 {
@@ -31,7 +32,9 @@ class HomeController extends Controller
 
         $parte_restante = substr($request->numero_inscricao, 4); #pegando o numero de inscricao sabendo que os 4 primeiros representam o ano civil os restantes e o id do estudante
 
-        $estudante = $parte_restante;
+        $estudante = Estudante::find($parte_restante);
+        if(!$estudante)
+            return back()->with('error', "Nº de Inscrição não existente!");
        }
 
         $title = '[INSCRITOR] - Sistema de Selecção Automática';
