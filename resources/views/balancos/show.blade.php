@@ -116,7 +116,7 @@ use App\Http\Controllers\StaticController;
 
        <div class="row">
         <div class="col-md-12">
-            <table class="table table-head-bg-primary table-bordered">
+            <table class="table table-head-bg-warning table-bordered">
                 <thead>
                     <tr>
                         <th>CURSOS</th>
