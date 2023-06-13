@@ -20,7 +20,7 @@ use App\Models\Estudante;
 use App\Models\Pessoa;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
-
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +31,7 @@ use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', [HomeController::class, 'client']);
 Route::get('consultar', [HomeController::class, 'consultar']);
@@ -165,4 +166,30 @@ Route::get('/text', function () {
     $estudantes = Estudante::where(['id_instituicao' => 1, 'id_ano_lectivo' => 1])->whereDate('created_at', '>=', $data)->whereDate('created_at', '<=', $data2)->get();
 
     return $estudantes;
+});
+
+Route::get('/migrate', function(){
+    $router = Artisan::call('route:clear');
+    echo "router<br>";
+
+    $clearrouter = Artisan::call('route:clear');
+    echo "Route cleared<br>";
+
+    $clearcache = Artisan::call('cache:clear');
+    echo "Cache cleared<br>";
+
+    $clearview = Artisan::call('view:clear');
+    echo "View cleared<br>";
+
+    $clearconfig = Artisan::call('config:cache');
+    echo "Config cleared<br>";
+
+    $cleardebugbar = Artisan::call('optimize');
+    echo "Optimize cleared<br>";
+
+    $migrate = Artisan::call('migrate:fresh');
+    echo "migrate<br>";
+
+    $seeder = Artisan::call('db:seed');
+    echo "Seed<br>";
 });
