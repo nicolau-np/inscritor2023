@@ -43,6 +43,7 @@
 
                         </div>
                     </div>
+                    @if($classificador!="no")
                     <div class="card-footer">
                         @if($estudante->pessoas->data_nascimento < $classificador->data_inicio)
                         <div class="alert alert-danger">Não Admitido</div>
@@ -50,6 +51,9 @@
                         <div class="alert alert-success">Admitido</div>
                         @endif
                     </div>
+                    @else
+                    <div class="alert alert-info">Consulta Indisponível de momento. Code: 0102</div>
+                    @endif
                 </div>
 
             </div>

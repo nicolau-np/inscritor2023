@@ -69,7 +69,7 @@ class InstituicaoController extends Controller
             return back()->with('success', "Feito com sucesso");
         } catch (\Exception $e) {
             DB::rollBack();
-            return response(['error' => $e->getMessage()], 500);
+           return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
         }
     }
 
@@ -139,7 +139,7 @@ class InstituicaoController extends Controller
             return back()->with('success', "Feito com sucesso");
         } catch (\Exception $e) {
             DB::rollBack();
-            return response(['error' => $e->getMessage()], 500);
+           return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
         }
     }
 
@@ -151,7 +151,20 @@ class InstituicaoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $instituicao = Instituicao::find($id);
+        if(!$instituicao)
+            return back()->with('errors', 'Nao encontrou');
+
+            DB::beginTransaction();
+            try {
+
+                $instituicao->delete();
+                DB::commit();
+                return back()->with('success', "Instituição eliminada com sucesso!");
+            } catch (\Exception $e) {
+                DB::rollBack();
+               return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
+            }
     }
 
     public function users($id)
@@ -181,6 +194,7 @@ class InstituicaoController extends Controller
             'data_nascimento' => 'required|date|before:today',
             'genero' => 'required|string',
             'name' => 'required|string|unique:usuarios,name',
+            'email'=>'required|email|unique:usuarios,email',
             'nivel_acesso' => 'required|string',
 
 
@@ -189,18 +203,10 @@ class InstituicaoController extends Controller
             'data_nascimento' => 'Data de Nascimento',
             'genero' => 'Gênero',
             'name' => 'Nome de Usuário',
+            'email'=> 'E-mail',
             'nivel_acesso' => 'Nível de Acesso',
-
         ]);
 
-        /*if ($request->nivel_acesso == "user") {
-
-            $this->validate($request, [
-                'id_curso'=>'required|integer|exists:cursos,id'
-            ],[],[
-                'id_curso'=>"Curso"
-            ]);
-        }*/
 
         $password = Hash::make('puniv2023');
 
@@ -216,6 +222,7 @@ class InstituicaoController extends Controller
             'id_pessoa' => null,
             'id_curso' => $request->id_curso,
             'name' => $request->name,
+            'email'=>$request->email,
             'password' => $password,
             'nivel_acesso' => $request->nivel_acesso,
         ];
@@ -243,7 +250,45 @@ class InstituicaoController extends Controller
             return back()->with('success', "Feito com sucesso!");
         } catch (\Exception $e) {
             DB::rollBack();
-            return response(['error' => $e->getMessage()], 500);
+           return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
+        }
+
+
+    }
+
+    public function resetPasse($id){
+        $user = User::find($id);
+        if(!$user)
+            return back()->with('errors', 'Nao encontrou');
+
+        $password = Hash::make('puniv2023');
+
+        DB::beginTransaction();
+        try {
+
+           $user->update(['password'=>$password]);
+            DB::commit();
+            return back()->with('success', "Palavra Passe de ".$user->name. " Resetada com sucesso!");
+        } catch (\Exception $e) {
+            DB::rollBack();
+           return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
+        }
+    }
+
+    public function usersDestroy($id){
+        $user = User::find($id);
+        if(!$user)
+            return back()->with('errors', 'Nao encontrou');
+        $id_pessoa = $user->id_pessoa;
+        DB::beginTransaction();
+        try {
+           $user->delete();
+           Pessoa::find($id_pessoa)->delete();
+            DB::commit();
+            return back()->with('success', "Usuário eliminado com sucesso");
+        } catch (\Exception $e) {
+            DB::rollBack();
+           return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
         }
     }
 }

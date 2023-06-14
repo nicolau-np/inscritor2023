@@ -34,6 +34,9 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
+                    @include('includes.messages')
+                </div>
+                <div class="col-md-12">
 
                     <div class="table-responsive">
                         <table class="table table-head-bg-primary mt-4">
@@ -62,7 +65,7 @@
                         <td>
                             <a href="/extras/emolumentos/edit/{{$emolumento->id}}" class="btn btn-primary btn-sm">Editar</a>
                             &nbsp;
-                            {{--<a href="/emolumentos/destroy/{{$estudante->id}}" class="btn btn-danger btn-sm">Eliminar</a>--}}
+                            <a href="/extras/emolumentos/destroy/{{$emolumento->id}}" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                       </tr>
                      @endforeach

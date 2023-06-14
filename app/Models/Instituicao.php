@@ -59,4 +59,9 @@ class Instituicao extends Model
     {
         return $this->hasMany(AnoLectivo::class, 'id_instituicao');
     }
+
+    public function encerramento_actividades(){
+        return $this->hasMany(EncerramentoActividade::class, 'id_instituicao');
+    }
+
 }

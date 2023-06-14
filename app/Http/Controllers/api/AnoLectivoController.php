@@ -131,6 +131,18 @@ class AnoLectivoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ano_lectivo = AnoLectivo::find($id);
+        if(!$ano_lectivo)
+            return back()->with('error', 'Não encontrou');
+        
+        DB::beginTransaction();
+        try {
+            $ano_lectivo->delete();
+            DB::commit();
+            return back()->with('success', "Eliminado com sucesso!");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
+        }
     }
 }

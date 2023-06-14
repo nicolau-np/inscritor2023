@@ -5,8 +5,8 @@
 	<title>{{$title}}</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<!-- Favicons -->
-    <link href="{{asset('assets/client/img/favicon.png')}}" rel="icon">
-    <link href="{{asset('assets/client/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{asset('assets/neutro/images/logo.png')}}" rel="icon">
+    <link href="{{asset('assets/neutro/images/logo.png')}}" rel="apple-touch-icon">
 
     <link rel="stylesheet" href="{{asset('assets/neutro/css/style.css')}}">
 	<!-- Fonts and icons -->
@@ -30,7 +30,7 @@
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 
-				<a href="/" class="logo">
+				<a href="/home" class="logo">
                     <h3 style="margin-top:18px; color: #fff; font-weight:bold;">INSCRITOR</h2>
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,8 +76,8 @@
 							<ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
 								<li>
 									<div class="dropdown-title d-flex justify-content-between align-items-center">
-										Messages
-										<a href="#" class="small">Mark all as read</a>
+										Mensagens
+										<a href="#" class="small">Marcar todas como lida</a>
 									</div>
 								</li>
 								<li>
@@ -88,18 +88,18 @@
 									</div>
 								</li>
 								<li>
-									<a class="see-all" href="javascript:void(0);">See all messages<i class="fa fa-angle-right"></i> </a>
+									<a class="see-all" href="javascript:void(0);">Ver todas mensagens<i class="fa fa-angle-right"></i> </a>
 								</li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fa fa-bell"></i>
-								<span class="notification">4</span>
+								<span class="notification">0</span>
 							</a>
 							<ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
 								<li>
-									<div class="dropdown-title">You have 4 new notification</div>
+									<div class="dropdown-title">Você tem 0 notificações</div>
 								</li>
 								<li>
 									<div class="notif-scroll scrollbar-outer">
@@ -109,7 +109,7 @@
 									</div>
 								</li>
 								<li>
-									<a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
+									<a class="see-all" href="javascript:void(0);">Ver todas notificações<i class="fa fa-angle-right"></i> </a>
 								</li>
 							</ul>
 						</li>
@@ -150,11 +150,7 @@
 									</li>
                                     <li>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Meu Perfil</a>
-                                        <a class="dropdown-item" href="#">Meu Balanço</a>
-                                        <a class="dropdown-item" href="#">Caixa de Entrada</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Configuração de Conta</a>
+                                        <a class="dropdown-item" href="/user/profile">Meu Perfil</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="/user/logout">Terminar
                                           Sessão</a>
@@ -196,7 +192,7 @@
                             <div class="collapse in" id="collapseExample">
                               <ul class="nav">
                                 <li>
-                                  <a href="#profile">
+                                  <a href="/user/profile">
                                     <span class="link-collapse">Meu Perfil</span>
                                   </a>
                                 </li>
@@ -205,18 +201,14 @@
                                     <span class="link-collapse">Editar Perfil</span>
                                   </a>
                                 </li>
-                                <li>
-                                  <a href="#settings">
-                                    <span class="link-collapse">Configurações</span>
-                                  </a>
-                                </li>
+                                
                               </ul>
                             </div>
                           </div>
 					</div>
 					<ul class="nav nav-primary">
                         <li class="nav-item {{$type=='home'?'active':''}}">
-                          <a href="/">
+                          <a href="/home">
                             <i class="fas fa-home"></i>
                             <p>Principal</p>
                           </a>
@@ -232,6 +224,22 @@
                         @endif
 
                         @if(Auth::user()->nivel_acesso=='admin')
+
+                        <li class="nav-item {{$type=='users'?'active':null}}">
+                            <a href="/usuarios">
+                              <i class="fas fa-users"></i>
+                              <p>Usuários</p>
+                            </a>
+                          </li>
+
+                        <li class="nav-item {{$type=='encerramento'?'active':null}}">
+                            <a href="/encerramento_actividades">
+                              <i class="fas fa-refresh"></i>
+                              <p>Encerramento</p>
+                            </a>
+                          </li>
+
+
                            <li class="nav-item {{$type=='listas'?'active':null}}">
                             <a href="/listas">
                               <i class="fas fa-th-list"></i>
@@ -355,7 +363,7 @@
                     </ul>
                   </nav>
                   <div class="copyright ml-auto">
-                   &copy; {{date('Y')}}, powered <i class="fa fa-heart heart text-danger"></i> by <a href="#">Nicolau NP</a>
+                   &copy; {{date('Y')}}<!--, powered <i class="fa fa-heart heart text-danger"></i> by <a href="#">Nicolau NP</a>-->
                   </div>
                 </div>
               </footer>

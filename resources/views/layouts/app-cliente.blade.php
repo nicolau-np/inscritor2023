@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{asset('assets/client/img/favicon.png')}}" rel="icon">
-    <link href="{{asset('assets/client/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{asset('assets/neutro/images/logo.png')}}" rel="icon">
+    <link href="{{asset('assets/neutro/images/logo.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -149,8 +149,8 @@
                             <p>
                                 Moçamedes <br>
                                 Namibe, Angola<br><br>
-                                <strong>Telefone:</strong> +244 946 216 795<br>
-                                <strong>Email:</strong> nic340k@gmail.com<br>
+                                <strong>Telefone:</strong> +244 922 000 000<br>
+                                <strong>Email:</strong> inscritor@gmail.com<br>
                             </p>
                             <div class="social-links mt-3">
                                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -184,7 +184,7 @@
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Subscrição</h4>
                         <p>Faça a sua subscrição e receba novidades dos nossos produtos e serviços.</p>
-                        <form action="" method="post">
+                        <form action="#">
                             <input type="email" name="email"><input type="submit" value="Subscrever">
                         </form>
 
@@ -204,12 +204,12 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/multi-responsive-bootstrap-template/ -->
-                Powered by <a href="https://bootstrapmade.com/">html</a>
+                <!--Powered by <a href="https://bootstrapmade.com/">html</a>-->
             </div>
         </div>
     </footer><!-- End Footer -->
 
-    <div id="preloader"></div>
+    <!--<div id="preloader"></div>-->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 

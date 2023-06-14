@@ -15,6 +15,7 @@ use App\Http\Controllers\api\ReportController;
 use App\Http\Controllers\api\TurmaController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\api\EncerramentoActividadeController;
 use App\Http\Controllers\StaticController;
 use App\Models\Estudante;
 use App\Models\Pessoa;
@@ -54,6 +55,9 @@ Route::prefix('user')->group(function () {
     Route::post('login', [UserController::class, 'logar']);
     Route::get('edit', [UserController::class, 'edit']);
     Route::post('edit', [UserController::class, 'editar']);
+    Route::get('profile', [UserController::class, 'profile'])->middleware('auth');
+    Route::get('recuperar', [UserController::class, 'recuperar']);
+    Route::post('recuperar', [UserController::class, 'recuperarStore']);
 });
 
 Route::prefix('estudantes')->middleware('auth')->group(function () {
@@ -72,12 +76,15 @@ Route::prefix('instituicaos')->middleware('auth.manager')->group(function () {
     Route::post('/', [InstituicaoController::class, 'store']);
     Route::get('edit/{id}', [InstituicaoController::class, 'edit']);
     Route::put('/{id}', [InstituicaoController::class, 'update']);
-    Route::get('destroy/{id}', [InstituicaoController::class, 'delete']);
+    Route::get('destroy/{id}', [InstituicaoController::class, 'destroy']);
     Route::get('/', [InstituicaoController::class, 'index']);
     Route::get('/{id}', [InstituicaoController::class, 'show']);
     Route::get('/users/{id}', [InstituicaoController::class, 'users']);
     Route::put('/users/{id}', [InstituicaoController::class, 'usersStore']);
+    Route::get('/users/reset_passe/{id}', [InstituicaoController::class, 'resetPasse']);
+    Route::get('/users/destroy/{id}', [InstituicaoController::class, 'usersDestroy']);
 });
+
 
 Route::prefix('extras')->middleware('auth.manager')->group(function () {
 
@@ -86,7 +93,7 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
         Route::post('/', [CursoController::class, 'store']);
         Route::get('edit/{id}', [CursoController::class, 'edit']);
         Route::put('/{id}', [CursoController::class, 'update']);
-        Route::get('destroy/{id}', [CursoController::class, 'delete']);
+        Route::get('destroy/{id}', [CursoController::class, 'destroy']);
         Route::get('/', [CursoController::class, 'index']);
         Route::get('/{id}', [CursoController::class, 'show']);
     });
@@ -96,7 +103,7 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
         Route::post('/', [ClasseController::class, 'store']);
         Route::get('edit/{id}', [ClasseController::class, 'edit']);
         Route::put('/{id}', [ClasseController::class, 'update']);
-        Route::get('destroy/{id}', [ClasseController::class, 'delete']);
+        Route::get('destroy/{id}', [ClasseController::class, 'destroy']);
         Route::get('/', [ClasseController::class, 'index']);
         Route::get('/{id}', [ClasseController::class, 'show']);
     });
@@ -106,7 +113,7 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
         Route::post('/', [TurmaController::class, 'store']);
         Route::get('edit/{id}', [TurmaController::class, 'edit']);
         Route::put('/{id}', [TurmaController::class, 'update']);
-        Route::get('destroy/{id}', [TurmaController::class, 'delete']);
+        Route::get('destroy/{id}', [TurmaController::class, 'destroy']);
         Route::get('/', [TurmaController::class, 'index']);
         Route::get('/{id}', [TurmaController::class, 'show']);
     });
@@ -116,7 +123,7 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
         Route::post('/', [CondicoesController::class, 'store']);
         Route::get('edit/{id}', [CondicoesController::class, 'edit']);
         Route::put('/{id}', [CondicoesController::class, 'update']);
-        Route::get('destroy/{id}', [CondicoesController::class, 'delete']);
+        Route::get('destroy/{id}', [CondicoesController::class, 'destroy']);
         Route::get('/', [CondicoesController::class, 'index']);
         Route::get('/{id}', [CondicoesController::class, 'show']);
     });
@@ -126,7 +133,7 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
         Route::post('/', [EmolumentoController::class, 'store']);
         Route::get('edit/{id}', [EmolumentoController::class, 'edit']);
         Route::put('/{id}', [EmolumentoController::class, 'update']);
-        Route::get('destroy/{id}', [EmolumentoController::class, 'delete']);
+        Route::get('destroy/{id}', [EmolumentoController::class, 'destroy']);
         Route::get('/', [EmolumentoController::class, 'index']);
         Route::get('/{id}', [EmolumentoController::class, 'show']);
     });
@@ -136,27 +143,48 @@ Route::prefix('extras')->middleware('auth.manager')->group(function () {
         Route::post('/', [AnoLectivoController::class, 'store']);
         Route::get('edit/{id}', [AnoLectivoController::class, 'edit']);
         Route::put('/{id}', [AnoLectivoController::class, 'update']);
-        Route::get('destroy/{id}', [AnoLectivoController::class, 'delete']);
+        Route::get('destroy/{id}', [AnoLectivoController::class, 'destroy']);
         Route::get('/', [AnoLectivoController::class, 'index']);
         Route::get('/{id}', [AnoLectivoController::class, 'show']);
     });
 });
 
-Route::prefix('balancos')->group(function () {
+Route::prefix('usuarios')->middleware('auth.admin')->group(function(){
+    Route::get('/create', [UserController::class, 'create']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('edit/{id}', [UserController::class, 'edit']);
+    Route::put('/{id}', [UserController::class, 'update']);
+    Route::get('destroy/{id}', [UserController::class, 'destroy']);
+    Route::get('/reset_passe/{id}', [UserController::class, 'reset']);
+    Route::get('/', [UserController::class, 'index']);
+    Route::get('/{id}', [UserController::class, 'show']);
+});
+
+Route::prefix('encerramento_actividades')->middleware('auth.admin')->group(function () {
+    Route::get('/create', [EncerramentoActividadeController::class, 'create']);
+    Route::post('/', [EncerramentoActividadeController::class, 'store']);
+    Route::get('edit/{id}', [EncerramentoActividadeController::class, 'edit']);
+    Route::put('/{id}', [EncerramentoActividadeController::class, 'update']);
+    Route::get('destroy/{id}', [EncerramentoActividadeController::class, 'destroy']);
+    Route::get('/', [EncerramentoActividadeController::class, 'index']);
+    Route::get('/{id}', [EncerramentoActividadeController::class, 'show']);
+});
+
+Route::prefix('balancos')->middleware('auth.admin')->group(function () {
     Route::get('/', [BalancoController::class, 'index']);
     Route::post('/', [BalancoController::class, 'search']);
 });
 
-Route::prefix('listas')->group(function () {
+Route::prefix('listas')->middleware('auth.admin')->group(function () {
     Route::post('/', [ListaController::class, 'store']);
     Route::get('/', [ListaController::class, 'index']);
 });
 
-Route::prefix('pdf')->group(function () {
+Route::prefix('pdf')->middleware('auth.admin')->group(function () {
     Route::get('listas/{id_curso}/{id_classe}/{id_ano_lectivo}/{estado}', [ReportController::class, 'listas']);
 });
 
-Route::prefix('excel')->group(function () {
+Route::prefix('excel')->middleware('auth.admin')->group(function () {
     Route::get('listas/{id_curso}/{id_classe}/{id_ano_lectivo}/{estado}', [ExcelController::class, 'listas']);
 });
 

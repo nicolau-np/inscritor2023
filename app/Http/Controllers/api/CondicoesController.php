@@ -81,7 +81,7 @@ class CondicoesController extends Controller
             return back()->with('success', "Feito com sucesso!");
         } catch (\Exception $e) {
             DB::rollBack();
-            return response(['error' => $e->getMessage()], 500);
+            return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
         }
     }
 
@@ -158,7 +158,7 @@ class CondicoesController extends Controller
             return back()->with('success', "Feito com sucesso!");
         } catch (\Exception $e) {
             DB::rollBack();
-            return response(['error' => $e->getMessage()], 500);
+            return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
         }
     }
 
@@ -170,6 +170,18 @@ class CondicoesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $condicao = Classificador::find($id);
+        if(!$condicao)
+            return back()->with('error', 'Não encontrou');
+        
+        DB::beginTransaction();
+        try {
+            $condicao->delete();
+            DB::commit();
+            return back()->with('success', "Eliminada com sucesso!");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
+        }
     }
 }

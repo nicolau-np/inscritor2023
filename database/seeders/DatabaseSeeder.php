@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
             CursoSeeder::class,
             ClasseSeeder::class,
             AnoLectivoSeeder::class,
-            ClassificadorSeeder::class,
-            EmolumentoSeeder::class,
+            /*ClassificadorSeeder::class,
+            EmolumentoSeeder::class,*/
         ]);
     }
 }

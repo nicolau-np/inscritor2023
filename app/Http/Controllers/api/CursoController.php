@@ -60,7 +60,7 @@ class CursoController extends Controller
             return back()->with('success', "Feito com sucesso!");
         } catch (\Exception $e) {
             DB::rollBack();
-            return response(['error' => $e->getMessage()], 500);
+            return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
         }
     }
 
@@ -118,7 +118,7 @@ class CursoController extends Controller
             return back()->with('success', "Feito com sucesso!");
         } catch (\Exception $e) {
             DB::rollBack();
-            return response(['error' => $e->getMessage()], 500);
+            return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
         }
     }
 
@@ -130,6 +130,18 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $curso = Curso::find($id);
+        if(!$curso)
+            return back()->with('error', 'Não encontrou');
+        
+        DB::beginTransaction();
+        try {
+            $curso->delete();
+            DB::commit();
+            return back()->with('success', "Eliminado com sucesso!");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
+        }
     }
 }

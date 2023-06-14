@@ -110,7 +110,7 @@ class EstudanteController extends Controller
             return back()->with('success', "Feito com sucesso! Nº de Inscrição:". date('Y').''.$estudante->id);
         } catch (\Exception $e) {
             DB::rollBack();
-            return response(['error' => $e->getMessage()], 500);
+            return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
         }
     }
 
@@ -213,7 +213,7 @@ class EstudanteController extends Controller
             return back()->with('success', "Feito com sucesso!");
         } catch (\Exception $e) {
             DB::rollBack();
-            return response(['error' => $e->getMessage()], 500);
+            return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
         }
     }
 

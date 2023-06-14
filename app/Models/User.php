@@ -18,6 +18,7 @@ class User extends Authenticatable
         'id_instituicao',
         'id_pessoa',
         'id_curso',
+        'email',
         'name',
         'password',
         'nivel_acesso',

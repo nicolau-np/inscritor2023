@@ -4,7 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Servidor Parou</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
+	<link rel="icon" href="{{asset('assets/neutro/images/logo.png')}}" type="image/x-icon"/>
     <link rel="stylesheet" href="{{asset('assets/neutro/css/style.css')}}">
 	<!-- Fonts and icons -->
 	<script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
@@ -32,10 +32,9 @@
 <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-        <img src="{{asset('assets/img/icon.ico')}}" alt="navbar brand" />
+        <img src="{{asset('assets/neutro/images/logo.png')}}" style="width:100px; height:100px;" alt="navbar brand" />
       </div>
       <div class="col-md-12 text-center">
-        <p class="title">Erro 500</p>
         <h1>Oops! Servidor não Responde.</h1>
         <p>Entra em contacto com o seu Provedor.</p>
         <a href="/" class="btn btn-primary">Página Principal</a>

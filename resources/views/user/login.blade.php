@@ -5,7 +5,7 @@
     <div class="login-form">
       <div class="row">
         <div class="col-md-12 text-center">
-          <img src="{{asset('assets/img/logo.svg')}}" alt="navbar brand" class="logo" />
+          <img src="{{asset('assets/neutro/images/logo.png')}}" alt="navbar brand" class="logo mt-2" />
         </div>
         <div class="col-md-12 mt-4">
           <h2>Iniciar Sessão</h2>
@@ -40,7 +40,7 @@
               </div>
               <div class="col-md-12 mt-2 text-center">
                 <p>
-                  Esqueceu a Palavra-Passe? <a href="#">Recuperar</a>
+                  Esqueceu a Palavra-Passe? <a href="/user/recuperar">Recuperar</a>
                 </p>
                 <button type="button" class="btn btn-link btn-floating mx-1">
                   <i class="fab fa-facebook-f"></i>

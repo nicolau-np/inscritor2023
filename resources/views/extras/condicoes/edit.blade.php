@@ -57,9 +57,18 @@
                                     <div class="col-md-4">
                                         <label for="">Curso <span
                                                 class="text-danger">*</span></label>
-                                        {{Form::select('id_curso', $cursos->pluck('curso', 'id'), $condicao->id_curso,
+                                        {{--{{Form::select('id_curso', $cursos->pluck('curso', 'id'), null,
                                         ['placeholder'=>"Curso",
-                                        'class'=>"form-control"])}}
+                                        'class'=>"form-control"])}}--}}
+                                        <select name="id_curso" class="form-control">
+                                            <option value="{{ $condicao->id_curso }}" hidden>{{ $condicao->cursos->curso }}</option>
+                                            @foreach ($cursos->get() as $curso)
+                                                @if($curso->id!=$condicao->id_curso)
+                                                <option value="{{ $curso->id }}">{{ $curso->curso }} ({{ $curso->instituicaos->instituicao }})</option>
+                                                @endif
+                                            @endforeach
+
+                                        </select>
                                         @if ($errors->has('id_curso'))
                                         <span class="text-danger">{{ $errors->first('id_curso')}}</span>
                                         @endif
@@ -68,9 +77,17 @@
                                     <div class="col-md-4">
                                         <label for="">Classe <span
                                                 class="text-danger">*</span></label>
-                                        {{Form::select('id_classe', $classes->pluck('classe', 'id'),$condicao->id_classe,
+                                        {{--{{Form::select('id_classe', $classes->pluck('classe', 'id'),null,
                                         ['placeholder'=>"Classe",
-                                        'class'=>"form-control"])}}
+                                        'class'=>"form-control"])}}--}}
+                                        <select name="id_classe" class="form-control">
+                                            <option value="{{ $condicao->id_classe }}">{{ $condicao->classes->classe }} ({{ $condicao->classes->instituicaos->instituicao }})</option>
+                                            @foreach ($classes->get() as $classe)
+                                                @if($classe->id!=$condicao->id_classe)
+                                                <option value="{{ $classe->id }}">{{ $classe->classe }} ({{ $classe->instituicaos->instituicao }})</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
                                         @if ($errors->has('id_classe'))
                                         <span class="text-danger">{{ $errors->first('id_classe')}}</span>
                                         @endif

@@ -41,4 +41,8 @@ class AnoLectivo extends Model
     {
         return $this->hasMany(Emolumento::class, 'id_ano_lectivo');
     }
+
+    public function encerramento_actividades(){
+        return $this->hasMany(EncerramentoActividade::class, 'id_ano_lectivo');
+    }
 }

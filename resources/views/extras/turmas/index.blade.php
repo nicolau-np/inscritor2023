@@ -32,7 +32,11 @@
                   href="/extras/turmas/create"><i class="fa fa-plus-circle"></i></a></div>
             </div>
             <div class="card-body">
+
               <div class="row">
+                <div class="col-md-12">
+                    @include('includes.messages')
+                </div>
                 <div class="col-md-12">
 
                     <div class="table-responsive">
