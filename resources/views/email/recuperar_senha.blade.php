@@ -7,7 +7,7 @@
 </p>
 
 
-@component('mail::button', ['url'=>"http://127.0.0.1:8000/user/mail/{$user->token}/{$user->id}"])
+@component('mail::button', ['url'=>"https://inscritor.sigeokussoleka.com/user/mail/{$user->token}/{$user->id}"])
     Recuperar Palavra-Passe
 @endcomponent
 
