@@ -70,8 +70,10 @@ class EstudanteController extends Controller
             'id_classe' => 'required|integer|exists:classes,id',
             'id_curso' => 'required|integer|exists:cursos,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
-            'telefone' => 'required|integer',
-            'bilhete'=>'required|string|unique:pessoas,bilhete'
+            #'telefone' => 'required|integer',
+            'telefone' => 'required|regex:/^9\d{8}$/',
+            #'bilhete'=>'required|string|unique:pessoas,bilhete'
+            'bilhete'=>'required|regex:/^\d{9}[a-zA-Z]{2}\d{3}$/|unique:pessoas,bilhete',
         ], [], [
             'nome' => 'Nome',
             'data_nascimento' => 'Data de Nascimento',
@@ -170,6 +172,7 @@ class EstudanteController extends Controller
             'nome' => 'required|string|min:10',
             'data_nascimento' => 'required|date|before_or_equal:today',
             'genero' => 'required|string',
+            'telefone' => 'required|regex:/^9\d{8}$/',
             'id_classe' => 'required|integer|exists:classes,id',
             'id_curso' => 'required|integer|exists:cursos,id',
             'id_ano_lectivo' => 'required|integer|exists:ano_lectivos,id',
@@ -184,7 +187,7 @@ class EstudanteController extends Controller
 
         if($request->bilhete!=$estudante->pessoas->bilhete){
             $this->validate($request,[
-                'bilhete'=>'required|string|unique:pessoas,bilhete'
+                'bilhete'=>'required|regex:/^\d{9}[a-zA-Z]{2}\d{3}$/|unique:pessoas,bilhete',
             ],[],[
                 'bilhete'=>"Nº do Bilhete de Identidade",
             ]);
