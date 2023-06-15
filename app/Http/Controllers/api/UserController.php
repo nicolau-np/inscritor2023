@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Pessoa;
 use App\Models\Curso;
+use App\Models\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -230,5 +231,59 @@ $id_instituicao = Auth::user()->id_instituicao;
 
     public function recuperarStore(Request $request){
 
+        $this->validate($request, [
+            'email'=>'required|email|exists:usuarios,email'
+        ],[],
+        [
+            'email'=>'E-mail'
+        ]);
+
+        $password_reset = PasswordReset::where('email', $request->email)->first();
+        
+        DB::beginTransaction();
+        try {
+            if($password_reset){ #existe ja um reset
+                $password_reset->update(['token'=>$request->_token]);
+            }else{ #nao existe nenhum reset
+                $password_reset = PasswordReset::create(['email'=>$request->email, 'token'=>$request->_token]);
+            }
+            $password_reset = PasswordReset::where('email', $request->email)->first();
+            $user = User::where('email', $password_reset->email)->first();
+            $this->sendEmail($request->_token, $password_reset->id, $user->pessoas->nome, $user->email);
+            DB::commit();
+            return back()->with('success', "Deve verificar o seu E-mail para poder fazer a recuperação da Palavra-Passe");
+        } catch (\Exception $e) {
+            DB::rollBack();
+           return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
+        }
+    }
+
+    public function sendEmail($token, $id, $nome, $email){
+        $user = new \stdClass();
+        $user->name = $nome;
+        $user->email = $email;
+        $user->token = $token;
+        $user->id = $id;
+        \Illuminate\Support\Facades\Mail::send(new \App\Mail\RecuperacaoSenha($user));
+    }
+
+    public function mail($token, $id){
+
+        $password_reset = PasswordReset::where(['token'=>$token, 'id'=>$id])->first();
+        if(!$password_reset)
+            return redirect('/user/recuperar')->with('error', 'Usuário não encontrado! Deve fazer a recuperação novamente.');
+
+        $user = User::where('email', $password_reset->email)->first();
+        $password = Hash::make('puniv2023');
+            DB::beginTransaction();
+            try {
+                $user->update(['password'=>$password]);
+                $password_reset->delete();
+                DB::commit();
+                return redirect('/user/login')->with('success', "A sua Palavra-Passe foi resetada com sucesso!");
+            } catch (\Exception $e) {
+                DB::rollBack();
+               return back()->with('error', 'Sem permição para prosseguir com a operação. Code: '.$e->getCode());
+            }
     }
 }

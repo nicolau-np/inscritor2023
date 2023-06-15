@@ -11,14 +11,16 @@ class RecuperacaoSenha extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(\stdClass $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -28,6 +30,8 @@ class RecuperacaoSenha extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $this->subject('Recuperação de Palavra-Passe');
+        $this->to($this->user->email, $this->user->name);
+        return $this->markdown('email.recuperar_senha', ['user'=>$this->user]);
     }
 }

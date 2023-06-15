@@ -58,6 +58,7 @@ Route::prefix('user')->group(function () {
     Route::get('profile', [UserController::class, 'profile'])->middleware('auth');
     Route::get('recuperar', [UserController::class, 'recuperar']);
     Route::post('recuperar', [UserController::class, 'recuperarStore']);
+    Route::get('mail/{token}/{id}', [UserController::class, 'mail']);
 });
 
 Route::prefix('estudantes')->middleware('auth')->group(function () {
@@ -189,11 +190,13 @@ Route::prefix('excel')->middleware('auth.admin')->group(function () {
 });
 
 Route::get('/text', function () {
-    $data = "2023-03-19";
-    $data2 = "2023-04-02";
-    $estudantes = Estudante::where(['id_instituicao' => 1, 'id_ano_lectivo' => 1])->whereDate('created_at', '>=', $data)->whereDate('created_at', '<=', $data2)->get();
-
-    return $estudantes;
+    $user = new stdClass();
+    $user->name = 'Nicolau NP';
+    $user->email = 'mr1Normaliii@gmail.com';
+    $user->token = 'fgdhfheudheuheu';
+    $user->id = 'hfjsfds';
+    return new App\Mail\RecuperacaoSenha($user);
+    #\Illuminate\Support\Facades\Mail::send(new App\Mail\RecuperacaoSenha($user));
 });
 
 Route::get('/migrate', function(){
